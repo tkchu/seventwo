@@ -119,12 +119,16 @@ public class GridWorld : MonoBehaviour {
     }
 
 
+    public int tempPos_x = 0;
+    public int tempPos_y = 0;
+    public GridItem tempItem;
     public bool p = false;
     private void LateUpdate() {
         if (p) {
             Print();
         }
         p = false;
+        tempItem = GridItemAt(tempPos_x, tempPos_y);
     }
     public void Print() {
         foreach(GridItem[] items in this.allItems) {

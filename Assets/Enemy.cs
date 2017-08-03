@@ -15,5 +15,12 @@ public class Enemy : MonoBehaviour {
         Debug.Log("I am fucked");
         Destroy(gameObject);
         gw.Destroy(GetComponent<GridItem>());
+        if(GetComponent<MoveEnemy>() != null) {
+            GetComponent<MoveEnemy>().willAction = false;
+
+        }
+    }
+    public void Meet() {
+        Debug.Log(gameObject.name + "meet");
     }
 }
