@@ -37,16 +37,15 @@ public class Player : MonoBehaviour {
         }
 
         if (haveMove || shot == 1) {
-            Debug.Log("OneAction");
             GridItem[] items = FindObjectsOfType<GridItem>();
             foreach (GridItem item in items) {
                 item.gameObject.SendMessage("OneAction");
             }
-            gw.Flush();
         }
 
-        cameraFollow.transform.position = new Vector3(transform.position.x, transform.position.y, cameraFollow.transform.position.z);
+        //cameraFollow.transform.position = new Vector3(transform.position.x, transform.position.y, cameraFollow.transform.position.z);
     }
+
 
     public void Meet(GridItem item) {
         if(item.gridItemType == GridItemType.enemy) {

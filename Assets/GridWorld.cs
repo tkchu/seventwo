@@ -15,6 +15,11 @@ public class GridWorld : MonoBehaviour {
         Flush();
     }
 
+    private void Update() {
+        GridItem[][] temp = this.allItems;
+        return;
+    }
+
     public void Flush() {
         GridItem[] items = FindObjectsOfType<GridItem>();
         Dictionary<GridItem, int> allPos_x = new Dictionary<GridItem, int>();
@@ -68,8 +73,10 @@ public class GridWorld : MonoBehaviour {
     }
 
     public Vector3 Go(GridItem item, Vector2 direction) {
-        int x = GridItem_x(item) + (int)direction.x;
-        int y = GridItem_y(item) + (int)direction.y;
+        int x_before = GridItem_x(item);
+        int y_before = GridItem_y(item);
+        int x = x_before + (int)direction.x;
+        int y = y_before + (int)direction.y;
         if (x >= this.allItems[0].Length) {
             x = this.allItems[0].Length - 1;
         }else if(x< 0) {
@@ -86,6 +93,9 @@ public class GridWorld : MonoBehaviour {
             item.SendMessage("Meet", itemMeet);
             itemMeet.SendMessage("Meet", item);
         }
+
+        this.allItems[y][x] = item;
+        this.allItems[y_before][x_before] = null;
 
         return new Vector3((x + min_x) * gridSize, (y + min_y) * gridSize, item.transform.position.z);     
     }
@@ -106,5 +116,28 @@ public class GridWorld : MonoBehaviour {
         int x = GridItem_x(item);
         int y = GridItem_y(item);
         this.allItems[y][x] = null;
+    }
+
+
+    public bool p = false;
+    private void LateUpdate() {
+        if (p) {
+            Print();
+        }
+        p = false;
+    }
+    public void Print() {
+        foreach(GridItem[] items in this.allItems) {
+            string line = "";
+            foreach(GridItem item in items) {
+                if(item!= null) {
+                    line += ((int)(item.gridItemType)).ToString() + ",";
+                }else {
+                    line += "__, ";
+                }
+            }
+            Debug.Log(line);
+        }
+        Debug.Log("===========================");
     }
 }

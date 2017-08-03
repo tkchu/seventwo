@@ -12,10 +12,18 @@ public enum GridItemType {
 
 public class GridItem : MonoBehaviour {
     public GridItemType gridItemType;
+    GridWorld gw;
     void Start() {
-        GridWorld gw = FindObjectOfType<GridWorld>();
+        gw = FindObjectOfType<GridWorld>();
         int x = gw.GridItem_x(GetComponent<GridItem>());
         int y = gw.GridItem_y(GetComponent<GridItem>());
+    }
+
+    public int x;
+    public int y;
+    private void Update() {
+        x = gw.GridItem_x(this);
+        y = gw.GridItem_y(this);
     }
 
     public void Go(Vector2 direction) {
