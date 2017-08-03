@@ -48,8 +48,12 @@ public class Weapon : MonoBehaviour {
 
     public void SwitchGun() {
         //换枪
+        int temp = gunHaveNow;
         gunHaveNow = (gunHaveNow + 1) % gunHave.Count;
         loadCount = loadTime;
+        if(temp != gunHaveNow) {
+            FindObjectOfType<SoundManager>().Play("reload");
+        }
     }
 
     public int loadCount = 0;
@@ -69,6 +73,9 @@ public class Weapon : MonoBehaviour {
         foreach (GridItem item in face) {
             if (item != null && item.gridItemType == GridItemType.enemy) {
                 item.GetComponent<Enemy>().OneShot();
+                if (item.GetComponent<Bomb>()) {
+                    item.GetComponent<Bomb>().OneShot();
+                }
                 shot = true;
             }
         }

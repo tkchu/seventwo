@@ -48,7 +48,7 @@ public class Player : MonoBehaviour {
 
 
     public void Meet(GridItem item) {
-        if(item.gridItemType == GridItemType.enemy) {
+        if(item.gridItemType == GridItemType.enemy || item.gridItemType == GridItemType.spine) {
             Debug.Log("Game OVer", item);
         }
         if(item.gridItemType == GridItemType.pickup) {
