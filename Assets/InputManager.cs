@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class InputManager : MonoBehaviour
 {
 
@@ -28,24 +29,24 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             heroAnimator.SetBool("isWalk", true);
-            player.Go(new Vector2(0, 1));
+            player.Go(Vector2.up);
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
 
             heroAnimator.SetBool("isWalk", true);
-            player.Go(new Vector2(0, -1));
+            player.Go(Vector2.down);
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             heroAnimator.SetBool("isWalk", true);
-            player.Go(new Vector2(-1, 0));
+            player.Go(Vector2.left);
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             heroAnimator.SetBool("isWalk", true);
-            player.Go(new Vector2(1, 0));
+            player.Go(Vector2.right);
         }
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {

@@ -7,20 +7,35 @@ public enum GridItemType {
     boss,
     player,
     wall,
+    pickup,
 }
 
 public class GridItem : MonoBehaviour {
     public GridItemType gridItemType;
+    GridWorld gw;
     void Start() {
-        GridWorld gw = FindObjectOfType<GridWorld>();
+        gw = FindObjectOfType<GridWorld>();
         int x = gw.GridItem_x(GetComponent<GridItem>());
         int y = gw.GridItem_y(GetComponent<GridItem>());
+    }
 
-        Debug.Log(new Vector2(x, y), this);
+    public int x;
+    public int y;
+    private void Update() {
+        x = gw.GridItem_x(this);
+        y = gw.GridItem_y(this);
     }
 
     public void Go(Vector2 direction) {
         GridWorld gw = FindObjectOfType<GridWorld>();
         gw.Go(this, direction);
+    }
+
+    public void OneAction() {
+
+    }
+
+    public void Meet(GridItem itemMeet) {
+
     }
 }

@@ -15,6 +15,11 @@ public class GridWorld : MonoBehaviour {
         Flush();
     }
 
+    private void Update() {
+        GridItem[][] temp = this.allItems;
+        return;
+    }
+
     public void Flush() {
         GridItem[] items = FindObjectsOfType<GridItem>();
         Dictionary<GridItem, int> allPos_x = new Dictionary<GridItem, int>();
@@ -68,8 +73,10 @@ public class GridWorld : MonoBehaviour {
     }
 
     public Vector3 Go(GridItem item, Vector2 direction) {
-        int x = GridItem_x(item) + (int)direction.x;
-        int y = GridItem_y(item) + (int)direction.y;
+        int x_before = GridItem_x(item);
+        int y_before = GridItem_y(item);
+        int x = x_before + (int)direction.x;
+        int y = y_before + (int)direction.y;
         if (x >= this.allItems[0].Length) {
             x = this.allItems[0].Length - 1;
         }else if(x< 0) {
@@ -81,6 +88,60 @@ public class GridWorld : MonoBehaviour {
             y = 0;
         }
 
+        GridItem itemMeet = this.allItems[y][x];
+        if (itemMeet != null) {
+            item.SendMessage("Meet", itemMeet);
+            itemMeet.SendMessage("Meet", item);
+        }
+
+        this.allItems[y][x] = item;
+        this.allItems[y_before][x_before] = null;
+
         return new Vector3((x + min_x) * gridSize, (y + min_y) * gridSize, item.transform.position.z);     
+    }
+
+    public GridItem[] FindGridItemInRange(int pos_x, int pos_y, Vector2 direction, int range) {
+        List<GridItem> result = new List<GridItem>();
+        for (int i = 1; i <= range; i++) {
+            GridItem temp = GridItemAt(pos_x + i * (int)direction.x, pos_y + i * (int)direction.y);
+            if (temp != null && temp.gridItemType == GridItemType.wall) {
+                break;
+            }
+            result.Add(temp);
+        }
+        return result.ToArray();
+    }
+
+    public void Destroy(GridItem item) {
+        int x = GridItem_x(item);
+        int y = GridItem_y(item);
+        this.allItems[y][x] = null;
+    }
+
+
+    public int tempPos_x = 0;
+    public int tempPos_y = 0;
+    public GridItem tempItem;
+    public bool p = false;
+    private void LateUpdate() {
+        if (p) {
+            Print();
+        }
+        p = false;
+        tempItem = GridItemAt(tempPos_x, tempPos_y);
+    }
+    public void Print() {
+        foreach(GridItem[] items in this.allItems) {
+            string line = "";
+            foreach(GridItem item in items) {
+                if(item!= null) {
+                    line += ((int)(item.gridItemType)).ToString() + ",";
+                }else {
+                    line += "__, ";
+                }
+            }
+            Debug.Log(line);
+        }
+        Debug.Log("===========================");
     }
 }
