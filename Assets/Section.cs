@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Section : MonoBehaviour {
+    public string prefabName;
     Transform player;
     float gridSize;
 
@@ -26,6 +27,7 @@ public class Section : MonoBehaviour {
             }
         }
         begin = true;
+        transform.parent.GetComponent<Reseter>().sectionNow = this;
+        transform.parent.GetComponent<Reseter>().playerBegin = player.position;
     }
-
 }
