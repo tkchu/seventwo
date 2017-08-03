@@ -279,6 +279,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 0
+  x: 0
+  y: 0
 --- !u!212 &65813524
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -375,6 +377,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &98894497
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -530,6 +534,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 0
+  x: 0
+  y: 0
 --- !u!212 &156699051
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -614,6 +620,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 0
+  x: 0
+  y: 0
 --- !u!212 &161029454
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -710,6 +718,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &252389395
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -861,6 +871,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!1 &287493320
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,6 +914,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &287493323
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1108,6 +1122,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridSize: 0.4
+  tempPos_x: 0
+  tempPos_y: 0
+  tempItem: {fileID: 0}
+  p: 0
 --- !u!4 &388802029
 Transform:
   m_ObjectHideFlags: 0
@@ -1246,6 +1264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &529924449
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1551,6 +1571,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &663998926
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1647,6 +1669,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &698013416
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1790,6 +1814,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 0
+  x: 0
+  y: 0
 --- !u!212 &840424278
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1938,6 +1964,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &957309249
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2182,7 +2210,7 @@ Prefab:
     - target: {fileID: 20527440443626722, guid: ac853f8f9d0ca3d4c93689135e78c3e2,
         type: 2}
       propertyPath: orthographic size
-      value: 1.51
+      value: 1.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac853f8f9d0ca3d4c93689135e78c3e2, type: 2}
@@ -2317,6 +2345,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &1040700759
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2444,6 +2474,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 0
+  x: 0
+  y: 0
 --- !u!212 &1151320996
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2540,6 +2572,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &1171140648
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2649,6 +2683,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &1183324192
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2745,6 +2781,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &1290516226
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2912,6 +2950,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &1342582679
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3008,6 +3048,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &1345049996
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3091,6 +3133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &1454447864
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3200,6 +3244,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &1468883506
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3471,10 +3517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1152fbb576ab3d84aa4e83c3101fb6ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 1
-  backForce: 0
-  isJump: 0
-  isRoll: 0
+  gunHaveNow: 0
+  loadCount: 0
 --- !u!95 &1662819559
 Animator:
   serializedVersion: 3
@@ -3504,6 +3548,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 0
+  x: 0
+  y: 0
 --- !u!114 &1662819561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3570,6 +3616,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &1736938593
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3666,6 +3714,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &1758546477
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4002,6 +4052,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &1821066793
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4161,6 +4213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &1871875959
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4387,6 +4441,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &1967918450
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4496,6 +4552,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &2101760825
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4579,6 +4637,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridItemType: 3
+  x: 0
+  y: 0
 --- !u!212 &2124301826
 SpriteRenderer:
   m_ObjectHideFlags: 0
