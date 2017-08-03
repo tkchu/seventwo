@@ -81,6 +81,12 @@ public class GridWorld : MonoBehaviour {
             y = 0;
         }
 
+        GridItem itemMeet = this.allItems[y][x];
+        if (itemMeet != null) {
+            item.SendMessage("Meet", itemMeet);
+            itemMeet.SendMessage("Meet", item);
+        }
+
         return new Vector3((x + min_x) * gridSize, (y + min_y) * gridSize, item.transform.position.z);     
     }
 
@@ -94,5 +100,11 @@ public class GridWorld : MonoBehaviour {
             result.Add(temp);
         }
         return result.ToArray();
+    }
+
+    public void Destroy(GridItem item) {
+        int x = GridItem_x(item);
+        int y = GridItem_y(item);
+        this.allItems[y][x] = null;
     }
 }

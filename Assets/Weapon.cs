@@ -68,13 +68,14 @@ public class Weapon : MonoBehaviour {
 
         foreach (GridItem item in face) {
             if (item != null && item.gridItemType == GridItemType.enemy) {
-                item.SendMessage("OneShot");
+                item.GetComponent<Enemy>().OneShot();
+                gw.Destroy(item);
                 shot = true;
             }
         }
 
         if (shot) {
-            return new int[] {1, backForce };
+            return new int[] { 1, backForce };
         }else {
             return new int[] { 0, backForce };
         }
@@ -84,4 +85,5 @@ public class Weapon : MonoBehaviour {
     void Start () {
         gw = FindObjectOfType<GridWorld>();
     }
+    
 }
