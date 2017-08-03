@@ -23,4 +23,8 @@ public class GridItem : MonoBehaviour {
         GridWorld gw = FindObjectOfType<GridWorld>();
         gw.Go(this, direction);
     }
+
+    public void OneAction() {
+
+    }
 }

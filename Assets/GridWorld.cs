@@ -83,4 +83,16 @@ public class GridWorld : MonoBehaviour {
 
         return new Vector3((x + min_x) * gridSize, (y + min_y) * gridSize, item.transform.position.z);     
     }
+
+    public GridItem[] FindGridItemInRange(int pos_x, int pos_y, Vector2 direction, int range) {
+        List<GridItem> result = new List<GridItem>();
+        for (int i = 1; i <= range; i++) {
+            GridItem temp = GridItemAt(pos_x + i * (int)direction.x, pos_y + i * (int)direction.y);
+            if (temp != null && temp.gridItemType == GridItemType.wall) {
+                break;
+            }
+            result.Add(temp);
+        }
+        return result.ToArray();
+    }
 }

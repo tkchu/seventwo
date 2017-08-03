@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 65813525}
   - component: {fileID: 65813524}
   - component: {fileID: 65813523}
+  - component: {fileID: 65813526}
   m_Layer: 0
   m_Name: enemy (4)
   m_TagString: Untagged
@@ -186,12 +187,23 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 65813522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.783, y: -0.029, z: 0}
+  m_LocalPosition: {x: 1.142, y: -0.042, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &65813526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 65813522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd73db22d5d4194ea9b6ffcb93396ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &98894494
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +310,7 @@ GameObject:
   - component: {fileID: 156699052}
   - component: {fileID: 156699051}
   - component: {fileID: 156699050}
+  - component: {fileID: 156699053}
   m_Layer: 0
   m_Name: enemy (2)
   m_TagString: Untagged
@@ -372,6 +385,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &156699053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 156699049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd73db22d5d4194ea9b6ffcb93396ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &161029452
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +406,7 @@ GameObject:
   - component: {fileID: 161029455}
   - component: {fileID: 161029454}
   - component: {fileID: 161029453}
+  - component: {fileID: 161029456}
   m_Layer: 0
   m_Name: enemy (1)
   m_TagString: Untagged
@@ -450,12 +475,23 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 161029452}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.995, y: 0.788, z: 0}
+  m_LocalPosition: {x: 2.398, y: 0.422, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &161029456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 161029452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd73db22d5d4194ea9b6ffcb93396ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &252389392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,6 +1234,7 @@ GameObject:
   - component: {fileID: 840424278}
   - component: {fileID: 840424277}
   - component: {fileID: 840424280}
+  - component: {fileID: 840424281}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -1266,13 +1303,24 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 840424276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0.346, y: 0.426, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &840424280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 840424276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd73db22d5d4194ea9b6ffcb93396ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &840424281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1634,6 +1682,7 @@ GameObject:
   - component: {fileID: 1151320997}
   - component: {fileID: 1151320996}
   - component: {fileID: 1151320995}
+  - component: {fileID: 1151320998}
   m_Layer: 0
   m_Name: enemy (3)
   m_TagString: Untagged
@@ -1708,6 +1757,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1151320998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1151320994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd73db22d5d4194ea9b6ffcb93396ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1171140645
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,7 +2369,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1468883502}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.402, y: 0.374, z: 0}
+  m_LocalPosition: {x: 2.826, y: 0.418, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1046461366}
@@ -2448,7 +2508,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1662819555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.012, y: 0.015, z: -1}
+  m_LocalPosition: {x: 1.153, y: 0.381, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2465,8 +2525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1152fbb576ab3d84aa4e83c3101fb6ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 1
-  backForce: 0
+  gunHaveNow: 0
+  loadCount: 0
 --- !u!114 &1662819560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2800,7 +2860,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1821066789}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.402, y: 0.034, z: 0}
+  m_LocalPosition: {x: 2.878, y: -0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1046461366}
@@ -3159,7 +3219,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2101760821}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.385, y: 0.769, z: 0}
+  m_LocalPosition: {x: 2.795, y: 0.791, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1046461366}

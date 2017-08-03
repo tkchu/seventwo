@@ -21,7 +21,9 @@ public class Enemy : MonoBehaviour {
         int player_y = gw.GridItem_y(player);
         int self_x = gw.GridItem_x(self);
         int self_y = gw.GridItem_y(self);
-
-
+    }
+    public void OneShot() {
+        Debug.Log("I am fucked");
+        Destroy(gameObject);
     }
 }
