@@ -5,14 +5,19 @@ using UnityEngine;
 public class Weapon : MonoBehaviour {
     public int range;
     public int backForce;
+    public bool isJump;
+    public bool isRoll;
+
 
     private GridWorld gw;
     void Start () {
+        
         gw = FindObjectOfType<GridWorld>();
         SetGun(0);
     }
 
     public int Go(Vector2 direction) {
+        
         int pos_x = gw.GridItem_x(GetComponent<GridItem>());
         int pos_y = gw.GridItem_y(GetComponent<GridItem>());
 
@@ -48,7 +53,8 @@ public class Weapon : MonoBehaviour {
         Debug.Log(new_pos);
         transform.position = new_pos;
         gw.Flush();
-
+        
+        return 0;
     }
 
     List<int[]> gunInfo = new List<int[]>() {
