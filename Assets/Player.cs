@@ -69,7 +69,9 @@ public class Player : MonoBehaviour {
                 }
             }
 
-            FindObjectOfType<Boss>().OneAction();
+            if (FindObjectOfType<Boss>()) {
+                FindObjectOfType<Boss>().OneAction();
+            }
             GetComponent<Weapon>().OneAction();
         }
     }
