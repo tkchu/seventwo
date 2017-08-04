@@ -29,9 +29,5 @@ public class Section : MonoBehaviour {
         begin = true;
         transform.parent.GetComponent<Reseter>().sectionNow = this;
         transform.parent.GetComponent<Reseter>().playerBegin = player.position;
-
-        Camera cameraFollow = FindObjectOfType<Camera>();
-        cameraFollow.transform.position = new Vector3(transform.position.x, transform.position.y, cameraFollow.transform.position.z);
-
     }
 }

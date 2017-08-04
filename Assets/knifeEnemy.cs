@@ -27,7 +27,12 @@ public class knifeEnemy : MonoBehaviour {
 
         //准备
         if (noDie) {
-            if (Mathf.Abs(player_x - self_x) + Mathf.Abs(player_y - self_y) <= 0) {
+            if (Mathf.Abs(player_x - self_x) + Mathf.Abs(player_y - self_y) <= 2) {
+                prepareAnimator.SetBool("isReady", true);
+            } else {
+                prepareAnimator.SetBool("isReady", false);
+            }
+            if (Mathf.Abs(player_x - self_x) + Mathf.Abs(player_y - self_y) <= 0.3) {
                 prepareAnimator.SetBool("isAttack", true);
             } else {
                 prepareAnimator.SetBool("isAttack", false);

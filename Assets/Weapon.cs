@@ -17,7 +17,7 @@ public class Weapon : MonoBehaviour {
         {Guns.jumpgun, new int[] {3,3,2} },
     };
 
-    List<Guns> gunHave = new List<Guns>() {
+    public List<Guns> gunHave = new List<Guns>() {
         Guns.empty,
     };
 
@@ -26,13 +26,13 @@ public class Weapon : MonoBehaviour {
     public Guns gunNow {
         get { return gunHave[gunHaveNow]; }
     }
-    private int range {
+    public int range {
         get { return gunInfo[gunNow][0]; }
     }
-    private int backForce {
+    public int backForce {
         get { return gunInfo[gunNow][1]; }
     }
-    private int loadTime {
+    public int loadTime {
         get { return gunInfo[gunNow][2]; }
     }
 
@@ -62,7 +62,7 @@ public class Weapon : MonoBehaviour {
     public int loadCount = 0;
     public void OneAction() {
         loadCount -= 1;
-        if(loadCount < 0) {
+        if(loadCount <= 0) {
             SwitchGun();
         }
     }
