@@ -40,6 +40,7 @@ public class Player : MonoBehaviour {
         }
 
         if (haveMove || shot == 1) {
+            FindObjectOfType<SoundManager>().Play("move");
             if (Mathf.Abs(direction.x) >0f) {
                 GetComponent<SpriteRenderer>().flipX = direction.x > 0;
             }
@@ -60,7 +61,14 @@ public class Player : MonoBehaviour {
             GetComponent<Animator>().SetBool("isDead", true);
             Debug.Log("Game OVer", item);
         }
-        if(item.gridItemType == GridItemType.pickup) {
+
+        if (item.GetComponent<knifeEnemy>() != null) {
+            FindObjectOfType<SoundManager>().Play("dieKnife");
+        }else if(item.gridItemType == GridItemType.spine) {
+            FindObjectOfType<SoundManager>().Play("dieSpine");
+        }
+
+        if (item.gridItemType == GridItemType.pickup) {
             GetComponent<Weapon>().PickGun(item.GetComponent<PickUp>().haveGun);
         }
     }

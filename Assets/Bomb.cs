@@ -37,6 +37,8 @@ public class Bomb : MonoBehaviour {
     }
 
     public void Die() {
+        FindObjectOfType<SoundManager>().Play("boom");
+
         int x = gw.GridItem_x(GetComponent<GridItem>());
         int y = gw.GridItem_y(GetComponent<GridItem>());
         GridItem[] around = new GridItem[] {

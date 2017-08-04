@@ -81,6 +81,14 @@ public class Weapon : MonoBehaviour {
         }
 
         if (shot) {
+            if(gunNow == Guns.pistol) {
+                FindObjectOfType<SoundManager>().Play("pistolShot");
+            }else if(gunNow == Guns.shotgun) {
+                FindObjectOfType<SoundManager>().Play("shotGunShot");
+            }else if(gunNow == Guns.jumpgun) {
+                FindObjectOfType<SoundManager>().Play("jumpGunShot");
+            }
+
             return new int[] { 1, backForce };
         }else {
             return new int[] { 0, backForce };
