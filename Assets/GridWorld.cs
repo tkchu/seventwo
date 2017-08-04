@@ -13,6 +13,27 @@ public class GridWorld : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         Flush();
+
+        for (int i = 0; i < this.allItems.Length; i++) {
+            foreach (GridItem item in this.allItems[i]) {
+                if (item != null) {
+                    item.transform.position = new Vector3(item.transform.position.x, item.transform.position.y, item.transform.position.z - 1 + i * 0.1f);
+                }
+            }
+        }
+
+    }
+
+    public void Start() {
+        GameObject[] grounds = GameObject.FindGameObjectsWithTag("ground");
+        foreach (GameObject ground in grounds) {
+            float x = ground.transform.position.x;
+            float pos_x = ((int)(Mathf.Abs(x) / gridSize + 0.5)) * (x > 0 ? 1 : -1) * gridSize;
+            float y = ground.transform.position.y;
+            float pos_y = ((int)(Mathf.Abs(y) / gridSize + 0.5)) * (y > 0 ? 1 : -1) * gridSize;
+
+            ground.transform.position = new Vector3(pos_x, pos_y, transform.position.z);
+        }
     }
 
     private void Update() {
