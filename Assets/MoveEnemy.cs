@@ -23,11 +23,7 @@ public class MoveEnemy : MonoBehaviour {
 
             bool haveMoved = false;
 
-            Vector2[] aroundVec = new Vector2[] {
-                Vector2.left,Vector2.right,Vector2.up, Vector2.down,
-            };
-            
-            if(player_x < self_x) {
+            if (player_x < self_x) {
                 GridItem[] left = gw.FindGridItemInRange(self_x, self_y, Vector2.left, 1);
                 if(left.Length > 0 && (left[0] == null || left[0].gridItemType == GridItemType.player)) {
                     Vector3 new_pos = gw.Go(GetComponent<GridItem>(), Vector2.left);

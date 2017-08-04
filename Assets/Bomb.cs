@@ -27,10 +27,10 @@ public class Bomb : MonoBehaviour {
         int self_x = gw.GridItem_x(self);
         int self_y = gw.GridItem_y(self);
 
-        if(Mathf.Abs(player_x - self_x) + Mathf.Abs(player_y - self_y) <= 2){
+        if (Mathf.Abs(player_x - self_x) + Mathf.Abs(player_y - self_y) <= 2) {
             GetComponent<Animator>().SetBool("isReady", true);
             isReady = true;
-        }else {
+        } else {
             GetComponent<Animator>().SetBool("isReady", false);
         }
 
@@ -51,17 +51,8 @@ public class Bomb : MonoBehaviour {
             gw.GridItemAt(x + 1, y),
             gw.GridItemAt(x, y+1),
             gw.GridItemAt(x, y-1),
+            gw.GridItemAt(x, y),
         };
-
-        Vector2[] aroundVectors = new Vector2[] {
-            Vector2.left,Vector2.right, Vector2.up, Vector2.down, Vector2.zero
-        };
-        foreach (Vector2 vec in aroundVectors) {
-            GridItem item = gw.GridItemAt(x + (int)vec.x, y + (int)vec.y);
-            if (item == null || item.gridItemType != GridItemType.wall) {
-                Instantiate(flamePrefab, transform.position + new Vector3(vec.x, vec.y, -10) * gw.gridSize, Quaternion.identity);
-            }
-        }
 
         foreach (GridItem item in around) {
             if(item!=null && item.gridItemType == GridItemType.enemy) {
@@ -70,6 +61,17 @@ public class Bomb : MonoBehaviour {
                 item.GetComponent<Player>().Meet(GetComponent<GridItem>());
             }if(item!=null && item.gridItemType == GridItemType.boss) {
                 item.GetComponent<BossPart>().OneHit();
+            }
+        }
+
+        // 生成四面火焰
+        Vector2[] aroundVectors = new Vector2[] {
+            Vector2.left,Vector2.right, Vector2.up, Vector2.down, Vector2.zero
+        };
+        foreach (Vector2 vec in aroundVectors) {
+            GridItem item = gw.GridItemAt(x + (int)vec.x, y + (int)vec.y);
+            if (item == null || item.gridItemType != GridItemType.wall) {
+                Instantiate(flamePrefab, transform.position + new Vector3(vec.x, vec.y, -10) * gw.gridSize, Quaternion.identity);
             }
         }
 

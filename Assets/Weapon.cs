@@ -14,7 +14,7 @@ public class Weapon : MonoBehaviour {
         {Guns.empty, new int[] {0, 1, 99999} },
         {Guns.pistol, new int[] { 1, 0, 5 } },
         {Guns.shotgun, new int[] { 2, -1, 3} },
-        {Guns.jumpgun, new int[] {3, 4, 2} },
+        {Guns.jumpgun, new int[] {4, 4, 2} },
     };
 
     public List<Guns> gunHave = new List<Guns>() {

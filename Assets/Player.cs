@@ -59,7 +59,7 @@ public class Player : MonoBehaviour {
 
             Enemy[] items = FindObjectsOfType<Enemy>();
             foreach (Enemy item in items) {
-                if(item.GetComponent<Bomb>() == null) {
+                if(item.GetComponent<knifeEnemy>()) {
                     item.OneAction();
                 }
             }
@@ -69,6 +69,7 @@ public class Player : MonoBehaviour {
                 }
             }
 
+            FindObjectOfType<Boss>().OneAction();
             GetComponent<Weapon>().OneAction();
         }
     }
