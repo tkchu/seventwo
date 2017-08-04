@@ -93,7 +93,7 @@ public class Player : MonoBehaviour {
     public void Meet(GridItem item) {
         if(item.gridItemType == GridItemType.enemy || item.gridItemType == GridItemType.spine) {
             GetComponent<Animator>().SetBool("isDead", true);
-            Debug.Log("Game OVer", item);
+            StartCoroutine(Restart());
         }
 
         if (item.GetComponent<knifeEnemy>() != null) {
@@ -106,4 +106,10 @@ public class Player : MonoBehaviour {
             GetComponent<Weapon>().PickGun(item.GetComponent<PickUp>().haveGun);
         }
     }
+
+    IEnumerator Restart() {
+        yield return new WaitForSeconds(0.5f);
+        FindObjectOfType<Reseter>().reset = true;
+    }
+
 }

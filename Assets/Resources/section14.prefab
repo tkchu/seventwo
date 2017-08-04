@@ -800,7 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: badce32ffc1b5634ba07908da82d4489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabName: 14
+  prefabName: section14
   begin: 0
 --- !u!212 &212185970688350762
 SpriteRenderer:
@@ -926,7 +926,7 @@ SpriteRenderer:
   m_Size: {x: 0.4, y: 0.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212323172605576748
 SpriteRenderer:
