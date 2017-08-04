@@ -15,7 +15,6 @@ public class Boss : MonoBehaviour {
     public GameObject knfieEnemy;
 
     private void Start() {
-
         gw = FindObjectOfType<GridWorld>();
         Ylength = gw.allItems.Length;
         Xlength = gw.allItems[0].Length;
@@ -27,6 +26,7 @@ public class Boss : MonoBehaviour {
         count += 1;
         if(count % 3 == 0) {
             if (createA) {
+                GetComponent<Animator>().SetBool("left", true);
                 if(count % 10 == 0) {
                     CreatePresetBomb();
                 }
@@ -34,6 +34,7 @@ public class Boss : MonoBehaviour {
                     CreateRandomBomb();
                 }
             } else {
+                GetComponent<Animator>().SetBool("right", true);
                 for (int i = 0; i < 4; i++) {
                     CreateRandom1();
                 }
@@ -88,6 +89,7 @@ public class Boss : MonoBehaviour {
 
     public void OneHit() {
         Debug.Log("hp--");
+        GetComponent<Animator>().SetBool("ishited", true);
         hp -= 1;
         if (hp <= 0) {
             Debug.Log("Winner!");
