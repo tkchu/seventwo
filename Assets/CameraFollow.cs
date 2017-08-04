@@ -17,7 +17,7 @@ public class CameraFollow : MonoBehaviour {
     }
     
     private void Update() {
-        if (Xdistance >= 2.4 || Ydistance > 1.8) {
+        if (Xdistance >= 2.4 || Ydistance >= 1.2) {
             StartCoroutine(Following());
         }
     }
@@ -27,7 +27,7 @@ public class CameraFollow : MonoBehaviour {
         float start_pos_x = transform.position.x;
         float start_pos_y = transform.position.y;
         float end_pos_x = player.position.x;
-        float end_pos_y = player.position.y;
+        float end_pos_y = player.position.y - 1.2f;
 
         while (precent < 1f) {
             transform.position = new Vector3(Mathf.Lerp(start_pos_x, end_pos_x, precent),

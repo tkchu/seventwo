@@ -31,7 +31,6 @@ public class Player : MonoBehaviour {
         if (back.Length == 0) {
             haveMove = false;
         } else {
-            //TODO:检测碰撞到的敌人
             transform.position = gw.Go(GetComponent<GridItem>(), direction * back.Length * (move < 0 ? -1 : 1));
             haveMove = true;
         }
@@ -41,6 +40,10 @@ public class Player : MonoBehaviour {
         }
 
         if (haveMove || shot == 1) {
+            if (Mathf.Abs(direction.x) >0f) {
+                GetComponent<SpriteRenderer>().flipX = direction.x > 0;
+            }
+
             Enemy[] items = FindObjectsOfType<Enemy>();
             foreach (Enemy item in items) {
                 item.OneAction();
