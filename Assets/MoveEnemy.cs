@@ -5,23 +5,17 @@ using UnityEngine;
 public class MoveEnemy : MonoBehaviour {
     public bool willAction = false;
     public int range;
-
+    
     GridWorld gw;
     private void Start() {
         gw = FindObjectOfType<GridWorld>();
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.A)) {
-            OneAction();
-        }
-    }
-
-    void OneAction() {
+    public void OneAction() {
         if (willAction) {
             GridItem player = FindObjectOfType<Player>().GetComponent<GridItem>();
             GridItem self = GetComponent<GridItem>();
-            GridWorld gw = FindObjectOfType<GridWorld>();
+
             int player_x = gw.GridItem_x(player);
             int player_y = gw.GridItem_y(player);
             int self_x = gw.GridItem_x(self);
@@ -61,6 +55,7 @@ public class MoveEnemy : MonoBehaviour {
                     haveMoved = true;
                 }
             }
+            
 
         }
     }

@@ -37,9 +37,9 @@ public class Player : MonoBehaviour {
         }
 
         if (haveMove || shot == 1) {
-            GridItem[] items = FindObjectsOfType<GridItem>();
-            foreach (GridItem item in items) {
-                item.gameObject.SendMessage("OneAction");
+            Enemy[] items = FindObjectsOfType<Enemy>();
+            foreach (Enemy item in items) {
+                item.OneAction();
             }
         }
 

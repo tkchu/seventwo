@@ -73,9 +73,6 @@ public class Weapon : MonoBehaviour {
         foreach (GridItem item in face) {
             if (item != null && item.gridItemType == GridItemType.enemy) {
                 item.GetComponent<Enemy>().OneShot();
-                if (item.GetComponent<Bomb>()) {
-                    item.GetComponent<Bomb>().OneShot();
-                }
                 shot = true;
             }
         }

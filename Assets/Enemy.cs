@@ -8,16 +8,31 @@ public class Enemy : MonoBehaviour {
         gw = FindObjectOfType<GridWorld>();
     }
 
-    void OneAction() {
+    public void OneAction() {
+        if (GetComponent<Bomb>() && GetComponent<Bomb>().isReady) {
+            ;
+        }else {
+            if (GetComponent<MoveEnemy>()) {
+                GetComponent<MoveEnemy>().OneAction();
+            }
+        }
+        
+        if (GetComponent<Bomb>()) {
+            GetComponent<Bomb>().OneAction();
+        }
 
     }
     public void OneShot() {
         Debug.Log("I am fucked");
-        Destroy(gameObject);
+        if (GetComponent<knifeEnemy>()) {
+            GetComponent<knifeEnemy>().Die();
+        }
+        if (GetComponent<Bomb>()) {
+            GetComponent<Bomb>().Die();
+        }
         gw.Destroy(GetComponent<GridItem>());
         if(GetComponent<MoveEnemy>() != null) {
             GetComponent<MoveEnemy>().willAction = false;
-
         }
     }
     public void Meet() {
