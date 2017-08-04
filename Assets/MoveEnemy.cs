@@ -22,6 +22,10 @@ public class MoveEnemy : MonoBehaviour {
             int self_y = gw.GridItem_y(self);
 
             bool haveMoved = false;
+
+            Vector2[] aroundVec = new Vector2[] {
+                Vector2.left,Vector2.right,Vector2.up, Vector2.down,
+            };
             
             if(player_x < self_x) {
                 GridItem[] left = gw.FindGridItemInRange(self_x, self_y, Vector2.left, 1);
@@ -41,7 +45,7 @@ public class MoveEnemy : MonoBehaviour {
             }
             if (!haveMoved && player_y < self_y) {
                 GridItem[] down = gw.FindGridItemInRange(self_x, self_y, Vector2.down, 1);
-                if (down.Length > 0 && down[0] == null || (down[0].gridItemType == GridItemType.player)) {
+                if (down.Length > 0 && (down[0] == null || down[0].gridItemType == GridItemType.player)) {
                     Vector3 new_pos = gw.Go(GetComponent<GridItem>(), Vector2.down);
                     transform.position = new_pos;
                     haveMoved = true;
