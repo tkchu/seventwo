@@ -74,7 +74,8 @@ public class Weapon : MonoBehaviour {
         GridItem[] face = gw.FindGridItemInRange(pos_x, pos_y, direction, this.range);
 
         foreach (GridItem item in face) {
-            if (item != null && item.gridItemType == GridItemType.enemy) {
+            if (item != null &&
+                (item.gridItemType == GridItemType.enemy || item.gridItemType == GridItemType.boss)) {
                 item.GetComponent<Enemy>().OneShot();
                 shot = true;
             }

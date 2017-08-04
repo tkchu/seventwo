@@ -21,6 +21,9 @@ public class Enemy : MonoBehaviour {
             GetComponent<Bomb>().OneAction();
         }
 
+        if (GetComponent<Boss>()) {
+            GetComponent<Boss>().OneAction();
+        }
     }
     public void OneShot() {
         Debug.Log("I am fucked");
@@ -30,9 +33,16 @@ public class Enemy : MonoBehaviour {
         if (GetComponent<Bomb>()) {
             GetComponent<Bomb>().Die();
         }
-        gw.Destroy(GetComponent<GridItem>());
-        if(GetComponent<MoveEnemy>() != null) {
+        if (GetComponent<BossPart>() == null) {
+            gw.Destroy(GetComponent<GridItem>());
+        }
+
+        if (GetComponent<MoveEnemy>() != null) {
             GetComponent<MoveEnemy>().willAction = false;
+        }
+
+        if (GetComponent<BossPart>()) {
+            Debug.Log("Boss 挨了一枪，但毫发无损！");
         }
     }
     public void Meet() {

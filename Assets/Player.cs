@@ -28,31 +28,49 @@ public class Player : MonoBehaviour {
             move = backForce;
         }
         GridItem[] back = gw.FindGridItemInRange(pos_x, pos_y, direction * (move < 0 ? -1 : 1), Mathf.Abs(move));
-        if (back.Length == 0) {
+
+        move = back.Length * (move < 0 ? -1 : 1);
+        for (int i = 0; i < back.Length; i++) {
+            if(back[i] != null && back[i].gridItemType == GridItemType.boss) {
+                move = i * (move < 0 ? -1 : 1);
+                break;
+            }
+        }
+
+        if (move == 0) {
             haveMove = false;
         } else {
-            transform.position = gw.Go(GetComponent<GridItem>(), direction * back.Length * (move < 0 ? -1 : 1));
+            transform.position = gw.Go(GetComponent<GridItem>(), direction * Mathf.Abs(move) * (move < 0 ? -1 : 1));
             haveMove = true;
         }
 
-        if (shot == 1 && backForce < 0) {
+        if (shot == 1 && move < 0) {
             GetComponent<Animator>().SetBool("isAttacking", true);
         }
 
-        if (haveMove || shot == 1) {
+        if(shot == 0 && haveMove) {
             FindObjectOfType<SoundManager>().Play("move");
+        }
+
+        if (haveMove || shot == 1) {
             if (Mathf.Abs(direction.x) >0f) {
                 GetComponent<SpriteRenderer>().flipX = direction.x > 0;
             }
 
             Enemy[] items = FindObjectsOfType<Enemy>();
             foreach (Enemy item in items) {
-                item.OneAction();
+                if(item.GetComponent<Bomb>() == null) {
+                    item.OneAction();
+                }
             }
+            foreach (Enemy item in items) {
+                if (item.GetComponent<Bomb>() != null) {
+                    item.OneAction();
+                }
+            }
+
             GetComponent<Weapon>().OneAction();
         }
-
-        //cameraFollow.transform.position = new Vector3(transform.position.x, transform.position.y, cameraFollow.transform.position.z);
     }
 
 

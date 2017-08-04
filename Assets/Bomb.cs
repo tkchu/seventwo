@@ -37,6 +37,11 @@ public class Bomb : MonoBehaviour {
     }
 
     public void Die() {
+        if (!noDie) {
+            return;
+        }else {
+            noDie = false;
+        }
         FindObjectOfType<SoundManager>().Play("boom");
 
         int x = gw.GridItem_x(GetComponent<GridItem>());
@@ -54,7 +59,7 @@ public class Bomb : MonoBehaviour {
         foreach (Vector2 vec in aroundVectors) {
             GridItem item = gw.GridItemAt(x + (int)vec.x, y + (int)vec.y);
             if (item == null || item.gridItemType != GridItemType.wall) {
-                Instantiate(flamePrefab, transform.position + new Vector3(vec.x, vec.y, 0) * gw.gridSize, Quaternion.identity);
+                Instantiate(flamePrefab, transform.position + new Vector3(vec.x, vec.y, -10) * gw.gridSize, Quaternion.identity);
             }
         }
 
@@ -63,6 +68,8 @@ public class Bomb : MonoBehaviour {
                 item.GetComponent<Enemy>().OneShot();
             }else if(item != null && item.gridItemType == GridItemType.player) {
                 item.GetComponent<Player>().Meet(GetComponent<GridItem>());
+            }if(item!=null && item.gridItemType == GridItemType.boss) {
+                item.GetComponent<BossPart>().OneHit();
             }
         }
 

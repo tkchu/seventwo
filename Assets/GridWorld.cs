@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridWorld : MonoBehaviour {
     public float gridSize = 0.5f;
-    private GridItem[][] allItems;
+    public GridItem[][] allItems;
     private int min_x = 0;
     private int min_y = 0;
     private int max_x = 0;
