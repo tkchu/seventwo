@@ -1,7 +1,7 @@
 ﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
     private float gridSize;
@@ -109,7 +109,12 @@ public class Player : MonoBehaviour {
 
     IEnumerator Restart() {
         yield return new WaitForSeconds(0.5f);
-        FindObjectOfType<Reseter>().reset = true;
+
+        if (SceneManager.GetActiveScene().name == "BossLevel") {
+            SceneManager.LoadScene("BossLevel");
+        }else {
+            FindObjectOfType<Reseter>().reset = true;
+        }
     }
 
 }

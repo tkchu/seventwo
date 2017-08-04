@@ -32,7 +32,7 @@ public class GridWorld : MonoBehaviour {
             float y = ground.transform.position.y;
             float pos_y = ((int)(Mathf.Abs(y) / gridSize + 0.5)) * (y > 0 ? 1 : -1) * gridSize;
 
-            ground.transform.position = new Vector3(pos_x, pos_y-0.2f, 1);
+            ground.transform.position = new Vector3(pos_x, pos_y-0.1f, 1);
         }
     }
 
