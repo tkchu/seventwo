@@ -89,6 +89,11 @@ public class Player : MonoBehaviour {
         }
     }
 
+    private void Update() {
+        if (GetComponent<GridItem>().x == 84 && GetComponent<GridItem>().y == 1) {
+            SceneManager.LoadScene("BossLevel");
+        }
+    }
 
     public void Meet(GridItem item) {
         if(item.gridItemType == GridItemType.enemy || item.gridItemType == GridItemType.spine) {
@@ -116,5 +121,6 @@ public class Player : MonoBehaviour {
             FindObjectOfType<Reseter>().reset = true;
         }
     }
+
 
 }

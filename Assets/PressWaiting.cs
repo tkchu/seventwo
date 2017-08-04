@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PressWaiting : MonoBehaviour {
     public bool waiting;
@@ -45,7 +46,17 @@ public class PressWaiting : MonoBehaviour {
             UIheroSR.DOFade(0, 1f)
             );
 
+        StartCoroutine(BeginGame());
     }
+
+    public GameObject canvas;
+    IEnumerator BeginGame() {
+        yield return new WaitForSeconds(4f);
+        canvas.SetActive(true);
+        gameObject.SetActive(false);
+        FindObjectOfType<Camera>().orthographicSize = 3.6f;
+    }
+
     void Over()
     {
         snow.SetActive(true);

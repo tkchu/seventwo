@@ -23,6 +23,7 @@ public class Reseter : MonoBehaviour {
         sectionNow = newOne.GetComponent<Section>();
 
         FindObjectOfType<Player>().transform.position = playerBegin;
+        FindObjectOfType<Player>().GetComponent<Animator>().SetBool("isDead", false);
         FindObjectOfType<Player>().GetComponent<Animator>().SetInteger("stat", gunHaveNow + 1);
 
         FindObjectOfType<Weapon>().gunHave = new List<Guns>(gunHave);

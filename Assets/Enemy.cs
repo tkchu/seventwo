@@ -25,8 +25,8 @@ public class Enemy : MonoBehaviour {
             GetComponent<Boss>().OneAction();
         }
     }
+    
     public void OneShot() {
-        Debug.Log("I am fucked");
         if (GetComponent<knifeEnemy>()) {
             GetComponent<knifeEnemy>().Die();
         }
