@@ -32,7 +32,7 @@ public class GridWorld : MonoBehaviour {
             float y = ground.transform.position.y;
             float pos_y = ((int)(Mathf.Abs(y) / gridSize + 0.5)) * (y > 0 ? 1 : -1) * gridSize;
 
-            ground.transform.position = new Vector3(pos_x, pos_y-0.2f, 100);
+            ground.transform.position = new Vector3(pos_x, pos_y-0.2f, 1);
         }
     }
 
@@ -75,9 +75,11 @@ public class GridWorld : MonoBehaviour {
             this.allItems[allPos_y[item] - min_y][allPos_x[item] - min_x] = item;
         }
 
-        Transform player = FindObjectOfType<Player>().transform;
-        int player_i = GridItem_y(player.GetComponent<GridItem>());
-        player.position = new Vector3(player.position.x, player.position.y, - 1 + player_i * 0.1f);
+        if (FindObjectOfType<Player>()) {
+            Transform player = FindObjectOfType<Player>().transform;
+            int player_i = GridItem_y(player.GetComponent<GridItem>());
+            player.position = new Vector3(player.position.x, player.position.y, -1 + player_i * 0.1f);
+        }
 
     }
     public int GridItem_x(GridItem item) {

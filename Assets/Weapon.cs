@@ -75,12 +75,12 @@ public class Weapon : MonoBehaviour {
 
         foreach (GridItem item in face) {
             if (item != null &&
-                (item.gridItemType == GridItemType.enemy || item.gridItemType == GridItemType.boss)) {
-                item.GetComponent<Enemy>().OneShot();
+                (item.gridItemType == GridItemType.enemy || item.gridItemType == GridItemType.boss)) { 
                 shot = true;
             }
         }
 
+        //播放音效，返回后坐力
         if (shot) {
             if(gunNow == Guns.pistol) {
                 FindObjectOfType<SoundManager>().Play("pistolShot");
@@ -89,7 +89,6 @@ public class Weapon : MonoBehaviour {
             }else if(gunNow == Guns.jumpgun) {
                 FindObjectOfType<SoundManager>().Play("jumpGunShot");
             }
-
             return new int[] { 1, backForce };
         }else {
             return new int[] { 0, backForce };

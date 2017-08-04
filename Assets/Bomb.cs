@@ -37,11 +37,13 @@ public class Bomb : MonoBehaviour {
     }
 
     public void Die() {
+        //保证不会多次标记死亡
         if (!noDie) {
             return;
         }else {
             noDie = false;
         }
+
         FindObjectOfType<SoundManager>().Play("boom");
 
         int x = gw.GridItem_x(GetComponent<GridItem>());

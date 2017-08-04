@@ -37,12 +37,25 @@ public class Player : MonoBehaviour {
             }
         }
 
+        //先移动
         if (move == 0) {
             haveMove = false;
         } else {
             transform.position = gw.Go(GetComponent<GridItem>(), direction * Mathf.Abs(move) * (move < 0 ? -1 : 1));
             haveMove = true;
         }
+        //再触发敌人死亡
+        if (shot == 1) {
+            GridItem[] face = gw.FindGridItemInRange(pos_x, pos_y, direction, GetComponent<Weapon>().range);
+
+            foreach (GridItem item in face) {
+                if (item != null &&
+                    (item.gridItemType == GridItemType.enemy || item.gridItemType == GridItemType.boss)) {
+                    item.GetComponent<Enemy>().OneShot();
+                }
+            }
+        }
+
 
         if (shot == 1 && move < 0) {
             GetComponent<Animator>().SetBool("isAttacking", true);
