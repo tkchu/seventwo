@@ -36,11 +36,16 @@ public class Player : MonoBehaviour {
             haveMove = true;
         }
 
+        if (shot == 1 && backForce < 0) {
+            GetComponent<Animator>().SetBool("isAttacking", true);
+        }
+
         if (haveMove || shot == 1) {
             Enemy[] items = FindObjectsOfType<Enemy>();
             foreach (Enemy item in items) {
                 item.OneAction();
             }
+            GetComponent<Weapon>().OneAction();
         }
 
         //cameraFollow.transform.position = new Vector3(transform.position.x, transform.position.y, cameraFollow.transform.position.z);
@@ -49,6 +54,7 @@ public class Player : MonoBehaviour {
 
     public void Meet(GridItem item) {
         if(item.gridItemType == GridItemType.enemy || item.gridItemType == GridItemType.spine) {
+            GetComponent<Animator>().SetBool("isDead", true);
             Debug.Log("Game OVer", item);
         }
         if(item.gridItemType == GridItemType.pickup) {

@@ -44,6 +44,8 @@ public class Weapon : MonoBehaviour {
         gunHave.Add(gun);
         gunHaveNow = gunHave.Count - 1;
         loadCount = loadTime;
+
+        GetComponent<Animator>().SetInteger("stat", gunHaveNow + 1);
     }
 
     public void SwitchGun() {
@@ -54,6 +56,7 @@ public class Weapon : MonoBehaviour {
         if(temp != gunHaveNow) {
             FindObjectOfType<SoundManager>().Play("reload");
         }
+        GetComponent<Animator>().SetInteger("stat", gunHaveNow + 1);
     }
 
     public int loadCount = 0;
