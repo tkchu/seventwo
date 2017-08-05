@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Storytell : MonoBehaviour {
     public bool tell=false;
-    public GameObject s1, s2, s3, s4, s5,t1,t2,t4,t5,bt,bb;
+    public GameObject s1, s2, s3, s4, s5,t1,t2,t4,t5,bt,bb,gbgm,sbgm,ui;
     Vector3 ts1, ts2, ts4, ts5;
 	// Use this for initialization
 	void Start () {
@@ -13,6 +13,7 @@ public class Storytell : MonoBehaviour {
         ts2 = t2.transform.position;
         ts4 = t4.transform.position;
         ts5 = t5.transform.position;
+
     }
 	
 	// Update is called once per frame
@@ -20,12 +21,12 @@ public class Storytell : MonoBehaviour {
         if (tell)
         {
             tell = false;
-
-            DOTween.Sequence().Append(s1.transform.DOMove(ts1, 3f))
-                .Append(s2.transform.DOMove(ts2, 3f))
-                .Append(s3.GetComponent<SpriteRenderer>().DOFade(1, 3f))
-                .Append(s4.transform.DOMove(ts4, 3f))
-                .Append(s5.transform.DOMove(ts5, 3f))
+            sbgm.SetActive(true);
+            DOTween.Sequence().Append(s1.transform.DOMove(ts1, 4f))
+                .Append(s2.transform.DOMove(ts2, 4f))
+                .Append(s3.GetComponent<SpriteRenderer>().DOFade(1, 9f))
+                .Append(s4.transform.DOMove(ts4, 4f))
+                .Append(s5.transform.DOMove(ts5, 4f))
                 .Append(bt.GetComponent<SpriteRenderer>().DOFade(1, 2f))
                 .AppendCallback(() =>
                 {
@@ -35,8 +36,19 @@ public class Storytell : MonoBehaviour {
                     Destroy(s4);
                     Destroy(s5);
                     Destroy(bb);
+
                 })
-                .Append(bt.GetComponent<SpriteRenderer>().DOFade(0,2f));
+                .AppendCallback(() =>
+                {
+                    sbgm.GetComponent<AudioSource>().Stop();
+                    gbgm.SetActive(true);
+                })
+                .AppendCallback(() =>
+                {
+                    ui.SetActive(true);
+                })
+                .Append(bt.GetComponent<SpriteRenderer>().DOFade(0, 2f));
+                
         }
     }
 }

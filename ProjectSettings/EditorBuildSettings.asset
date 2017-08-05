@@ -8,3 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BossLevel.unity
     guid: da2dbd29e659a654cb569a28785d0df9
+  - enabled: 1
+    path: Assets/Ending.unity
+    guid: ee60a87e364f4e042b8c45fca4ff6418
