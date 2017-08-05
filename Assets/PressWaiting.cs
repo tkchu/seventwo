@@ -12,9 +12,7 @@ public class PressWaiting : MonoBehaviour {
     SpriteRenderer WaitingSR, UIcoverSR,EndSR,UIheroSR;
     public GameObject Logo;
     public GameObject Waiting;
-    public GameObject End;
     public GameObject UIcover;
-    public GameObject snow;
     Vector3 vlogo;
     public GameObject UIhero;
     // Use this for initialization
@@ -22,7 +20,7 @@ public class PressWaiting : MonoBehaviour {
         waiting = true;
         WaitingSR = Waiting.GetComponent<SpriteRenderer>();
         UIcoverSR=UIcover.GetComponent<SpriteRenderer>();
-        EndSR = End.GetComponent<SpriteRenderer>();
+       // EndSR = End.GetComponent<SpriteRenderer>();
         UIheroSR = UIhero.GetComponent<SpriteRenderer>();
         vlogo = Logo.transform.position;
     }
@@ -59,7 +57,7 @@ public class PressWaiting : MonoBehaviour {
 
     void Over()
     {
-        snow.SetActive(true);
+        //snow.SetActive(true);
         UIhero.GetComponent<Animator>().SetBool("isDead", true);
         Sequence over = DOTween.Sequence();
         over.Append(
@@ -76,7 +74,7 @@ public class PressWaiting : MonoBehaviour {
     {
         over = false;
 
-        snow.SetActive(false);
+        //snow.SetActive(false);
         EndSR.DOFade(0f, 0.1f);
         Sequence restart = DOTween.Sequence();
         restart.Append(
