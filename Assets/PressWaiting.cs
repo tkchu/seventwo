@@ -39,23 +39,20 @@ public class PressWaiting : MonoBehaviour {
         start.Append(
             WaitingSR.DOFade(0, 1f)
             ).Append(
+            Logo.transform.DOMoveY(5f, 1.5f)
+            ).AppendCallback(()=> {
+                FindObjectOfType<Camera>().orthographicSize = 3.6f;
+                Logo.SetActive(false);
+            }).Append(
             UIcoverSR.DOFade(0, 1f)
-            ).Append(
-            Logo.transform.DOMoveY(3f, 1f)
-            ).Append(
-            UIheroSR.DOFade(0, 1f)
+
             );
-
-        StartCoroutine(BeginGame());
+        DOTween.Sequence().AppendInterval(1f).AppendCallback(
+            () => {
+                UIheroSR.DOFade(0, 0.5f);
+            });
     }
 
-    public GameObject canvas;
-    IEnumerator BeginGame() {
-        yield return new WaitForSeconds(4f);
-        canvas.SetActive(true);
-        gameObject.SetActive(false);
-        FindObjectOfType<Camera>().orthographicSize = 3.6f;
-    }
 
     void Over()
     {
