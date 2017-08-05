@@ -2,6 +2,7 @@
 using DG.Tweening;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PressWaiting : MonoBehaviour {
     public bool waiting;
@@ -43,6 +44,8 @@ public class PressWaiting : MonoBehaviour {
             ).AppendCallback(()=> {
                 FindObjectOfType<Camera>().orthographicSize = 3.6f;
                 Logo.SetActive(false);
+            }).AppendCallback(()=> {
+                SceneManager.LoadScene("mainLevel");
             }).Append(
             UIcoverSR.DOFade(0, 1f)
 
