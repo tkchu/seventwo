@@ -87,6 +87,48 @@ public class Player : MonoBehaviour {
             }
             GetComponent<Weapon>().OneAction();
         }
+
+
+        CreateAimPoint();
+    }
+
+
+    public Color redGun;
+    public Color blueGun;
+    public Color greenGun;
+    public GameObject pointPrefab;
+    public void CreateAimPoint() {
+        GameObject[] pointBefores = GameObject.FindGameObjectsWithTag("aimPoint");
+        foreach(GameObject pointBefore in pointBefores) {
+            Destroy(pointBefore);
+        }
+        // 设置指示点
+        int pos_x = gw.GridItem_x(GetComponent<GridItem>());
+        int pos_y = gw.GridItem_y(GetComponent<GridItem>());
+
+        Vector2[] allDirections = new Vector2[] {
+             Vector2.left,Vector2.right,Vector2.up,Vector2.down,
+         };
+
+        Color now_color = Color.white;
+        Guns now_gun = GetComponent<Weapon>().gunNow;
+        if(now_gun == Guns.pistol) {
+            now_color = redGun;
+        }else if(now_gun == Guns.shotgun) {
+            now_color = blueGun;
+        }else if(now_gun == Guns.jumpgun) {
+            now_color = greenGun;
+        }
+
+        foreach(Vector2 direction in allDirections) {
+            GridItem[] around = gw.FindGridItemInRange(pos_x, pos_y, direction, GetComponent<Weapon>().range);
+            int i = around.Length;
+            while (i > 0) {
+                GameObject g = Instantiate(pointPrefab, transform.position + i* gridSize*(new Vector3(direction.x,direction.y,0)), Quaternion.identity);
+                g.GetComponent<SpriteRenderer>().color = now_color;
+                i -= 1;
+            }
+        }
     }
 
     private void Update() {
