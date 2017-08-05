@@ -1816,6 +1816,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32d3fd4ec340bc48a75c6502db911c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redGun: {r: 0.9843138, g: 0.019607842, b: 0.26666668, a: 1}
+  blueGun: {r: 0.46274513, g: 0.9568628, b: 0.9725491, a: 1}
+  greenGun: {r: 0.007843138, g: 1, b: 0.44705886, a: 1}
+  pointPrefab: {fileID: 1817945125005956, guid: 0e734538d5522044f9967813d6f0afd0,
+    type: 2}
 --- !u!114 &386288330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5129,6 +5134,13 @@ MonoBehaviour:
   knfieEnemy: {fileID: 1735390897760960, guid: 0f0f94a8a0d5e4b48a15c89aa9be46a0, type: 2}
   count: 0
   createA: 1
+  flamePrefab: {fileID: 1347196553965674, guid: 2bdb86f55386691459636b697d8fc98f,
+    type: 2}
+  parts:
+  - {fileID: 1224706580}
+  - {fileID: 1259799106}
+  - {fileID: 1092298354}
+  - {fileID: 1107888089}
 --- !u!114 &1161828671
 MonoBehaviour:
   m_ObjectHideFlags: 0

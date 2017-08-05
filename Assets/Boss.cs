@@ -87,12 +87,23 @@ public class Boss : MonoBehaviour {
         gw.Flush();
     }
 
+    public GameObject flamePrefab;
+    public Transform[] parts;
     public void OneHit() {
         Debug.Log("hp--");
         GetComponent<Animator>().SetBool("ishited", true);
         hp -= 1;
         if (hp <= 0) {
+            StartCoroutine(Explode());
             Debug.Log("Winner!");
+        }
+    }
+
+    IEnumerator Explode() {
+        while (true) {
+            Vector3 position = parts[Random.Range(0, parts.Length)].position;
+            Instantiate(flamePrefab, position + Vector3.back * 50, Quaternion.identity);
+            yield return new WaitForSeconds(0.3f);
         }
     }
 }
