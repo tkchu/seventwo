@@ -77,6 +77,9 @@ public class Weapon : MonoBehaviour {
             if (item != null &&
                 (item.gridItemType == GridItemType.enemy || item.gridItemType == GridItemType.boss)) { 
                 shot = true;
+                if (item.GetComponent<knifeEnemy>()) {
+                    item.GetComponent<knifeEnemy>().noDie = false;
+                }
             }
         }
 

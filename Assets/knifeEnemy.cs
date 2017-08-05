@@ -9,7 +9,7 @@ public class knifeEnemy : MonoBehaviour {
 
     public Sprite dieSprite;
     public GameObject knife;
-    private bool noDie = true;
+    public bool noDie = true;
 
     private void Start() {
         gw = FindObjectOfType<GridWorld>();

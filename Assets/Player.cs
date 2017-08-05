@@ -11,8 +11,11 @@ public class Player : MonoBehaviour {
     private void Start() {
         gw = FindObjectOfType<GridWorld>();
         gridSize = gw.gridSize;
-        cameraFollow = FindObjectOfType<Camera>();
-        cameraFollow.transform.position = new Vector3(transform.position.x, transform.position.y, cameraFollow.transform.position.z);
+        if(SceneManager.GetActiveScene().name != "BossLevel") {
+            cameraFollow = FindObjectOfType<Camera>();
+            cameraFollow.transform.position = new Vector3(transform.position.x, transform.position.y, cameraFollow.transform.position.z);
+
+        }
     }
 
     public void Go(Vector2 direction) {
@@ -88,8 +91,6 @@ public class Player : MonoBehaviour {
             GetComponent<Weapon>().OneAction();
         }
 
-
-        CreateAimPoint();
     }
 
 
@@ -135,15 +136,21 @@ public class Player : MonoBehaviour {
         if (GetComponent<GridItem>().x == 84 && GetComponent<GridItem>().y == 1) {
             SceneManager.LoadScene("BossLevel");
         }
+
+        CreateAimPoint();
     }
 
     public void Meet(GridItem item) {
+        if(item.GetComponent<knifeEnemy>() && !item.GetComponent<knifeEnemy>().noDie) {
+            return;
+        }
+
         if(item.gridItemType == GridItemType.enemy || item.gridItemType == GridItemType.spine) {
             GetComponent<Animator>().SetBool("isDead", true);
             StartCoroutine(Restart());
         }
 
-        if (item.GetComponent<knifeEnemy>() != null) {
+        if (item.GetComponent<knifeEnemy>()) {
             FindObjectOfType<SoundManager>().Play("dieKnife");
         }else if(item.gridItemType == GridItemType.spine) {
             FindObjectOfType<SoundManager>().Play("dieSpine");
