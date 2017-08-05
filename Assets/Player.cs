@@ -124,7 +124,7 @@ public class Player : MonoBehaviour {
             GridItem[] around = gw.FindGridItemInRange(pos_x, pos_y, direction, GetComponent<Weapon>().range);
             int i = around.Length;
             while (i > 0) {
-                GameObject g = Instantiate(pointPrefab, transform.position + i* gridSize*(new Vector3(direction.x,direction.y,0)), Quaternion.identity);
+                GameObject g = Instantiate(pointPrefab, transform.position + i* gridSize*(new Vector3(direction.x,direction.y,-1)), Quaternion.identity);
                 g.GetComponent<SpriteRenderer>().color = now_color;
                 i -= 1;
             }
