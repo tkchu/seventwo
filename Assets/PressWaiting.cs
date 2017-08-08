@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PressWaiting : MonoBehaviour {
     public bool waiting;
@@ -18,6 +20,7 @@ public class PressWaiting : MonoBehaviour {
         waiting = true;
         WaitingSR = Waiting.GetComponent<SpriteRenderer>();
         UIcoverSR=UIcover.GetComponent<SpriteRenderer>();
+       // EndSR = End.GetComponent<SpriteRenderer>();
         UIheroSR = UIhero.GetComponent<SpriteRenderer>();
         vlogo = Logo.transform.position;
     }
@@ -35,14 +38,23 @@ public class PressWaiting : MonoBehaviour {
         start.Append(
             WaitingSR.DOFade(0, 1f)
             ).Append(
+            Logo.transform.DOMoveY(5f, 1.5f)
+            ).AppendCallback(()=> {
+                FindObjectOfType<Camera>().orthographicSize = 3.6f;
+                Logo.SetActive(false);
+            }).AppendCallback(()=> {
+                SceneManager.LoadScene("mainLevel");
+            }).Append(
             UIcoverSR.DOFade(0, 1f)
-            ).Append(
-            Logo.transform.DOMoveY(3f, 1f)
-            ).Append(
-            UIheroSR.DOFade(0, 1f)
-            );
 
+            );
+        DOTween.Sequence().AppendInterval(1f).AppendCallback(
+            () => {
+                UIheroSR.DOFade(0, 0.5f);
+            });
     }
+
+
     void Over()
     {
         //snow.SetActive(true);
@@ -62,7 +74,7 @@ public class PressWaiting : MonoBehaviour {
     {
         over = false;
 
-       // snow.SetActive(false);
+        //snow.SetActive(false);
         EndSR.DOFade(0f, 0.1f);
         Sequence restart = DOTween.Sequence();
         restart.Append(

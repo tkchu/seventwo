@@ -7,6 +7,7 @@ public class PickUp : MonoBehaviour {
 
     public void Meet(GridItem item) {
         if (item.gridItemType == GridItemType.player) {
+            FindObjectOfType<SoundManager>().Play("pickup");
             Destroy(gameObject);
         }
     }

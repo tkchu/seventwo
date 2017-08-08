@@ -5,6 +5,9 @@ using UnityEngine;
 public class Reseter : MonoBehaviour {
     public Section sectionNow;
     public Vector3 playerBegin;
+    public Guns[] gunHave;
+    public int gunHaveNow;
+    public int loadCount;
 
 	void Update () {
         if (reset) {
@@ -20,6 +23,14 @@ public class Reseter : MonoBehaviour {
         sectionNow = newOne.GetComponent<Section>();
 
         FindObjectOfType<Player>().transform.position = playerBegin;
+        FindObjectOfType<Player>().GetComponent<Animator>().SetBool("isDead", false);
+        FindObjectOfType<Player>().GetComponent<Animator>().SetInteger("stat", gunHaveNow + 1);
+
+        FindObjectOfType<Weapon>().gunHave = new List<Guns>(gunHave);
+        FindObjectOfType<Weapon>().gunHaveNow = gunHaveNow;
+        FindObjectOfType<Weapon>().loadCount = loadCount;
+
+        FindObjectOfType<GridWorld>().Flush();
 
         reset = false;
     }

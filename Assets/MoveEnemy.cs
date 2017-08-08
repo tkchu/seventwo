@@ -5,31 +5,25 @@ using UnityEngine;
 public class MoveEnemy : MonoBehaviour {
     public bool willAction = false;
     public int range;
-
+    
     GridWorld gw;
     private void Start() {
         gw = FindObjectOfType<GridWorld>();
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.A)) {
-            OneAction();
-        }
-    }
-
-    void OneAction() {
+    public void OneAction() {
         if (willAction) {
             GridItem player = FindObjectOfType<Player>().GetComponent<GridItem>();
             GridItem self = GetComponent<GridItem>();
-            GridWorld gw = FindObjectOfType<GridWorld>();
+
             int player_x = gw.GridItem_x(player);
             int player_y = gw.GridItem_y(player);
             int self_x = gw.GridItem_x(self);
             int self_y = gw.GridItem_y(self);
 
             bool haveMoved = false;
-            
-            if(player_x < self_x) {
+
+            if (player_x < self_x) {
                 GridItem[] left = gw.FindGridItemInRange(self_x, self_y, Vector2.left, 1);
                 if(left.Length > 0 && (left[0] == null || left[0].gridItemType == GridItemType.player)) {
                     Vector3 new_pos = gw.Go(GetComponent<GridItem>(), Vector2.left);
@@ -47,7 +41,7 @@ public class MoveEnemy : MonoBehaviour {
             }
             if (!haveMoved && player_y < self_y) {
                 GridItem[] down = gw.FindGridItemInRange(self_x, self_y, Vector2.down, 1);
-                if (down.Length > 0 && down[0] == null || (down[0].gridItemType == GridItemType.player)) {
+                if (down.Length > 0 && (down[0] == null || down[0].gridItemType == GridItemType.player)) {
                     Vector3 new_pos = gw.Go(GetComponent<GridItem>(), Vector2.down);
                     transform.position = new_pos;
                     haveMoved = true;
@@ -61,6 +55,7 @@ public class MoveEnemy : MonoBehaviour {
                     haveMoved = true;
                 }
             }
+            
 
         }
     }

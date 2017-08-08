@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4248196004199034}
   - component: {fileID: 212861525230016760}
   - component: {fileID: 95422811159140956}
-  - component: {fileID: 114588749792342586}
   m_Layer: 0
   m_Name: weapon
   m_TagString: Untagged
@@ -66,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1832347316322002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.61, y: 0.3946176, z: 0}
+  m_LocalPosition: {x: 0.7865752, y: 0.3946176, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4248196004199034}
@@ -107,18 +106,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114588749792342586
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1006067886160078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae35d06d47f9f93449d4cdeb9f77190c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1832347316322002}
 --- !u!212 &212536897329919370
 SpriteRenderer:
   m_ObjectHideFlags: 1

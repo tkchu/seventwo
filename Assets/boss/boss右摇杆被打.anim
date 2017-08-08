@@ -20,6 +20,12 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
         time: 0.25
         value: 0.416
         inSlope: 0
@@ -42,6 +48,12 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
         time: 0.25
         value: 0.416
         inSlope: 0
@@ -62,6 +74,8 @@ AnimationClip:
     script: {fileID: 0}
   m_PPtrCurves:
   - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: add095a0aec883a4bb5c51f0fa62afdd, type: 3}
     - time: 0.25
       value: {fileID: 21300000, guid: 6edc81720618b4f4cbf94ce518b0331a, type: 3}
     - time: 0.75
@@ -99,6 +113,7 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
+    - {fileID: 21300000, guid: add095a0aec883a4bb5c51f0fa62afdd, type: 3}
     - {fileID: 21300000, guid: 6edc81720618b4f4cbf94ce518b0331a, type: 3}
     - {fileID: 21300000, guid: add095a0aec883a4bb5c51f0fa62afdd, type: 3}
   m_AnimationClipSettings:
@@ -126,6 +141,12 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
         time: 0.25
         value: 0.416
         inSlope: 0
@@ -147,6 +168,12 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
       - serializedVersion: 2
         time: 0.25
         value: 0.416

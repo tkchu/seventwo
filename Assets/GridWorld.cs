@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridWorld : MonoBehaviour {
     public float gridSize = 0.5f;
-    private GridItem[][] allItems;
+    public GridItem[][] allItems;
     private int min_x = 0;
     private int min_y = 0;
     private int max_x = 0;
@@ -13,6 +13,27 @@ public class GridWorld : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         Flush();
+
+        for (int i = 0; i < this.allItems.Length; i++) {
+            foreach (GridItem item in this.allItems[i]) {
+                if (item != null) {
+                    item.transform.position = new Vector3(item.transform.position.x, item.transform.position.y,  - 1 + i * 0.1f);
+                }
+            }
+        }
+
+    }
+
+    public void Start() {
+        GameObject[] grounds = GameObject.FindGameObjectsWithTag("ground");
+        foreach (GameObject ground in grounds) {
+            float x = ground.transform.position.x;
+            float pos_x = ((int)(Mathf.Abs(x) / gridSize + 0.5)) * (x > 0 ? 1 : -1) * gridSize;
+            float y = ground.transform.position.y;
+            float pos_y = ((int)(Mathf.Abs(y) / gridSize + 0.5)) * (y > 0 ? 1 : -1) * gridSize;
+
+            ground.transform.position = new Vector3(pos_x, pos_y-0.1f, 1);
+        }
     }
 
     private void Update() {
@@ -53,6 +74,13 @@ public class GridWorld : MonoBehaviour {
         foreach (GridItem item in items) {
             this.allItems[allPos_y[item] - min_y][allPos_x[item] - min_x] = item;
         }
+
+        if (FindObjectOfType<Player>()) {
+            Transform player = FindObjectOfType<Player>().transform;
+            int player_i = GridItem_y(player.GetComponent<GridItem>());
+            player.position = new Vector3(player.position.x, player.position.y, -1 + player_i * 0.1f);
+        }
+
     }
     public int GridItem_x(GridItem item) {
         float x = item.transform.position.x;

@@ -7,7 +7,6 @@ public class huidao : StateMachineBehaviour {
     {
         Vector3 vec=new Vector3(0, 0, 123);
         GameObject.Find("小怪刀").transform.Rotate(vec);
-        Debug.Log("xuanzhuan+");
 
     }
     /*

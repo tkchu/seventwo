@@ -8,6 +8,7 @@ public enum GridItemType {
     player,
     wall,
     pickup,
+    spine,
 }
 
 public class GridItem : MonoBehaviour {
