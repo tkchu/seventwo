@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 95029948701268938}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,6 +72,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32d3fd4ec340bc48a75c6502db911c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redGun: {r: 0, g: 0, b: 0, a: 0}
+  blueGun: {r: 0, g: 0, b: 0, a: 0}
+  greenGun: {r: 0, g: 0, b: 0, a: 0}
+  pointPrefab: {fileID: 0}
 --- !u!114 &114885257661989416
 MonoBehaviour:
   m_ObjectHideFlags: 1
