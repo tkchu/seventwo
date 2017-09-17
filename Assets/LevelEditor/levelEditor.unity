@@ -12923,7 +12923,20 @@ MonoBehaviour:
   - {fileID: 1196953105349194, guid: 6db5be08101244140b7deab546fe922f, type: 2}
   - {fileID: 1434472227176742, guid: fcc8e075af844bb4dbfc563a97d4bb49, type: 2}
   - {fileID: 1754348109708094, guid: 652e3a26fa0953d43b20cff760ea73f6, type: 2}
-  itemPrefabs: []
+  itemPrefabs:
+  - {fileID: 1545116150718606, guid: 3d2decb2ad3466f49a81f1d2c8fd89cc, type: 2}
+  - {fileID: 1991772986892242, guid: 1b4948660a01cee4ea75378bd4c0ca34, type: 2}
+  - {fileID: 1007628335981944, guid: 96373fbe14d013e4f82d6bcd634b1751, type: 2}
+  - {fileID: 1363487365198760, guid: 85f1a3ab1099ecc4d8c67a5501d9251e, type: 2}
+  - {fileID: 1337373551949320, guid: 8dd1505a6c7bdd140a688f970239d3bd, type: 2}
+  - {fileID: 1602618821030888, guid: 0b595f545bb1d4c41aeabe28b3c1786d, type: 2}
+  - {fileID: 1294411247222160, guid: b3f6daed5eecd5b4f9e3d431e01ad346, type: 2}
+  - {fileID: 1186814411395144, guid: 235bcbc40d6400d47868a33d951c848d, type: 2}
+  movePrefabs:
+  - {fileID: 1001318645118222, guid: fcecd690bbf9f5741b78cc009e88b7b4, type: 2}
+  - {fileID: 1053295769156008, guid: 521b8dfecd5d72d4e9e03bc3ea8e07dd, type: 2}
+  - {fileID: 1692967325896940, guid: e112676938df35441a693ac58d45229a, type: 2}
+  - {fileID: 1575793366159276, guid: 3a3635168da9f5e4b9b68a049fc31e3f, type: 2}
 --- !u!1001 &595694043
 Prefab:
   m_ObjectHideFlags: 0

@@ -14,10 +14,11 @@ public class MapEditor : MonoBehaviour {
     [Space]
     public GameObject[] groundPrefabs;
     public GameObject[] itemPrefabs;
+    public GameObject[] movePrefabs;
     [Space]
     public GameObject[,] basicMap;
-    
-    void Start () {
+
+    void Start() {
         basicMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
         GetComponent<Map>().groundMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
         GetComponent<Map>().itemMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
@@ -28,36 +29,44 @@ public class MapEditor : MonoBehaviour {
                 basicMap[i, j] = g;
             }
         }
-	}
+    }
 
     void MouseDown(BasicTile bt) {
         int[] xy = GetComponent<Map>().FindGameObject(basicMap, bt.gameObject);
+        GameObject[,] collectionTo;
+        GameObject[] prefabs;
 
-        //GameObject g = Instantiate(playerPrefab, basicMap[xy[0], xy[1]].transform.localPosition, Quaternion.identity, transform);
-        //GetComponent<Map>().itemMap[xy[0], xy[1]] = g;
-        Debug.Log(xy);
-        if (Input.GetKey(KeyCode.LeftShift)){
-            //按住shift是铺地面
-            //如果之前这里已经有地面了，那么先找出要铺的地面类型
-            GameObject oldGround = GetComponent<Map>().groundMap[xy[0], xy[1]];
-            int groundPrefabIndex = 0;
-            if (oldGround != null) {
-                for (int i = 0; i < groundPrefabs.Length; i++) {
-                    if (groundPrefabs[i].name == oldGround.name) {
-                        groundPrefabIndex = i + 1;
-                        break;
-                    }
-                }
-                //销毁地面
-                Destroy(oldGround);
-            }
-            if (groundPrefabIndex < groundPrefabs.Length) {
-                GameObject newGround = Instantiate(groundPrefabs[groundPrefabIndex], basicMap[xy[0], xy[1]].transform.localPosition, Quaternion.identity, transform);
-                newGround.name = groundPrefabs[groundPrefabIndex].name;
-                GetComponent<Map>().groundMap[xy[0], xy[1]] = newGround;
-            }
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            //铺地板
+            collectionTo = GetComponent<Map>().groundMap;
+            prefabs = groundPrefabs;
+        } else if (Input.GetKey(KeyCode.LeftControl)) {
+            //铺墙
+            collectionTo = GetComponent<Map>().itemMap;
+            prefabs = itemPrefabs;
         } else {
-            //否则是在铺地面以上的物品
+            //铺怪
+            collectionTo = GetComponent<Map>().itemMap;
+            prefabs = movePrefabs;
+        }
+        //如果之前这里已经有了，那么先找出要铺的类型
+        GameObject old = collectionTo[xy[0], xy[1]];
+        int prefabIndex = 0;
+        if (old != null) {
+            for (int i = 0; i < prefabs.Length; i++) {
+                if (prefabs[i].name == old.name) {
+                    prefabIndex = i + 1;
+                    break;
+                }
+            }
+            //销毁地面
+            Destroy(old);
+        }
+
+        if (prefabIndex < prefabs.Length) {
+            GameObject newOne = Instantiate(prefabs[prefabIndex], basicMap[xy[0], xy[1]].transform.localPosition, Quaternion.identity, transform);
+            newOne.name = prefabs[prefabIndex].name;
+            collectionTo[xy[0], xy[1]] = newOne;
         }
     }
 }
