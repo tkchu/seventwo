@@ -188,6 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 128842686}
   - component: {fileID: 128842685}
+  - component: {fileID: 128842687}
   m_Layer: 0
   m_Name: gbgm
   m_TagString: Untagged
@@ -288,6 +289,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &128842687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 128842684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f85f851fd520a244484e322eb8ab1c1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &336205619
 GameObject:
   m_ObjectHideFlags: 0
