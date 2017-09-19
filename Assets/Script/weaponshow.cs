@@ -3,24 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class weaponshow : MonoBehaviour {
-    Animator animator;
+    Animator animator,heroAnimator;
     GameObject hero;
+    private Transform ts, herots;
+    private SpriteRenderer sr, herosr;
     Vector3 offset1,offset2,position;
     // Use this for initialization
     void Start () {
        animator = this.GetComponent<Animator>();
        hero = GameObject.Find("Hero");
-        offset1 = this.GetComponent<Transform>().position - hero.GetComponent<Transform>().position;
-        offset2 = new Vector3 (this.GetComponent<Transform>().position.x - hero.GetComponent<Transform>().position.x,hero.GetComponent<Transform>().position.y-this.GetComponent<Transform>().position.y, 0);
+        heroAnimator = hero.GetComponent<Animator>();
+        ts = this.transform;
+        herots = hero.transform;
+        sr = this.GetComponent<SpriteRenderer>();
+        herosr = hero.GetComponent<SpriteRenderer>();
+        offset1 = ts.position - herots.position;
+        offset2 = new Vector3 (ts.position.x - herots.position.x,herots.position.y-ts.position.y, 0);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        animator.SetInteger("stat", hero.GetComponent<Animator>().GetInteger("stat"));
-        if(hero.GetComponent<Animator>().GetBool("isShoot"))
-        animator.SetBool("isShoot",true);
-        if (!hero.GetComponent<SpriteRenderer>().flipX) { this.GetComponent<Transform>().position = hero.GetComponent<Transform>().position + offset1; this.GetComponent<SpriteRenderer>().flipX = false; }
-        else { this.GetComponent<Transform>().position = hero.GetComponent<Transform>().position - offset2; this.GetComponent<SpriteRenderer>().flipX = true; }
+        animator.SetInteger("stat", heroAnimator.GetInteger("stat"));
+        if(heroAnimator.GetBool("isShoot"))
+            animator.SetBool("isShoot",true);
+	    if (!herosr.flipX)
+	    {
+	        ts.position = herots.position + offset1;
+	        ts.localScale = new Vector3(1, 1, 1);
+	    }
+	    else
+	    {
+	        ts.position = herots.position - offset2;
+            ts.localScale=new Vector3(-1,1,1);
+	    }
     }
 }
     
