@@ -78,6 +78,7 @@ public class MapEditor : MonoBehaviour {
             newOne.name = prefabs[prefabIndex].name;
             collectionTo[xy[0], xy[1]] = newOne;
         }
+        GetComponent<Map>().UpdateSortOrder();
         Save();
     }
 
@@ -130,6 +131,7 @@ public class MapEditor : MonoBehaviour {
                     if (groundPrefabs[pi].name == strs[istr]) {
                         GameObject newOne = Instantiate(groundPrefabs[pi], basicMap[i, j].transform.localPosition, Quaternion.identity, transform);
                         newOne.name = strs[istr];
+                        groundMap[i, j] = newOne;
                         break;
                     }
                 }
@@ -143,6 +145,7 @@ public class MapEditor : MonoBehaviour {
                     if (itemPrefabs[pi].name == strs[istr]) {
                         GameObject newOne = Instantiate(itemPrefabs[pi], basicMap[i, j].transform.localPosition, Quaternion.identity, transform);
                         newOne.name = strs[istr];
+                        itemMap[i, j] = newOne;
                         break;
                     }
                 }
@@ -150,12 +153,15 @@ public class MapEditor : MonoBehaviour {
                     if (movePrefabs[pi].name == strs[istr]) {
                         GameObject newOne = Instantiate(movePrefabs[pi], basicMap[i, j].transform.localPosition, Quaternion.identity, transform);
                         newOne.name = strs[istr];
+                        itemMap[i, j] = newOne;
                         break;
                     }
                 }
                 istr += 1;
             }
         }
+
+        GetComponent<Map>().UpdateSortOrder();
     }
 
     bool ExistFile(string fileName) {
@@ -171,4 +177,6 @@ public class MapEditor : MonoBehaviour {
         string path = Application.persistentDataPath + fileName;
         return File.ReadAllText(path);
     }
+
+
 }
