@@ -151,7 +151,7 @@ public class MapEditor : MonoBehaviour {
                 }
                 for (int pi = 0; pi < movePrefabs.Length; pi++) {
                     if (movePrefabs[pi].name == strs[istr]) {
-                        GameObject newOne = Instantiate(movePrefabs[pi], basicMap[i, j].transform.localPosition, Quaternion.identity, transform);
+                        GameObject newOne = Instantiate(movePrefabs[pi], basicMap[i, j].transform.localPosition + new Vector3(0,tileSize.y/3,0), Quaternion.identity, transform);
                         newOne.name = strs[istr];
                         itemMap[i, j] = newOne;
                         break;
