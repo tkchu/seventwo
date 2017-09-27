@@ -8,15 +8,42 @@ public class Map : MonoBehaviour {
     public GameObject[,] groundMap;
     public GameObject[,] itemMap;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    GameObject player = null;
+    GameObject exit = null;
+    public int[] GetPlayerPos() {
+        if (player == null) {
+            player = FindObjectOfType<Player>().gameObject;
+        }
+        if (player != null) {
+            return FindGameObject(itemMap, player);
+        } else {
+            return null;
+        }
+    }
+
+    public GameObject GetGameObjectAt(int x, int y) {
+        if(x<0 || x>itemMap.GetLength(0) || y<0 || y > itemMap.GetLength(1)) {
+            return null;
+        } else {
+            return itemMap[x, y];
+        }
+    }
+
+    public int[] GetItemPos(GameObject g) {
+        return FindGameObject(itemMap, g);
+    }
+
+    public bool MoveItem(GameObject g, int[] pos) {
+        int[] now = FindGameObject(itemMap, g);
+        if(now == null) {
+            return false;
+        } else {
+            itemMap[pos[0], pos[1]] = g;
+            g.transform.position = groundMap[pos[0], pos[1]].transform.position + new Vector3(0, 0.6f / 3, 0);
+            itemMap[now[0], now[1]] = null;
+            return true;
+        }
+    }
 
     public int[] FindGameObject(GameObject[,] collection, GameObject g) {
         for (int i = 0; i < collection.GetLength(0); i++) {

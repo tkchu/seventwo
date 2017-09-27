@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114914489311980136}
   - component: {fileID: 114312680428312928}
   - component: {fileID: 95337685106762192}
+  - component: {fileID: 114590746864700228}
   m_Layer: 0
   m_Name: moveBomber
   m_TagString: Untagged
@@ -75,6 +76,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   willAction: 1
   range: 0
+--- !u!114 &114590746864700228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1692967325896940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d86b5939591237b4a9a3f3416a6c360c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114673379210228070
 MonoBehaviour:
   m_ObjectHideFlags: 1

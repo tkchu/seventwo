@@ -74,7 +74,11 @@ public class MapEditor : MonoBehaviour {
         }
 
         if (prefabIndex < prefabs.Length) {
-            GameObject newOne = Instantiate(prefabs[prefabIndex], basicMap[xy[0], xy[1]].transform.localPosition, Quaternion.identity, transform);
+            Vector3 pos = basicMap[xy[0], xy[1]].transform.localPosition;
+            if (prefabs == movePrefabs) {
+                pos += new Vector3(0, tileSize.y / 3, 0);
+            }
+            GameObject newOne = Instantiate(prefabs[prefabIndex], pos, Quaternion.identity, transform);
             newOne.name = prefabs[prefabIndex].name;
             collectionTo[xy[0], xy[1]] = newOne;
         }

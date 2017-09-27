@@ -12902,12 +12902,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b673b58862b27a24ebab119df50f3aec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapID: 10
+  mapID: 1
   save: 0
   load: 0
   basicTilePRefab: {fileID: 1928355430937228, guid: d1fba9035d806b048b1717221a3cde60,
     type: 2}
-  mapSize: {x: 8, y: 6}
+  mapSize: {x: 20, y: 10}
   tileSize: {x: 0.6, y: 0.6}
   leftBottomPos: {x: -4, y: -3, z: 10}
   groundPrefabs:
@@ -12940,6 +12940,8 @@ MonoBehaviour:
   - {fileID: 1053295769156008, guid: 521b8dfecd5d72d4e9e03bc3ea8e07dd, type: 2}
   - {fileID: 1692967325896940, guid: e112676938df35441a693ac58d45229a, type: 2}
   - {fileID: 1575793366159276, guid: 3a3635168da9f5e4b9b68a049fc31e3f, type: 2}
+  - {fileID: 1457399003537810, guid: 1b9f77e91f3844444b6e66ebc4bed176, type: 2}
+  - {fileID: 1989655547282298, guid: 119e6f9601dfcc74da6ef2ac1c9b7698, type: 2}
 --- !u!1001 &595694043
 Prefab:
   m_ObjectHideFlags: 0

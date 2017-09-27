@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114708986664960648}
   - component: {fileID: 114662727088277414}
   - component: {fileID: 114329993042036480}
+  - component: {fileID: 114646023665162706}
   m_Layer: 0
   m_Name: KnifeEnemy
   m_TagString: Untagged
@@ -122,6 +123,17 @@ MonoBehaviour:
   dieSprite: {fileID: 21300000, guid: 4c07e7e5fbb2c63428d009aa20bbefc9, type: 3}
   knife: {fileID: 1625067785788940}
   noDie: 1
+--- !u!114 &114646023665162706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053295769156008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d86b5939591237b4a9a3f3416a6c360c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114662727088277414
 MonoBehaviour:
   m_ObjectHideFlags: 1
