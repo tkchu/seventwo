@@ -9,33 +9,27 @@ public class DiagonalMove : MonoBehaviour {
         map = FindObjectOfType<Map>();
     }
 
-    // Update is called once per frame
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            OneMove();
-        }
-    }
-
-    void OneMove() {
+    public void OneMove() {
         int[] playerPos = map.GetPlayerPos();
         int[] selfPos = map.GetItemPos(gameObject);
 
         int[][] nextPos = new int[][] {
-            new int[]{selfPos[0]+1, selfPos[1] },
-            new int[]{selfPos[0]-1, selfPos[1] },
-            new int[]{selfPos[0], selfPos[1] +1 },
-            new int[]{selfPos[0], selfPos[1] -1},
+            new int[]{selfPos[0]-1, selfPos[1]-1 },
+            new int[]{selfPos[0]+1, selfPos[1]+1 },
+            new int[]{selfPos[0]-1, selfPos[1]+1 },
+            new int[]{selfPos[0]+1, selfPos[1]-1 },
         };
         bool[] leftRightUpDown = new bool[] {
-            playerPos[0] - selfPos[0] > 0,
-            playerPos[0] - selfPos[0] < 0,
-            playerPos[1] - selfPos[1] > 0,
-            playerPos[1] - selfPos[1] < 0,
+            playerPos[0] <= selfPos[0] && playerPos[1] <= selfPos[1],
+            playerPos[0] >= selfPos[0] && playerPos[1] >= selfPos[1],
+            playerPos[0] <= selfPos[0] && playerPos[1] >= selfPos[1],
+            playerPos[0] >= selfPos[0] && playerPos[1] <= selfPos[1],
         };
         for (int i = 0; i < 4; i++) {
             leftRightUpDown[i] = leftRightUpDown[i]
-                && (map.GetGameObjectAt(nextPos[0][0], nextPos[0][1]) == null
-                || (nextPos[0][0] == playerPos[0] && nextPos[0][1] == playerPos[1]));
+                && (map.GetGameObjectAt(nextPos[i][0], nextPos[i][1]) == null
+                || (nextPos[i][0] == playerPos[0] && nextPos[i][1] == playerPos[1])
+                );
         }
 
         int nextPosI;

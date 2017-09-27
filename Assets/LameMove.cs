@@ -10,13 +10,13 @@ public class LameMove : MonoBehaviour {
     }
 
     int count = 1;
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            OneMove();
-        }
-    }
 
-    void OneMove() {
+    public void OneMove() {
+        if(count > 0) {
+            count -= 1;
+            return;
+        }
+        count = 1;
         int[] playerPos = map.GetPlayerPos();
         int[] selfPos = map.GetItemPos(gameObject);
 
@@ -27,15 +27,16 @@ public class LameMove : MonoBehaviour {
             new int[]{selfPos[0], selfPos[1] -1},
         };
         bool[] leftRightUpDown = new bool[] {
-            playerPos[0] - selfPos[0] > 0,
-            playerPos[0] - selfPos[0] < 0,
-            playerPos[1] - selfPos[1] > 0,
-            playerPos[1] - selfPos[1] < 0,
+            playerPos[0] > selfPos[0],
+            playerPos[0] < selfPos[0],
+            playerPos[1] > selfPos[1],
+            playerPos[1] < selfPos[1],
         };
         for (int i = 0; i < 4; i++) {
             leftRightUpDown[i] = leftRightUpDown[i]
-                && (map.GetGameObjectAt(nextPos[0][0], nextPos[0][1]) == null
-                || (nextPos[0][0] == playerPos[0] && nextPos[0][1] == playerPos[1]));
+                && (map.GetGameObjectAt(nextPos[i][0], nextPos[i][1]) == null
+                || (nextPos[i][0] == playerPos[0] && nextPos[i][1] == playerPos[1])
+                );
         }
 
         int nextPosI;

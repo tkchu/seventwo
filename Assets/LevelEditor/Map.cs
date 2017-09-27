@@ -9,16 +9,19 @@ public class Map : MonoBehaviour {
     public GameObject[,] itemMap;
 
     GameObject player = null;
-    GameObject exit = null;
+    int[] playerPos = { 0, 0};
+
     public int[] GetPlayerPos() {
         if (player == null) {
             player = FindObjectOfType<Player>().gameObject;
         }
         if (player != null) {
-            return FindGameObject(itemMap, player);
-        } else {
-            return null;
+            int[] find = FindGameObject(itemMap, player);
+            if (find != null) {
+                playerPos = find;
+            }
         }
+        return playerPos;
     }
 
     public GameObject GetGameObjectAt(int x, int y) {
@@ -53,7 +56,7 @@ public class Map : MonoBehaviour {
                 }
             }
         }
-        return null;
+        return playerPos;
     }
 
     public void UpdateSortOrder() {
@@ -68,6 +71,22 @@ public class Map : MonoBehaviour {
                         itemMap[i,j].transform.Find("KnifeEnemyKnife").GetComponent<SpriteRenderer>().sortingOrder = 101 + (itemMap.GetLength(1) - j) * 10;
                     }
                 }
+            }
+        }
+    }
+
+
+    // Update is called once per frame
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            foreach (LameMove lm in FindObjectsOfType<LameMove>()) {
+                lm.OneMove();
+            }
+            foreach (NormalMove nm in FindObjectsOfType<NormalMove>()) {
+                nm.OneMove();
+            }
+            foreach(DiagonalMove dm in FindObjectsOfType<DiagonalMove>()) {
+                dm.OneMove();
             }
         }
     }
