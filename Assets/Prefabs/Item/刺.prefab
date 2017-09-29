@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4981755290366284}
   - component: {fileID: 212479349154167984}
-  - component: {fileID: 114271612339884982}
+  - component: {fileID: 114096128636955400}
   m_Layer: 0
   m_Name: "\u523A"
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -41,20 +41,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114271612339884982
+--- !u!114 &114096128636955400
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1545116150718606}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85f75d1c753556342b1754596b4b0872, type: 3}
+  m_Script: {fileID: 11500000, guid: 7dd73db22d5d4194ea9b6ffcb93396ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridItemType: 5
-  x: 0
-  y: 0
 --- !u!212 &212479349154167984
 SpriteRenderer:
   m_ObjectHideFlags: 1

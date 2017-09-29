@@ -24,18 +24,17 @@ public class MapEditor : MonoBehaviour {
     public GameObject[,] basicMap;
 
     void Start() {
-        basicMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];      
-        for (int i = 0; i < mapSize.x; i++) {
-            for (int j = 0; j < mapSize.y; j++) {
-                Vector3 pos = new Vector3(i * tileSize.x, j * tileSize.y, 0) + leftBottomPos;
-                GameObject g = Instantiate(basicTilePRefab, pos, Quaternion.identity, transform);
-                basicMap[i, j] = g;
-            }
-        }
-
         if (ExistFile("map" + mapID.ToString())) {
             Load();
         } else {
+            basicMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
+            for (int i = 0; i < mapSize.x; i++) {
+                for (int j = 0; j < mapSize.y; j++) {
+                    Vector3 pos = new Vector3(i * tileSize.x, j * tileSize.y, 0) + leftBottomPos;
+                    GameObject g = Instantiate(basicTilePRefab, pos, Quaternion.identity, transform);
+                    basicMap[i, j] = g;
+                }
+            }
             GetComponent<Map>().groundMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
             GetComponent<Map>().itemMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
         }
@@ -121,6 +120,19 @@ public class MapEditor : MonoBehaviour {
         WriteFile(key, value);
     }
     public void Load() {
+        foreach(Transform t in transform) {
+            Destroy(t.gameObject);
+        }
+
+
+        basicMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
+        for (int i = 0; i < mapSize.x; i++) {
+            for (int j = 0; j < mapSize.y; j++) {
+                Vector3 pos = new Vector3(i * tileSize.x, j * tileSize.y, 0) + leftBottomPos;
+                GameObject g = Instantiate(basicTilePRefab, pos, Quaternion.identity, transform);
+                basicMap[i, j] = g;
+            }
+        }
         string key = "map" + mapID.ToString();
         string value = ReadFile(key);
         string[] strs = value.Split(',');

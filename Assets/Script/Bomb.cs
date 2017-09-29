@@ -56,8 +56,8 @@ public class Bomb : MonoBehaviour {
         foreach (GameObject item in around) {
             if(item!=null && item.tag == "enemy") {
                 item.GetComponent<Enemy>().OneShot();
-            }else if(item != null && item.tag == "player") {
-                item.GetComponent<Player>().Meet(GetComponent<GridItem>());
+            }else if(item != null && item.tag == "Player") {
+                item.GetComponent<Player>().Meet(gameObject);
             }if(item!=null && item.tag == "boss") {
                 item.GetComponent<BossPart>().OneHit();
             }

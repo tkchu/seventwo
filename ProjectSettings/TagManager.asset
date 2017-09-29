@@ -8,6 +8,7 @@ TagManager:
   - aimPoint
   - wall
   - enemy
+  - spine
   layers:
   - Default
   - TransparentFX

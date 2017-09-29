@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Map : MonoBehaviour {
 
-    public GameObject[,] groundMap;
-    public GameObject[,] itemMap;
+    public GameObject[,] groundMap = new GameObject[0, 0] { };
+    public GameObject[,] itemMap = new GameObject[0, 0] { };
 
     GameObject player = null;
     int[] playerPos = { 0, 0};
@@ -38,6 +38,10 @@ public class Map : MonoBehaviour {
         if(now == null) {
             return false;
         } else {
+            if(itemMap[pos[0], pos[1]]) {
+                itemMap[pos[0], pos[1]].SendMessage("Meet", g);
+                g.SendMessage("Meet", itemMap[pos[0], pos[1]]);
+            }
             itemMap[pos[0], pos[1]] = g;
             g.transform.position = groundMap[pos[0], pos[1]].transform.position + new Vector3(0, 0.6f / 3, 0);
             itemMap[now[0], now[1]] = null;
@@ -63,8 +67,12 @@ public class Map : MonoBehaviour {
         for (int i = 0; i < itemMap.GetLength(0); i++) {
             for (int j = 0; j < itemMap.GetLength(1); j++) {
                 if (itemMap[i,j]) {
-                    itemMap[i, j].GetComponent<SpriteRenderer>().sortingOrder = 100 + (itemMap.GetLength(1) - j) * 10;
-                    if(itemMap[i,j].name == "KnifeEnemy") {
+                    if (itemMap[i, j].GetComponent<Player>()) {
+                        itemMap[i, j].GetComponent<SpriteRenderer>().sortingOrder = 100 + (itemMap.GetLength(1) - j) * 10 -1;
+                    } else {
+                        itemMap[i, j].GetComponent<SpriteRenderer>().sortingOrder = 100 + (itemMap.GetLength(1) - j) * 10 ;
+                    }
+                    if (itemMap[i,j].name == "KnifeEnemy") {
                         itemMap[i,j].transform.Find("KnifeEnemyKnife").GetComponent<SpriteRenderer>().sortingOrder = 101 + (itemMap.GetLength(1) - j) * 10;
                     }
                 }

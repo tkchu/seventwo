@@ -37,6 +37,14 @@ public class Enemy : MonoBehaviour {
         if (GetComponent<Bomb>()) {
             GetComponent<Bomb>().Die();
         }
+
+        if (GetComponent<Lame>()) {
+            GetComponent<Lame>().Die();
+        }
+        if (GetComponent<Diagonal>()) {
+            GetComponent<Diagonal>().Die();
+        }
+
         if (GetComponent<BossPart>() == null) {
             //gw.Destroy(GetComponent<GridItem>());
         } else {
@@ -47,7 +55,7 @@ public class Enemy : MonoBehaviour {
             GetComponent<MoveEnemy>().willAction = false;
         }
     }
-    public void Meet() {
-        Debug.Log(gameObject.name + "meet");
+    public void Meet(GameObject g) {
+        Debug.Log(gameObject.name + " meet " + g.name);
     }
 }

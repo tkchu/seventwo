@@ -75,14 +75,7 @@ public class Player : MonoBehaviour {
 
             Enemy[] items = FindObjectsOfType<Enemy>();
             foreach (Enemy item in items) {
-                if(item.GetComponent<knifeEnemy>()) {
-                    item.OneAction();
-                }
-            }
-            foreach (Enemy item in items) {
-                if (item.GetComponent<Bomb>()) {
-                    item.OneAction();
-                }
+                item.OneAction();
             }
 
             if (FindObjectOfType<Boss>()) {
@@ -138,23 +131,23 @@ public class Player : MonoBehaviour {
         CreateAimPoint();
     }
 
-    public void Meet(GridItem item) {
+    public void Meet(GameObject item) {
         if(item.GetComponent<knifeEnemy>() && !item.GetComponent<knifeEnemy>().noDie) {
             return;
         }
 
-        if(item.gridItemType == GridItemType.enemy || item.gridItemType == GridItemType.spine) {
+        if(item.tag == "enemy" || item.tag == "spine") {
             GetComponent<Animator>().SetBool("isDead", true);
             StartCoroutine(Restart());
         }
 
         if (item.GetComponent<knifeEnemy>()) {
             FindObjectOfType<SoundManager>().Play("dieKnife");
-        }else if(item.gridItemType == GridItemType.spine) {
+        }else if(item.tag == "spine") {
             FindObjectOfType<SoundManager>().Play("dieSpine");
         }
 
-        if (item.gridItemType == GridItemType.pickup) {
+        if (item.tag == "pickup") {
             GetComponent<Weapon>().PickGun(item.GetComponent<PickUp>().haveGun);
         }
     }
@@ -165,7 +158,8 @@ public class Player : MonoBehaviour {
         if (SceneManager.GetActiveScene().name == "BossLevel") {
             SceneManager.LoadScene("BossLevel");
         }else {
-            FindObjectOfType<Reseter>().reset = true;
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            map.GetComponent<MapEditor>().Load();
         }
     }
 
