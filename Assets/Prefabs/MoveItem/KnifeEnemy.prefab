@@ -20,14 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4950053273036532}
   - component: {fileID: 212947496637340448}
-  - component: {fileID: 114058612837876966}
   - component: {fileID: 114708986664960648}
-  - component: {fileID: 114662727088277414}
   - component: {fileID: 114329993042036480}
   - component: {fileID: 114646023665162706}
   m_Layer: 0
   m_Name: KnifeEnemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,20 +91,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114058612837876966
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1053295769156008}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85f75d1c753556342b1754596b4b0872, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridItemType: 0
-  x: 0
-  y: 0
 --- !u!114 &114329993042036480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,19 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86b5939591237b4a9a3f3416a6c360c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114662727088277414
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1053295769156008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 365f49a0bb391ee47a8b69446ca54767, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  willAction: 0
-  range: 0
 --- !u!114 &114708986664960648
 MonoBehaviour:
   m_ObjectHideFlags: 1

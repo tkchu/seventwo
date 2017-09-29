@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4381378289559428}
   - component: {fileID: 212216187234487422}
-  - component: {fileID: 114673379210228070}
   - component: {fileID: 114684029899581588}
   - component: {fileID: 114914489311980136}
   - component: {fileID: 114312680428312928}
@@ -28,7 +27,7 @@ GameObject:
   - component: {fileID: 114590746864700228}
   m_Layer: 0
   m_Name: moveBomber
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,20 +86,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86b5939591237b4a9a3f3416a6c360c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114673379210228070
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1692967325896940}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85f75d1c753556342b1754596b4b0872, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridItemType: 0
-  x: 0
-  y: 0
 --- !u!114 &114684029899581588
 MonoBehaviour:
   m_ObjectHideFlags: 1

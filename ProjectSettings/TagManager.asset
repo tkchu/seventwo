@@ -7,6 +7,7 @@ TagManager:
   - ground
   - aimPoint
   - wall
+  - enemy
   layers:
   - Default
   - TransparentFX

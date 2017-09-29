@@ -15,16 +15,16 @@ public class InputManager : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
-            player.Go(Vector2.up);
+            player.Go(new int[]{0,1});
         }
         if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) {
-            player.Go(Vector2.down);
+            player.Go(new int[] { 0, -1 });
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
-            player.Go(Vector2.left);
+            player.Go(new int[] { -1, 0 });
         }
         if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
-            player.Go(Vector2.right);
+            player.Go(new int[] { 1, 0 });
         }
 
     }

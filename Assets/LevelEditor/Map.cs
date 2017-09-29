@@ -12,9 +12,6 @@ public class Map : MonoBehaviour {
     int[] playerPos = { 0, 0};
 
     public int[] GetPlayerPos() {
-        if (player == null) {
-            player = FindObjectOfType<Player>().gameObject;
-        }
         if (player != null) {
             int[] find = FindGameObject(itemMap, player);
             if (find != null) {
@@ -75,9 +72,37 @@ public class Map : MonoBehaviour {
         }
     }
 
+    public GameObject[] FindGridItemInRange(int[] pos, int[] direction, int range) {
+        List<GameObject> result = new List<GameObject>();
+        for (int i = 1; i <= range; i++) {
+            GameObject temp = GetGameObjectAt(pos[0] + i * direction[0], pos[1] + i * direction[1]);
+            if (temp != null && temp.tag == "wall") {
+                break;
+            }
+            result.Add(temp);
+        }
+        return result.ToArray();
+    }
 
     // Update is called once per frame
     void Update() {
+        var temp = FindObjectOfType<Player>();
+        if (temp != null) {
+            player = temp.gameObject;
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
+                player.GetComponent<Player>().Go(new int[] { 0, 1 });
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) {
+                player.GetComponent<Player>().Go(new int[] { 0, -1 });
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
+                player.GetComponent<Player>().Go(new int[] { -1, 0 });
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
+                player.GetComponent<Player>().Go(new int[] { 1, 0 });
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Space)) {
             foreach (LameMove lm in FindObjectsOfType<LameMove>()) {
                 lm.OneMove();
@@ -89,5 +114,14 @@ public class Map : MonoBehaviour {
                 dm.OneMove();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            FindObjectOfType<ExitTrigger>().GetComponent<ExitTrigger>().enabled = true;
+        }
+        if (Input.GetKeyDown(KeyCode.F)) {
+            FindObjectOfType<FullscreenTrigger>().GetComponent<FullscreenTrigger>().enabled = true;
+        }
+
+
     }
 }

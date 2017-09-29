@@ -36,6 +36,11 @@ public class Weapon : MonoBehaviour {
         get { return gunInfo[gunNow][2]; }
     }
 
+    Map map;
+    void Start() {
+        map = FindObjectOfType<Map>();
+    }
+
     public void PickGun(Guns gun) {
         if (gunHave.Contains(Guns.empty)) {
             gunHave.Remove(Guns.empty);
@@ -67,15 +72,14 @@ public class Weapon : MonoBehaviour {
         }
     }
 
-    public int[] Shoot(Vector2 direction) {
+    public int[] Shoot(int[] direction) {
         bool shot = false;
-        int pos_x = gw.GridItem_x(GetComponent<GridItem>());
-        int pos_y = gw.GridItem_y(GetComponent<GridItem>());
-        GridItem[] face = gw.FindGridItemInRange(pos_x, pos_y, direction, this.range);
+        int[] pos = map.FindGameObject(map.itemMap, gameObject);
+        GameObject[] face = map.FindGridItemInRange(pos, direction, this.range);
 
-        foreach (GridItem item in face) {
+        foreach (GameObject item in face) {
             if (item != null &&
-                (item.gridItemType == GridItemType.enemy || item.gridItemType == GridItemType.boss)) { 
+                (item.tag == "enemy" || item.tag == "boss")) { 
                 shot = true;
                 if (item.GetComponent<knifeEnemy>()) {
                     item.GetComponent<knifeEnemy>().noDie = false;
@@ -96,11 +100,5 @@ public class Weapon : MonoBehaviour {
         }else {
             return new int[] { 0, backForce };
         }
-    }
-
-    private GridWorld gw;
-    void Start () {
-        gw = FindObjectOfType<GridWorld>();
-    }
-    
+    }    
 }

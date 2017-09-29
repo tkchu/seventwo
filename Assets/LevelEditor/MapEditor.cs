@@ -9,6 +9,7 @@ public class MapEditor : MonoBehaviour {
     public int mapID;
     public bool save = false;
     public bool load = false;
+    public int nextMapID;
 
     public GameObject basicTilePRefab;
     public Vector2 mapSize;

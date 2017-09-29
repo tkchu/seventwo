@@ -4,37 +4,34 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
-    private float gridSize;
-    private GridWorld gw;
-    private Camera cameraFollow;
-
-    private void Start() {
-        gw = FindObjectOfType<GridWorld>();
-        gridSize = gw.gridSize;
-        if(SceneManager.GetActiveScene().name != "BossLevel") {
-            cameraFollow = FindObjectOfType<Camera>();
-            cameraFollow.transform.position = new Vector3(transform.position.x, transform.position.y, cameraFollow.transform.position.z);
-
-        }
+    Map map;
+    void Start() {
+        map = FindObjectOfType<Map>();
     }
 
-    public void Go(Vector2 direction) {
+    public void Go(int[] direction) {
         int[] moveMult = GetComponent<Weapon>().Shoot(direction);
         int shot = moveMult[0];
         int backForce = moveMult[1];
 
         bool haveMove;
-        int pos_x = gw.GridItem_x(GetComponent<GridItem>());
-        int pos_y = gw.GridItem_y(GetComponent<GridItem>());
+        int[] pos = map.FindGameObject(map.itemMap, gameObject);
+
         int move = 1;
         if (shot == 1) {
             move = backForce;
         }
-        GridItem[] back = gw.FindGridItemInRange(pos_x, pos_y, direction * (move < 0 ? -1 : 1), Mathf.Abs(move));
+
+        GameObject[] back = map.FindGridItemInRange(pos,
+            new int[]{
+                direction[0] * (move < 0 ? -1 : 1),
+                direction[1] * (move < 0 ? -1 : 1),
+            },
+            Mathf.Abs(move));
 
         move = back.Length * (move < 0 ? -1 : 1);
         for (int i = 0; i < back.Length; i++) {
-            if(back[i] != null && back[i].gridItemType == GridItemType.boss) {
+            if(back[i] != null && back[i].tag == "boss") {
                 move = i * (move < 0 ? -1 : 1);
                 break;
             }
@@ -44,16 +41,20 @@ public class Player : MonoBehaviour {
         if (move == 0) {
             haveMove = false;
         } else {
-            transform.position = gw.Go(GetComponent<GridItem>(), direction * Mathf.Abs(move) * (move < 0 ? -1 : 1));
+            map.MoveItem(gameObject,
+                new int[]{
+                    pos[0] + direction[0] * Mathf.Abs(move) * (move < 0 ? -1 : 1),
+                    pos[1] +  direction[1] * Mathf.Abs(move) * (move < 0 ? -1 : 1)
+                });
             haveMove = true;
         }
         //再触发敌人死亡
         if (shot == 1) {
-            GridItem[] face = gw.FindGridItemInRange(pos_x, pos_y, direction, GetComponent<Weapon>().range);
+            GameObject[] face = map.FindGridItemInRange(pos, direction, GetComponent<Weapon>().range);
 
-            foreach (GridItem item in face) {
+            foreach (GameObject item in face) {
                 if (item != null &&
-                    (item.gridItemType == GridItemType.enemy || item.gridItemType == GridItemType.boss)) {
+                    (item.tag == "enemy" || item.tag == "boss")) {
                     item.GetComponent<Enemy>().OneShot();
                 }
             }
@@ -69,8 +70,8 @@ public class Player : MonoBehaviour {
         }
 
         if (haveMove || shot == 1) {
-            if (Mathf.Abs(direction.x) >0f) {
-                GetComponent<SpriteRenderer>().flipX = direction.x > 0;
+            if (Mathf.Abs(direction[0]) >0f) {
+                GetComponent<SpriteRenderer>().flipX = direction[0] > 0;
             }
 
             Enemy[] items = FindObjectsOfType<Enemy>();
@@ -104,11 +105,13 @@ public class Player : MonoBehaviour {
             Destroy(pointBefore);
         }
         // 设置指示点
-        int pos_x = gw.GridItem_x(GetComponent<GridItem>());
-        int pos_y = gw.GridItem_y(GetComponent<GridItem>());
+        int[] pos = map.FindGameObject(map.itemMap, gameObject);
 
-        Vector2[] allDirections = new Vector2[] {
-             Vector2.left,Vector2.right,Vector2.up,Vector2.down,
+        int[][] allDirections = new int[][] {
+            new int[]{-1,0},
+            new int[]{1,0},
+            new int[]{0,1},
+            new int[]{0,-1},
          };
 
         Color now_color = Color.white;
@@ -121,11 +124,11 @@ public class Player : MonoBehaviour {
             now_color = greenGun;
         }
 
-        foreach(Vector2 direction in allDirections) {
-            GridItem[] around = gw.FindGridItemInRange(pos_x, pos_y, direction, GetComponent<Weapon>().range);
+        foreach(int[] direction in allDirections) {
+            GameObject[] around = map.FindGridItemInRange(pos, direction, GetComponent<Weapon>().range);
             int i = around.Length;
             while (i > 0) {
-                GameObject g = Instantiate(pointPrefab, transform.position + i* gridSize*(new Vector3(direction.x,direction.y,-1)), Quaternion.identity);
+                GameObject g = Instantiate(pointPrefab, transform.position + i* 0.6f*(new Vector3(direction[0], direction[1],-1)), Quaternion.identity);
                 g.GetComponent<SpriteRenderer>().color = now_color;
                 i -= 1;
             }
@@ -133,10 +136,6 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
-        if (GetComponent<GridItem>().x == 84 && GetComponent<GridItem>().y == 1) {
-            SceneManager.LoadScene("BossLevel");
-        }
-
         CreateAimPoint();
     }
 

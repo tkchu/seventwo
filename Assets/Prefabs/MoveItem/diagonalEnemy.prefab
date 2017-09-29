@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114739734331041416}
   m_Layer: 0
   m_Name: diagonalEnemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +52,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916ccc3ccf4c1e442b4dca92d35885c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: {fileID: 0}
 --- !u!212 &212263517002072822
 SpriteRenderer:
   m_ObjectHideFlags: 1
