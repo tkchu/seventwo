@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class knifeEnemy : MonoBehaviour {
-    GridWorld gw;
     public Animator prepareAnimator;
     public int range = 2;
 
@@ -11,8 +10,10 @@ public class knifeEnemy : MonoBehaviour {
     public GameObject knife;
     public bool noDie = true;
 
-    private void Start() {
-        gw = FindObjectOfType<GridWorld>();
+    Map map;
+
+    void Start() {
+        map = FindObjectOfType<Map>();
     }
 
     // Update is called once per frame
@@ -20,19 +21,17 @@ public class knifeEnemy : MonoBehaviour {
         GridItem player = FindObjectOfType<Player>().GetComponent<GridItem>();
         GridItem self = GetComponent<GridItem>();
 
-        int player_x = gw.GridItem_x(player);
-        int player_y = gw.GridItem_y(player);
-        int self_x = gw.GridItem_x(self);
-        int self_y = gw.GridItem_y(self);
+        int[] player_pos = map.GetPlayerPos();
+        int[] self_pos = map.FindGameObject(map.itemMap, gameObject);
 
         //准备
         if (noDie) {
-            if (Mathf.Abs(player_x - self_x) + Mathf.Abs(player_y - self_y) <= 2) {
+            if (Mathf.Abs(player_pos[0] - self_pos[0]) + Mathf.Abs(player_pos[1] - self_pos[1]) <= 2) {
                 prepareAnimator.SetBool("isReady", true);
             } else {
                 prepareAnimator.SetBool("isReady", false);
             }
-            if (Mathf.Abs(player_x - self_x) + Mathf.Abs(player_y - self_y) <= 0.3) {
+            if (Mathf.Abs(player_pos[0] - self_pos[0]) + Mathf.Abs(player_pos[1] - self_pos[1]) <= 0.3) {
                 prepareAnimator.SetBool("isAttack", true);
             } else {
                 prepareAnimator.SetBool("isAttack", false);

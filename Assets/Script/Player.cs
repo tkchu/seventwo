@@ -11,13 +11,13 @@ public class Player : MonoBehaviour {
 
     public void Go(int[] direction) {
         int[] moveMult = GetComponent<Weapon>().Shoot(direction);
-        int shot = moveMult[0];
+        int shot = moveMult[0];//是否打中了
         int backForce = moveMult[1];
 
         bool haveMove;
         int[] pos = map.FindGameObject(map.itemMap, gameObject);
 
-        int move = 1;
+        int move = 1;//移动的乘值，有后坐力为负
         if (shot == 1) {
             move = backForce;
         }
@@ -59,8 +59,7 @@ public class Player : MonoBehaviour {
                 }
             }
         }
-
-
+        
         if (shot == 1 && move < 0) {
             GetComponent<Animator>().SetBool("isAttacking", true);
         }
@@ -81,7 +80,7 @@ public class Player : MonoBehaviour {
                 }
             }
             foreach (Enemy item in items) {
-                if (item.GetComponent<Bomb>() != null) {
+                if (item.GetComponent<Bomb>()) {
                     item.OneAction();
                 }
             }

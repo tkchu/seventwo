@@ -6,7 +6,7 @@ public class huidao : StateMachineBehaviour {
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
         Vector3 vec=new Vector3(0, 0, 123);
-        GameObject.Find("小怪刀").transform.Rotate(vec);
+        GameObject.Find("KnifeEnemyKnife").transform.Rotate(vec);
 
     }
     /*

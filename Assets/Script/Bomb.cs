@@ -5,13 +5,13 @@ using UnityEngine;
 public class Bomb : MonoBehaviour {
     public GameObject flamePrefab;
 
-    GridWorld gw;
+    Map map;
 
     bool noDie = true;
     public bool isReady = false;
 
     void Start() {
-        gw = FindObjectOfType<GridWorld>();
+        map = FindObjectOfType<Map>();
     }
 
     public void OneAction() {
@@ -22,12 +22,10 @@ public class Bomb : MonoBehaviour {
         GridItem player = FindObjectOfType<Player>().GetComponent<GridItem>();
         GridItem self = GetComponent<GridItem>();
 
-        int player_x = gw.GridItem_x(player);
-        int player_y = gw.GridItem_y(player);
-        int self_x = gw.GridItem_x(self);
-        int self_y = gw.GridItem_y(self);
+        int[] player_pos = map.GetPlayerPos();
+        int[] self_pos = map.FindGameObject(map.itemMap, gameObject);
 
-        if (Mathf.Abs(player_x - self_x) + Mathf.Abs(player_y - self_y) <= 2) {
+        if (Mathf.Abs(player_pos[0] - self_pos[0]) + Mathf.Abs(player_pos[1] - self_pos[1]) <= 2) {
             GetComponent<Animator>().SetBool("isReady", true);
             isReady = true;
         } else {
@@ -46,22 +44,21 @@ public class Bomb : MonoBehaviour {
 
         FindObjectOfType<SoundManager>().Play("boom");
 
-        int x = gw.GridItem_x(GetComponent<GridItem>());
-        int y = gw.GridItem_y(GetComponent<GridItem>());
-        GridItem[] around = new GridItem[] {
-            gw.GridItemAt(x - 1, y),
-            gw.GridItemAt(x + 1, y),
-            gw.GridItemAt(x, y+1),
-            gw.GridItemAt(x, y-1),
-            gw.GridItemAt(x, y),
+        int[] pos = map.FindGameObject(map.itemMap, gameObject);
+        GameObject[] around = new GameObject[] {
+            map.GetGameObjectAt(pos[0] - 1, pos[1]),
+            map.GetGameObjectAt(pos[0] + 1, pos[1]),
+            map.GetGameObjectAt(pos[0], pos[1] + 1),
+            map.GetGameObjectAt(pos[0], pos[1] - 1),
+            map.GetGameObjectAt(pos[0], pos[1]),
         };
 
-        foreach (GridItem item in around) {
-            if(item!=null && item.gridItemType == GridItemType.enemy) {
+        foreach (GameObject item in around) {
+            if(item!=null && item.tag == "enemy") {
                 item.GetComponent<Enemy>().OneShot();
-            }else if(item != null && item.gridItemType == GridItemType.player) {
+            }else if(item != null && item.tag == "player") {
                 item.GetComponent<Player>().Meet(GetComponent<GridItem>());
-            }if(item!=null && item.gridItemType == GridItemType.boss) {
+            }if(item!=null && item.tag == "boss") {
                 item.GetComponent<BossPart>().OneHit();
             }
         }
@@ -71,9 +68,9 @@ public class Bomb : MonoBehaviour {
             Vector2.left,Vector2.right, Vector2.up, Vector2.down, Vector2.zero
         };
         foreach (Vector2 vec in aroundVectors) {
-            GridItem item = gw.GridItemAt(x + (int)vec.x, y + (int)vec.y);
-            if (item == null || item.gridItemType != GridItemType.wall) {
-                Instantiate(flamePrefab, transform.position + new Vector3(vec.x, vec.y, -10) * gw.gridSize, Quaternion.identity);
+            GameObject item = map.GetGameObjectAt(pos[0] + (int)vec.x, pos[1] + (int)vec.y);
+            if (item == null || item.tag != "wall") {
+                Instantiate(flamePrefab, transform.position + new Vector3(vec.x, vec.y, -10) * 0.6f, Quaternion.identity);
             }
         }
 

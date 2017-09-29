@@ -12,8 +12,12 @@ public class Enemy : MonoBehaviour {
         if (GetComponent<Bomb>() && GetComponent<Bomb>().isReady) {
             ;
         }else {
-            if (GetComponent<MoveEnemy>()) {
-                GetComponent<MoveEnemy>().OneAction();
+            if (GetComponent<NormalMove>()) {
+                GetComponent<NormalMove>().OneMove();
+            }else if (GetComponent<LameMove>()) {
+                GetComponent<LameMove>().OneMove();
+            }else if (GetComponent<DiagonalMove>()) {
+                GetComponent<DiagonalMove>().OneMove();
             }
         }
         
@@ -34,15 +38,13 @@ public class Enemy : MonoBehaviour {
             GetComponent<Bomb>().Die();
         }
         if (GetComponent<BossPart>() == null) {
-            gw.Destroy(GetComponent<GridItem>());
+            //gw.Destroy(GetComponent<GridItem>());
+        } else {
+            Debug.Log("Boss 挨了一枪，但毫发无损！");
         }
 
         if (GetComponent<MoveEnemy>() != null) {
             GetComponent<MoveEnemy>().willAction = false;
-        }
-
-        if (GetComponent<BossPart>()) {
-            Debug.Log("Boss 挨了一枪，但毫发无损！");
         }
     }
     public void Meet() {
