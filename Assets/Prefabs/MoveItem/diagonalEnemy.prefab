@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4008663629988878}
   - component: {fileID: 212263517002072822}
   - component: {fileID: 114739734331041416}
+  - component: {fileID: 114816282926343024}
+  - component: {fileID: 114095216782834392}
   m_Layer: 0
   m_Name: diagonalEnemy
   m_TagString: enemy
@@ -41,6 +43,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114095216782834392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457399003537810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdef18c1705c5094c8f814eded07a1ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114739734331041416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -50,6 +63,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 916ccc3ccf4c1e442b4dca92d35885c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114816282926343024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457399003537810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dd73db22d5d4194ea9b6ffcb93396ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212263517002072822
