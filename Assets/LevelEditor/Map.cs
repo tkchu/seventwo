@@ -43,7 +43,8 @@ public class Map : MonoBehaviour {
                 g.SendMessage("Meet", itemMap[pos[0], pos[1]]);
             }
             itemMap[pos[0], pos[1]] = g;
-            g.transform.position = groundMap[pos[0], pos[1]].transform.position + new Vector3(0, 0.6f / 3, 0);
+            MapEditor me = GetComponent<MapEditor>();
+            g.transform.position = new Vector3(pos[0] * me.tileSize.x, pos[1] * me.tileSize.y, 0) + me.leftBottomPos + new Vector3(0, 0.6f / 3, 0);
             itemMap[now[0], now[1]] = null;
             return true;
         }
@@ -130,6 +131,7 @@ public class Map : MonoBehaviour {
             FindObjectOfType<FullscreenTrigger>().GetComponent<FullscreenTrigger>().enabled = true;
         }
 
+        UpdateSortOrder();
 
     }
 }
