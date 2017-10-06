@@ -90,8 +90,27 @@ public class AnimatorControl : MonoBehaviour {
         else Debug.Log(gb.name + "is not MoveBomber");
     }
 
+    void LameEnemyMove(GameObject gb)
+    {
+        var gba = GetComponent<Animator>();
+        if (gba != null)
+            gba.SetBool("isMoving", true);
+        else Debug.Log(gb.name+"is not a LameEnemy");
+    }
+    void DiagonalEnemyLeft(GameObject gb)
+    {
+        var gba = GetComponent<Animator>();
+        if (gba != null)
+            gba.SetBool("left", true);
+        else Debug.Log(gb.name + "is not a DiagonalEnemy");
+    }
+    void DiagonalEnemyRight(GameObject gb)
+    {
+        var gba = GetComponent<Animator>();
+        if (gba != null)
+            gba.SetBool("right", true);
+        else Debug.Log(gb.name + "is not a DiagonalEnemy");
+    }
     // Update is called once per frame
-    void Update () {
-		
-	}
+
 }
