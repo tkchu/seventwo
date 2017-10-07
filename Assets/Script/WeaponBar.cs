@@ -4,48 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class WeaponBar : MonoBehaviour {
-    Weapon weapon;
-    public OneWeaponBar red;
-    public OneWeaponBar blue;
-    public OneWeaponBar green;
-
-    private void Start() {
-        weapon = FindObjectOfType<Weapon>();
-        red.gameObject.SetActive(false);
-        blue.gameObject.SetActive(false);
-        green.gameObject.SetActive(false);
-    }
-
+    public Sprite[] weaponBar;
     private void Update() {
-        /*
-        if (weapon.gunHave.Contains(Guns.pistol)) {
-            red.gameObject.SetActive(true);
-        }
-        if (weapon.gunHave.Contains(Guns.shotgun)) {
-            blue.gameObject.SetActive(true);
-        }
-        if (weapon.gunHave.Contains(Guns.jumpgun)) {
-            green.gameObject.SetActive(true);
-        }
-        */
+        Weapon weapon = FindObjectOfType<Weapon>();
 
-        if(weapon.gunNow == Guns.pistol) {
-            red.Select();
-            red.Show(weapon.loadCount / (float)weapon.loadTime);
-            green.UnSelect();
-            blue.UnSelect();
+        if (weapon.gunNow == Guns.pistol) {
+            GetComponent<Image>().enabled = true;
+            GetComponent<Image>().sprite = weaponBar[0];
         }
-        if (weapon.gunNow == Guns.shotgun) {
-            red.UnSelect();
-            blue.Select();
-            blue.Show(weapon.loadCount / (float)weapon.loadTime);
-            green.UnSelect();
-        }
-        if (weapon.gunNow == Guns.jumpgun) {
-            red.UnSelect();
-            blue.UnSelect();
-            green.Select();
-            green.Show(weapon.loadCount / (float)weapon.loadTime);
+        else if (weapon.gunNow == Guns.shotgun) {
+            GetComponent<Image>().enabled = true;
+            GetComponent<Image>().sprite = weaponBar[1];
+
+        } else if (weapon.gunNow == Guns.jumpgun) {
+            GetComponent<Image>().enabled = true;
+            GetComponent<Image>().sprite = weaponBar[2];
+        } else {
+            GetComponent<Image>().enabled = false;
         }
 
     }
