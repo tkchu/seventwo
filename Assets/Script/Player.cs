@@ -63,7 +63,7 @@ public class Player : MonoBehaviour {
 
         
         if (shot == 1 && move < 0) {
-            GetComponent<Animator>().SetBool("isAttacking", true);
+            GetComponent<Animator>().SetBool("isShoot", true);
         }
 
         if(shot == 0 && haveMove) {

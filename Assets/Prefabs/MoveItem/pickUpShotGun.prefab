@@ -20,11 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4212840649868148}
   - component: {fileID: 212224066154134920}
-  - component: {fileID: 114751083167571280}
-  - component: {fileID: 114536330852583832}
+  - component: {fileID: 114089376343350690}
   m_Layer: 0
   m_Name: pickUpShotGun
-  m_TagString: Untagged
+  m_TagString: pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -39.015003}
---- !u!114 &114536330852583832
+--- !u!114 &114089376343350690
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -53,21 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87315223a09c0b44b32e87ad0744c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  haveGun: 2
---- !u!114 &114751083167571280
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1523644107297316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85f75d1c753556342b1754596b4b0872, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridItemType: 4
-  x: 0
-  y: 0
+  haveGun: 0
 --- !u!212 &212224066154134920
 SpriteRenderer:
   m_ObjectHideFlags: 1

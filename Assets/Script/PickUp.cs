@@ -5,10 +5,8 @@ using UnityEngine;
 public class PickUp : MonoBehaviour {
     public Guns haveGun;
 
-    public void Meet(GridItem item) {
-        if (item.gridItemType == GridItemType.player) {
-            FindObjectOfType<SoundManager>().Play("pickup");
-            Destroy(gameObject);
-        }
+    public void Meet(GameObject item) {
+        FindObjectOfType<SoundManager>().Play("pickup");
+        Destroy(gameObject);
     }
 }

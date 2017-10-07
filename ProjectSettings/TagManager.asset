@@ -9,6 +9,7 @@ TagManager:
   - wall
   - enemy
   - spine
+  - pickup
   layers:
   - Default
   - TransparentFX

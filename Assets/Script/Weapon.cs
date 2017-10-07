@@ -31,11 +31,13 @@ public class Weapon : MonoBehaviour {
     Map map;
     void Start() {
         map = FindObjectOfType<Map>();
+        GetComponent<Animator>().SetInteger("stat", (int)gunNow);
     }
 
     public void PickGun(Guns gun) {
         gunNow = gun;
-        GetComponent<Animator>().SetInteger("stat", (int)gunNow + 1);
+        loadCount = gunInfo[gun][2];
+        GetComponent<Animator>().SetInteger("stat", (int)gunNow);
     }
 
     public int loadCount = 0;
@@ -63,6 +65,12 @@ public class Weapon : MonoBehaviour {
                 FindObjectOfType<SoundManager>().Play("shotGunShot");
             }else if(gunNow == Guns.jumpgun) {
                 FindObjectOfType<SoundManager>().Play("jumpGunShot");
+            }
+            loadCount -= 1;
+            if(loadCount <= 0) {
+                gunNow = Guns.empty;
+                GetComponent<Animator>().SetInteger("stat", (int)gunNow);
+                loadCount = 0;
             }
             return new int[] { 1, backForce };
         }else {

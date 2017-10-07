@@ -9,71 +9,56 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1225580238610258}
+  m_RootGameObject: {fileID: 1148430734007104}
   m_IsPrefabParent: 1
---- !u!1 &1225580238610258
+--- !u!1 &1148430734007104
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4852556049450142}
-  - component: {fileID: 212361780952712418}
-  - component: {fileID: 114657823264466804}
-  - component: {fileID: 114908080134622846}
+  - component: {fileID: 4317485851799756}
+  - component: {fileID: 212148805533990430}
+  - component: {fileID: 114488862590880606}
   m_Layer: 0
-  m_Name: pickUpPistol
-  m_TagString: Untagged
+  m_Name: pickUpJumpGun
+  m_TagString: pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4852556049450142
+--- !u!4 &4317485851799756
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1225580238610258}
-  m_LocalRotation: {x: -0, y: -0, z: 0.3690987, w: -0.92939025}
-  m_LocalPosition: {x: -0.58299994, y: 0.0009999871, z: 1}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_GameObject: {fileID: 1148430734007104}
+  m_LocalRotation: {x: -0, y: -0, z: 0.33915868, w: -0.94072926}
+  m_LocalPosition: {x: 0.6047001, y: 0.0045999885, z: 1}
+  m_LocalScale: {x: 0.65, y: 0.65, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -43.320004}
---- !u!114 &114657823264466804
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -39.651}
+--- !u!114 &114488862590880606
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1225580238610258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85f75d1c753556342b1754596b4b0872, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gridItemType: 4
-  x: 0
-  y: 0
---- !u!114 &114908080134622846
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1225580238610258}
+  m_GameObject: {fileID: 1148430734007104}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a87315223a09c0b44b32e87ad0744c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  haveGun: 1
---- !u!212 &212361780952712418
+  haveGun: 0
+--- !u!212 &212148805533990430
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1225580238610258}
+  m_GameObject: {fileID: 1148430734007104}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -100,8 +85,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 17b2d27d13b194f46a246bb2e3431f9d, type: 3}
-  m_Color: {r: 0.76470596, g: 0.003921569, b: 0.16078432, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 98f8f7e90c4df32478435cf59e74a5bd, type: 3}
+  m_Color: {r: 0.3019608, g: 1, b: 0.57254905, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
