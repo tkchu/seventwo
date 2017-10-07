@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class enter : StateMachineBehaviour {
     public string param;
+    GameObject weapon;
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         //
         animator.SetBool(param, false);
+        if (weapon == null)
+           weapon= GameObject.Find("weapon");
+        weapon.SetActive(true);
 	}
 
 	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

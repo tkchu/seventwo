@@ -3,45 +3,93 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimatorControl : MonoBehaviour {
-    GameObject hero,boss;
+    public GameObject hero, boss;
     Animator heroani, bossani;
+    SpriteRenderer herosr,weaponsr,firesr,fireupdownsr;
+    SpriteMask heromask;
+
 	// Use this for initialization
 	void Start () {
         hero = GameObject.FindGameObjectWithTag("Player");
-        boss = GameObject.Find("Boss");
-	}
+        
+        heroani = hero.GetComponent<Animator>();
+        
+        herosr = hero.GetComponent<SpriteRenderer>();
+        weaponsr = GameObject.Find("weapon").GetComponent<SpriteRenderer>();
+        firesr = GameObject.Find("Fire").GetComponent<SpriteRenderer>();
+        fireupdownsr = GameObject.Find("FireUpDown").GetComponent<SpriteRenderer>();
+        try
+        {
+            boss = GameObject.Find("Boss");
+            bossani = boss.GetComponent<Animator>();
+        }
+        catch(System.Exception e) { }
 
+        
 
-	void HeroShot()
-    {
-        heroani.SetBool("isShoot", true);
     }
-    void HeroChange(int num)
+
+	public void HeroShot(int n)
+    {
+        //0,1,2,3对应左，右，上，下
+        switch (n)
+        {
+            case 0:
+                herosr.flipX = false;
+                weaponsr.enabled=true;
+                firesr.enabled=true;
+                fireupdownsr.enabled=false;
+                break;
+            case 1:
+                herosr.flipX = true;
+                weaponsr.enabled=true;
+                firesr.enabled=true;
+                fireupdownsr.enabled=false;
+                break;
+            case 2:
+                herosr.flipX = true;
+                weaponsr.enabled=false;
+                firesr.enabled=false;
+                fireupdownsr.enabled=true;
+                break;
+            case 3:
+                herosr.flipX = false;
+                weaponsr.enabled=false;
+                firesr.enabled=false;
+                fireupdownsr.enabled=true;
+                break;
+            default:break;
+
+        }
+        heroani.SetBool("isShoot", true);
+        Debug.Log("Shoot!");
+    }
+    public void HeroChange(int num)
     {
         heroani.SetInteger("stat", num);
     }
-    void HeroMove()
+    public void HeroMove()
     {
         heroani.SetBool("isMoving", true);
     }
-    void HeroDie()
+    public void HeroDie()
     {
         heroani.SetBool("isDead", true);
 
     }
-    void BossLeft()
+    public void BossLeft()
     {
         bossani.SetBool("left", true);
     }
-    void BossRight()
+    public void BossRight()
     {
         bossani.SetBool("right", true);
     }
-    void BossDie()
+    public void BossDie()
     {
         bossani.SetBool("ishited", true);
     }
-    void KnifeEnemyReady(GameObject gb,bool stat)
+    public void KnifeEnemyReady(GameObject gb,bool stat)
     {
         var gbd = gb.transform.Find("小怪刀");
         if (gbd != null)
@@ -49,7 +97,7 @@ public class AnimatorControl : MonoBehaviour {
         else Debug.Log(gb.name + "is not KnifeEnemy");
         
     }
-    void KnifeEnemyAttack(GameObject gb, bool stat)
+    public void KnifeEnemyAttack(GameObject gb, bool stat)
     {
         var gbd = gb.transform.Find("小怪刀");
         if (gbd != null)
@@ -57,7 +105,7 @@ public class AnimatorControl : MonoBehaviour {
         else Debug.Log(gb.name + "is not KnifeEnemy");
 
     }
-    void BombReady(GameObject gb, bool stat)
+    public void BombReady(GameObject gb, bool stat)
     {
       
         var gba = gb.GetComponent<Animator>();
@@ -66,7 +114,7 @@ public class AnimatorControl : MonoBehaviour {
         else Debug.Log(gb.name + "is not Bomb");
 
     }
-    void BombBoom(GameObject gb)
+    public void BombBoom(GameObject gb)
     {
         var gba = gb.GetComponent<Animator>();
         if (gba != null)
@@ -74,7 +122,7 @@ public class AnimatorControl : MonoBehaviour {
         else Debug.Log(gb.name + "is not Bomb");
     }
 
-    void MoveBomberReady(GameObject gb, bool stat)
+    public void MoveBomberReady(GameObject gb, bool stat)
     {
         var gba = gb.GetComponent<Animator>();
         if (gba != null)
@@ -82,7 +130,7 @@ public class AnimatorControl : MonoBehaviour {
         else Debug.Log(gb.name + "is not MoveBomber");
           
     }
-    void MoveBomberBoom(GameObject gb)
+    public void MoveBomberBoom(GameObject gb)
     {
         var gba = gb.GetComponent<Animator>();
         if (gba != null)
@@ -90,21 +138,21 @@ public class AnimatorControl : MonoBehaviour {
         else Debug.Log(gb.name + "is not MoveBomber");
     }
 
-    void LameEnemyMove(GameObject gb)
+    public void LameEnemyMove(GameObject gb)
     {
         var gba = GetComponent<Animator>();
         if (gba != null)
             gba.SetBool("isMoving", true);
         else Debug.Log(gb.name+"is not a LameEnemy");
     }
-    void DiagonalEnemyLeft(GameObject gb)
+    public void DiagonalEnemyLeft(GameObject gb)
     {
         var gba = GetComponent<Animator>();
         if (gba != null)
             gba.SetBool("left", true);
         else Debug.Log(gb.name + "is not a DiagonalEnemy");
     }
-    void DiagonalEnemyRight(GameObject gb)
+    public void DiagonalEnemyRight(GameObject gb)
     {
         var gba = GetComponent<Animator>();
         if (gba != null)
