@@ -36,11 +36,7 @@ public class Weapon : MonoBehaviour {
     }
 
     private void Update() {
-        if (loadCount <= 0) {
-            gunNow = Guns.empty;
-            GetComponent<Animator>().SetInteger("stat", (int)gunNow);
-            loadCount = gunInfo[gunNow][2];
-        }
+
     }
 
     public void PickGun(Guns gun) {
@@ -75,10 +71,21 @@ public class Weapon : MonoBehaviour {
             }else if(gunNow == Guns.jumpgun) {
                 FindObjectOfType<SoundManager>().Play("jumpGunShot");
             }
+            int [] result = new int[] { 1, backForce };
             loadCount -= 1;
-            return new int[] { 1, backForce };
+            if (loadCount <= 0) {
+                StartCoroutine(NoWeapon());
+            }
+            return result;
         }else {
             return new int[] { 0, backForce };
         }
-    }    
+    }
+
+    IEnumerator NoWeapon() {
+        yield return new WaitForEndOfFrame();
+        gunNow = Guns.empty;
+        GetComponent<Animator>().SetInteger("stat", (int)gunNow);
+        loadCount = gunInfo[gunNow][2];
+    }
 }

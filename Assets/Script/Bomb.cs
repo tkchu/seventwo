@@ -35,7 +35,6 @@ public class Bomb : MonoBehaviour {
     }
 
     public void Die() {
-        FindObjectOfType<Map>().RemoveGameObject(gameObject);
         //保证不会多次标记死亡
         if (!noDie) {
             return;
@@ -74,6 +73,7 @@ public class Bomb : MonoBehaviour {
                 Instantiate(flamePrefab, transform.position + new Vector3(vec.x, vec.y, -10) * 0.6f, Quaternion.identity);
             }
         }
+        FindObjectOfType<Map>().RemoveGameObject(gameObject);
 
         Destroy(gameObject);
     }
