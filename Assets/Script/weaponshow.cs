@@ -23,10 +23,15 @@ public class weaponshow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        animator = this.GetComponent<Animator>();
         hero = GameObject.FindGameObjectWithTag("Player");
         heroAnimator = hero.GetComponent<Animator>();
+        ts = this.transform;
         herots = hero.transform;
+        sr = this.GetComponent<SpriteRenderer>();
         herosr = hero.GetComponent<SpriteRenderer>();
+        offset1 = ts.position - herots.position;
+        offset2 = new Vector3(ts.position.x - herots.position.x, herots.position.y - ts.position.y, 1);
 
         animator.SetInteger("stat", heroAnimator.GetInteger("stat"));
         if(heroAnimator.GetBool("isShoot"))

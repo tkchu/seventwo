@@ -21,6 +21,17 @@ public class Map : MonoBehaviour {
         return playerPos;
     }
 
+    public void RemoveGameObject(GameObject g) {
+        for (int i = 0; i < itemMap.GetLength(0); i++) {
+            for (int j = 0; j < itemMap.GetLength(1); j++) {
+                if (itemMap[i, j] == g) {
+                    itemMap[i, j] = null;
+                    return;
+                }
+            }
+        }
+    }
+
     public GameObject GetGameObjectAt(int x, int y) {
         if(x<0 || x>itemMap.GetLength(0) || y<0 || y > itemMap.GetLength(1)) {
             return null;

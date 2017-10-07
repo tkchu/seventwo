@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-    GridWorld gw;
+    Map map;
     private void Start() {
-        gw = FindObjectOfType<GridWorld>();
+        map = FindObjectOfType<Map>();
     }
 
     public void OneAction() {
@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour {
         }
 
         if (GetComponent<BossPart>() == null) {
+            map.RemoveGameObject(gameObject);
             //gw.Destroy(GetComponent<GridItem>());
         } else {
             Debug.Log("Boss 挨了一枪，但毫发无损！");
