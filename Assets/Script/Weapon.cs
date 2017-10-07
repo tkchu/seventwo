@@ -62,9 +62,20 @@ public class Weapon : MonoBehaviour {
             }
         }
 
-        //播放音效，返回后坐力
+
+        //播放音效，以及动画，返回后坐力
         if (shot) {
-            if(gunNow == Guns.pistol) {
+            Vector2 directionVec2 = new Vector2(direction[0], direction[1]);
+            if (directionVec2 == Vector2.left) {
+                GetComponent<AnimatorControl>().HeroShot(0);
+            } else if (directionVec2 == Vector2.right) {
+                GetComponent<AnimatorControl>().HeroShot(1);
+            } else if (directionVec2 == Vector2.up) {
+                GetComponent<AnimatorControl>().HeroShot(2);
+            } else if (directionVec2 == Vector2.down) {
+                GetComponent<AnimatorControl>().HeroShot(3);
+            }
+            if (gunNow == Guns.pistol) {
                 FindObjectOfType<SoundManager>().Play("pistolShot");
             }else if(gunNow == Guns.shotgun) {
                 FindObjectOfType<SoundManager>().Play("shotGunShot");

@@ -3,21 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimatorControl : MonoBehaviour {
-    public GameObject hero, boss;
-    Animator heroani, bossani;
-    SpriteRenderer herosr,weaponsr,firesr,fireupdownsr;
+    public GameObject hero {
+        get { return gameObject; }
+    }
+    public GameObject boss;
+    Animator heroani {
+        get { return GetComponent<Animator>(); }
+    }
+    Animator bossani;
+    SpriteRenderer herosr {
+        get { return GetComponent<SpriteRenderer>(); }
+    }
+    SpriteRenderer weaponsr {
+        get {return GameObject.Find("weapon").GetComponent<SpriteRenderer>(); }
+    }
+    SpriteRenderer firesr {
+        get { return GameObject.Find("Fire").GetComponent<SpriteRenderer>(); }
+    }
+    SpriteRenderer fireupdownsr {
+        get { return GameObject.Find("FireUpDown").GetComponent<SpriteRenderer>(); }
+    }
     SpriteMask heromask;
 
 	// Use this for initialization
 	void Start () {
-        hero = GameObject.FindGameObjectWithTag("Player");
-        
-        heroani = hero.GetComponent<Animator>();
-        
-        herosr = hero.GetComponent<SpriteRenderer>();
-        weaponsr = GameObject.Find("weapon").GetComponent<SpriteRenderer>();
-        firesr = GameObject.Find("Fire").GetComponent<SpriteRenderer>();
-        fireupdownsr = GameObject.Find("FireUpDown").GetComponent<SpriteRenderer>();
         try
         {
             boss = GameObject.Find("Boss");

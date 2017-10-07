@@ -33,7 +33,7 @@ public class Map : MonoBehaviour {
     }
 
     public GameObject GetGameObjectAt(int x, int y) {
-        if(x<0 || x>itemMap.GetLength(0) || y<0 || y > itemMap.GetLength(1)) {
+        if(x<0 || x>=itemMap.GetLength(0) || y<0 || y >= itemMap.GetLength(1)) {
             return null;
         } else {
             return itemMap[x, y];

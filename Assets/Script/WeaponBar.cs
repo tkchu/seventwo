@@ -8,7 +8,9 @@ public class WeaponBar : MonoBehaviour {
     private void Update() {
         Weapon weapon = FindObjectOfType<Weapon>();
 
-        if (weapon.gunNow == Guns.pistol) {
+        if (weapon == null) {
+            GetComponent<Image>().enabled = false;
+        } else if (weapon.gunNow == Guns.pistol) {
             GetComponent<Image>().enabled = true;
             GetComponent<Image>().sprite = weaponBar[0];
         }

@@ -59,11 +59,7 @@ public class Player : MonoBehaviour {
                     item.GetComponent<Enemy>().OneShot();
                 }
             }
-            GetComponent<Animator>().SetBool("isShoot", true);
-        }
-        
-        if (shot == 1 && move < 0) {
-            GetComponent<Animator>().SetBool("isAttacking", true);
+            //GetComponent<Animator>().SetBool("isShoot", true);
         }
 
         if(shot == 0 && haveMove) {
