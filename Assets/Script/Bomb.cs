@@ -35,6 +35,7 @@ public class Bomb : MonoBehaviour {
     }
 
     public void Die() {
+        FindObjectOfType<Map>().RemoveGameObject(gameObject);
         //保证不会多次标记死亡
         if (!noDie) {
             return;

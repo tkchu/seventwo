@@ -31,7 +31,16 @@ public class Weapon : MonoBehaviour {
     Map map;
     void Start() {
         map = FindObjectOfType<Map>();
+        loadCount = gunInfo[gunNow][2];
         GetComponent<Animator>().SetInteger("stat", (int)gunNow);
+    }
+
+    private void Update() {
+        if (loadCount <= 0) {
+            gunNow = Guns.empty;
+            GetComponent<Animator>().SetInteger("stat", (int)gunNow);
+            loadCount = 0;
+        }
     }
 
     public void PickGun(Guns gun) {
@@ -67,11 +76,6 @@ public class Weapon : MonoBehaviour {
                 FindObjectOfType<SoundManager>().Play("jumpGunShot");
             }
             loadCount -= 1;
-            if(loadCount <= 0) {
-                gunNow = Guns.empty;
-                GetComponent<Animator>().SetInteger("stat", (int)gunNow);
-                loadCount = 0;
-            }
             return new int[] { 1, backForce };
         }else {
             return new int[] { 0, backForce };

@@ -38,6 +38,7 @@ public class knifeEnemy : MonoBehaviour {
     }
 
     public void Die() {
+        map.RemoveGameObject(gameObject);
         StartCoroutine(dieC());
     }
 
