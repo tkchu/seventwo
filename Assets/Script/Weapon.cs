@@ -39,7 +39,7 @@ public class Weapon : MonoBehaviour {
         if (loadCount <= 0) {
             gunNow = Guns.empty;
             GetComponent<Animator>().SetInteger("stat", (int)gunNow);
-            loadCount = 0;
+            loadCount = gunInfo[gunNow][2];
         }
     }
 
