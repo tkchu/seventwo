@@ -207,8 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1152fbb576ab3d84aa4e83c3101fb6ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunHave: 00000000
-  gunHaveNow: 0
+  gunNow: 1
   loadCount: 999999999
 --- !u!212 &212055885999364094
 SpriteRenderer:

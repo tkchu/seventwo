@@ -7,14 +7,9 @@ public class BossLevelSetUp : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Weapon weapon = FindObjectOfType<Weapon>();
-        weapon.gunHave = new List<Guns> {
-            Guns.pistol,
-            Guns.shotgun,
-            Guns.jumpgun,
-        };
-        weapon.gunHaveNow = 0;
+        weapon.gunNow = 0;
         weapon.loadCount = weapon.loadTime + 1;
-        weapon.GetComponent<Animator>().SetInteger("stat", weapon.gunHaveNow + 1);
+        weapon.GetComponent<Animator>().SetInteger("stat", (int)weapon.gunNow + 1);
     }
 
     // Update is called once per frame

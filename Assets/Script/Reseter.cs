@@ -26,8 +26,7 @@ public class Reseter : MonoBehaviour {
         FindObjectOfType<Player>().GetComponent<Animator>().SetBool("isDead", false);
         FindObjectOfType<Player>().GetComponent<Animator>().SetInteger("stat", gunHaveNow + 1);
 
-        FindObjectOfType<Weapon>().gunHave = new List<Guns>(gunHave);
-        FindObjectOfType<Weapon>().gunHaveNow = gunHaveNow;
+        FindObjectOfType<Weapon>().gunNow = Guns.empty;
         FindObjectOfType<Weapon>().loadCount = loadCount;
 
         FindObjectOfType<GridWorld>().Flush();

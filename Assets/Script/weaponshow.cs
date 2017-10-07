@@ -23,6 +23,11 @@ public class weaponshow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        hero = GameObject.FindGameObjectWithTag("Player");
+        heroAnimator = hero.GetComponent<Animator>();
+        herots = hero.transform;
+        herosr = hero.GetComponent<SpriteRenderer>();
+
         animator.SetInteger("stat", heroAnimator.GetInteger("stat"));
         if(heroAnimator.GetBool("isShoot"))
             animator.SetBool("isShoot",true);

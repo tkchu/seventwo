@@ -16,16 +16,8 @@ public class Weapon : MonoBehaviour {
         {Guns.shotgun, new int[] { 2, -1, 3} },
         {Guns.jumpgun, new int[] {4, 4, 2} },
     };
+    public Guns gunNow;
 
-    public List<Guns> gunHave = new List<Guns>() {
-        Guns.empty,
-    };
-
-    public int gunHaveNow;
-
-    public Guns gunNow {
-        get { return gunHave[gunHaveNow]; }
-    }
     public int range {
         get { return gunInfo[gunNow][0]; }
     }
@@ -42,35 +34,11 @@ public class Weapon : MonoBehaviour {
     }
 
     public void PickGun(Guns gun) {
-        if (gunHave.Contains(Guns.empty)) {
-            gunHave.Remove(Guns.empty);
-        }
-        //捡枪
-        gunHave.Add(gun);
-        gunHaveNow = gunHave.Count - 1;
-        loadCount = loadTime +1;
-
-        GetComponent<Animator>().SetInteger("stat", gunHaveNow + 1);
-    }
-
-    public void SwitchGun() {
-        //换枪
-        int temp = gunHaveNow;
-        gunHaveNow = (gunHaveNow + 1) % gunHave.Count;
-        loadCount = loadTime;
-        if(temp != gunHaveNow) {
-            FindObjectOfType<SoundManager>().Play("reload");
-        }
-        GetComponent<Animator>().SetInteger("stat", gunHaveNow + 1);
+        gunNow = gun;
+        GetComponent<Animator>().SetInteger("stat", (int)gunNow + 1);
     }
 
     public int loadCount = 0;
-    public void OneAction() {
-        loadCount -= 1;
-        if(loadCount <= 0) {
-            SwitchGun();
-        }
-    }
 
     public int[] Shoot(int[] direction) {
         bool shot = false;

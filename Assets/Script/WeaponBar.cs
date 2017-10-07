@@ -17,6 +17,7 @@ public class WeaponBar : MonoBehaviour {
     }
 
     private void Update() {
+        /*
         if (weapon.gunHave.Contains(Guns.pistol)) {
             red.gameObject.SetActive(true);
         }
@@ -26,6 +27,7 @@ public class WeaponBar : MonoBehaviour {
         if (weapon.gunHave.Contains(Guns.jumpgun)) {
             green.gameObject.SetActive(true);
         }
+        */
 
         if(weapon.gunNow == Guns.pistol) {
             red.Select();

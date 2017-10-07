@@ -37,18 +37,7 @@ public class Player : MonoBehaviour {
             }
         }
 
-        //先移动
-        if (move == 0) {
-            haveMove = false;
-        } else {
-            map.MoveItem(gameObject,
-                new int[]{
-                    pos[0] + direction[0] * Mathf.Abs(move) * (move < 0 ? -1 : 1),
-                    pos[1] +  direction[1] * Mathf.Abs(move) * (move < 0 ? -1 : 1)
-                });
-            haveMove = true;
-        }
-        //再触发敌人死亡
+        //先触发敌人死亡
         if (shot == 1) {
             GameObject[] face = map.FindGridItemInRange(pos, direction, GetComponent<Weapon>().range);
 
@@ -59,6 +48,19 @@ public class Player : MonoBehaviour {
                 }
             }
         }
+
+        //再移动
+        if (move == 0) {
+            haveMove = false;
+        } else {
+            map.MoveItem(gameObject,
+                new int[]{
+                    pos[0] + direction[0] * Mathf.Abs(move) * (move < 0 ? -1 : 1),
+                    pos[1] +  direction[1] * Mathf.Abs(move) * (move < 0 ? -1 : 1)
+                });
+            haveMove = true;
+        }
+
         
         if (shot == 1 && move < 0) {
             GetComponent<Animator>().SetBool("isAttacking", true);
@@ -81,7 +83,6 @@ public class Player : MonoBehaviour {
             if (FindObjectOfType<Boss>()) {
                 FindObjectOfType<Boss>().OneAction();
             }
-            GetComponent<Weapon>().OneAction();
         }
 
     }
@@ -120,7 +121,7 @@ public class Player : MonoBehaviour {
             GameObject[] around = map.FindGridItemInRange(pos, direction, GetComponent<Weapon>().range);
             int i = around.Length;
             while (i > 0) {
-                GameObject g = Instantiate(pointPrefab, transform.position + i* 0.6f*(new Vector3(direction[0], direction[1],-1)), Quaternion.identity);
+                GameObject g = Instantiate(pointPrefab, transform.position + new Vector3(0, 0.6f/3 , 0) + i* 0.6f*(new Vector3(direction[0], direction[1],-1)), Quaternion.identity);
                 g.GetComponent<SpriteRenderer>().color = now_color;
                 i -= 1;
             }
@@ -135,8 +136,14 @@ public class Player : MonoBehaviour {
         if(item.GetComponent<knifeEnemy>() && !item.GetComponent<knifeEnemy>().noDie) {
             return;
         }
+        if (item.GetComponent<Lame>() && !item.GetComponent<Lame>().noDie) {
+            return;
+        }
+        if (item.GetComponent<Diagonal>() && !item.GetComponent<Diagonal>().noDie) {
+            return;
+        }
 
-        if(item.tag == "enemy" || item.tag == "spine") {
+        if (item.tag == "enemy" || item.tag == "spine") {
             GetComponent<Animator>().SetBool("isDead", true);
             StartCoroutine(Restart());
         }

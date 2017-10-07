@@ -29,8 +29,6 @@ public class Section : MonoBehaviour {
         begin = true;
         transform.parent.GetComponent<Reseter>().sectionNow = this;
         transform.parent.GetComponent<Reseter>().playerBegin = player.position;
-        transform.parent.GetComponent<Reseter>().gunHave = player.GetComponent<Weapon>().gunHave.ToArray();
-        transform.parent.GetComponent<Reseter>().gunHaveNow = player.GetComponent<Weapon>().gunHaveNow;
         transform.parent.GetComponent<Reseter>().loadCount = player.GetComponent<Weapon>().loadCount;
 
     }
