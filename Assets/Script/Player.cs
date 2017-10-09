@@ -36,12 +36,12 @@ public class Player : MonoBehaviour {
                 break;
             }
         }
-
+        GameObject meetItem = null;
         //移动
         if (move == 0) {
             haveMove = false;
         } else {
-            GameObject meetItem = map.MoveItem(gameObject,
+            meetItem = map.MoveItem(gameObject,
                 new int[]{
                     pos[0] + direction[0] * Mathf.Abs(move) * (move < 0 ? -1 : 1),
                     pos[1] +  direction[1] * Mathf.Abs(move) * (move < 0 ? -1 : 1)
@@ -65,7 +65,7 @@ public class Player : MonoBehaviour {
             //GetComponent<Animator>().SetBool("isShoot", true);
         }
 
-        if(shot == 0 && haveMove) {
+        if(shot == 0 && haveMove && meetItem == null) {
             FindObjectOfType<SoundManager>().Play("move");
         }
 
