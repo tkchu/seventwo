@@ -21,6 +21,9 @@ public class knifeEnemy : MonoBehaviour {
         int[] player_pos = map.GetPlayerPos();
         int[] self_pos = map.FindGameObject(map.itemMap, gameObject);
 
+        if (player_pos == null || self_pos == null)
+            return;
+
         //准备
         if (noDie) {
             if (Mathf.Abs(player_pos[0] - self_pos[0]) + Mathf.Abs(player_pos[1] - self_pos[1]) <= 2) {

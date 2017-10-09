@@ -19,7 +19,7 @@ public class LameMove : MonoBehaviour {
         count = 1;
         int[] playerPos = map.GetPlayerPos();
         int[] selfPos = map.GetItemPos(gameObject);
-        if (selfPos == null)
+        if (playerPos == null || selfPos == null)
             return;
         int[][] nextPos = new int[][] {
             new int[]{selfPos[0]+1, selfPos[1] },

@@ -94,7 +94,9 @@ public class Player : MonoBehaviour {
             Destroy(pointBefore);
         }
         // 设置指示点
-        int[] pos = map.FindGameObject(map.itemMap, gameObject);
+        int[] pos = map.GetPlayerPos();
+        if (pos == null)
+            return;
 
         int[][] allDirections = new int[][] {
             new int[]{-1,0},

@@ -160,7 +160,7 @@ public class MapEditor : MonoBehaviour {
             for (int j = 0; j < itemMap.GetLength(1); j++) {
                 for (int pi = 0; pi < itemPrefabs.Length; pi++) {
                     if (itemPrefabs[pi].name == strs[istr]) {
-                        GameObject newOne = Instantiate(itemPrefabs[pi], basicMap[i, j].transform.localPosition, Quaternion.identity, transform);
+                        GameObject newOne = Instantiate(itemPrefabs[pi], basicMap[i, j].transform.localPosition, itemPrefabs[pi].transform.rotation, transform);
                         newOne.name = strs[istr];
                         itemMap[i, j] = newOne;
                         break;
