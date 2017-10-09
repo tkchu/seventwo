@@ -98,7 +98,12 @@ public class Map : MonoBehaviour {
     public GameObject[] FindGridItemInRange(int[] pos, int[] direction, int range) {
         List<GameObject> result = new List<GameObject>();
         for (int i = 1; i <= range; i++) {
-            GameObject temp = GetGameObjectAt(pos[0] + i * direction[0], pos[1] + i * direction[1]);
+            int x = pos[0] + i * direction[0];
+            int y = pos[1] + i * direction[1];
+            if(x < 0 || x >= itemMap.GetLength(0) || y < 0 || y >= itemMap.GetLength(1)) {
+                break;
+            }
+            GameObject temp = GetGameObjectAt(x, y);
             if (temp != null && temp.tag == "wall") {
                 break;
             }
