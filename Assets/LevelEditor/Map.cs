@@ -69,7 +69,7 @@ public class Map : MonoBehaviour {
                 }
             }
         }
-        return playerPos;
+        return null;
     }
 
     public void UpdateSortOrder() {
@@ -96,6 +96,8 @@ public class Map : MonoBehaviour {
     }
 
     public GameObject[] FindGridItemInRange(int[] pos, int[] direction, int range) {
+        if (pos == null || direction == null)
+            return null;
         List<GameObject> result = new List<GameObject>();
         for (int i = 1; i <= range; i++) {
             int x = pos[0] + i * direction[0];

@@ -13,6 +13,9 @@ public class DiagonalMove : MonoBehaviour {
         int[] playerPos = map.GetPlayerPos();
         int[] selfPos = map.GetItemPos(gameObject);
 
+        if (selfPos == null)
+            return;
+
         int[][] nextPos = new int[][] {
             new int[]{selfPos[0]-1, selfPos[1]-1 },
             new int[]{selfPos[0]+1, selfPos[1]+1 },

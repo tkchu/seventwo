@@ -12,6 +12,8 @@ public class NormalMove : MonoBehaviour {
     public void OneMove() {
         int[] playerPos = map.GetPlayerPos();
         int[] selfPos = map.GetItemPos(gameObject);
+        if (selfPos == null)
+            return;
 
         int[][] nextPos = new int[][] {
             new int[]{selfPos[0]+1, selfPos[1] },
