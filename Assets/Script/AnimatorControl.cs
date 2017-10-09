@@ -15,13 +15,13 @@ public class AnimatorControl : MonoBehaviour {
         get { return GetComponent<SpriteRenderer>(); }
     }
     SpriteRenderer weaponsr {
-        get {return GameObject.Find("weapon").GetComponent<SpriteRenderer>(); }
+        get {return transform.Find("weapon").GetComponent<SpriteRenderer>(); }
     }
     SpriteRenderer firesr {
-        get { return GameObject.Find("Fire").GetComponent<SpriteRenderer>(); }
+        get { return transform.Find("Fire").GetComponent<SpriteRenderer>(); }
     }
     SpriteRenderer fireupdownsr {
-        get { return GameObject.Find("FireUpDown").GetComponent<SpriteRenderer>(); }
+        get { return transform.Find("FireUpDown").GetComponent<SpriteRenderer>(); }
     }
     SpriteMask heromask;
 
