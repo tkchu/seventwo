@@ -78,7 +78,7 @@ public class MapEditor : MonoBehaviour {
             if (prefabs == movePrefabs) {
                 pos += new Vector3(0, tileSize.y / 3, 0);
             }
-            GameObject newOne = Instantiate(prefabs[prefabIndex], pos, Quaternion.identity, transform);
+            GameObject newOne = Instantiate(prefabs[prefabIndex], pos, prefabs[prefabIndex].transform.rotation, transform);
             newOne.name = prefabs[prefabIndex].name;
             collectionTo[xy[0], xy[1]] = newOne;
         }
@@ -168,7 +168,7 @@ public class MapEditor : MonoBehaviour {
                 }
                 for (int pi = 0; pi < movePrefabs.Length; pi++) {
                     if (movePrefabs[pi].name == strs[istr]) {
-                        GameObject newOne = Instantiate(movePrefabs[pi], basicMap[i, j].transform.localPosition + new Vector3(0,tileSize.y/3,0), Quaternion.identity, transform);
+                        GameObject newOne = Instantiate(movePrefabs[pi], basicMap[i, j].transform.localPosition + new Vector3(0,tileSize.y/3,0), movePrefabs[pi].transform.rotation, transform);
                         newOne.name = strs[istr];
                         itemMap[i, j] = newOne;
                         break;
