@@ -110,7 +110,7 @@ public class Map : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         var temp = FindObjectOfType<Player>();
-        if (temp != null) {
+        if (temp != null && !temp.isDead) {
             player = temp.gameObject;
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
                 player.GetComponent<Player>().Go(new int[] { 0, 1 });

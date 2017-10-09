@@ -155,8 +155,11 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public bool isDead = false;
     IEnumerator Restart() {
+        isDead = true;
         yield return new WaitForSeconds(0.5f);
+        isDead = false;
 
         if (SceneManager.GetActiveScene().name == "BossLevel") {
             SceneManager.LoadScene("BossLevel");
