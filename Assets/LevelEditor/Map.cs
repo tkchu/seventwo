@@ -44,20 +44,21 @@ public class Map : MonoBehaviour {
         return FindGameObject(itemMap, g);
     }
 
-    public bool MoveItem(GameObject g, int[] pos) {
+    public GameObject MoveItem(GameObject g, int[] pos) {
         int[] now = FindGameObject(itemMap, g);
         if(now == null) {
-            return false;
+            return null;
         } else {
-            if(itemMap[pos[0], pos[1]]) {
-                itemMap[pos[0], pos[1]].SendMessage("Meet", g);
+            GameObject result = itemMap[pos[0], pos[1]];
+            if (itemMap[pos[0], pos[1]]) {
                 g.SendMessage("Meet", itemMap[pos[0], pos[1]]);
+                itemMap[pos[0], pos[1]].SendMessage("Meet", g);
             }
             itemMap[pos[0], pos[1]] = g;
             MapEditor me = GetComponent<MapEditor>();
             g.transform.position = new Vector3(pos[0] * me.tileSize.x, pos[1] * me.tileSize.y, 0) + me.leftBottomPos + new Vector3(0, 0.6f / 3, 0);
             itemMap[now[0], now[1]] = null;
-            return true;
+            return result;
         }
     }
 

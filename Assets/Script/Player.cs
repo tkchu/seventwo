@@ -41,11 +41,14 @@ public class Player : MonoBehaviour {
         if (move == 0) {
             haveMove = false;
         } else {
-            map.MoveItem(gameObject,
+            GameObject meetItem = map.MoveItem(gameObject,
                 new int[]{
                     pos[0] + direction[0] * Mathf.Abs(move) * (move < 0 ? -1 : 1),
                     pos[1] +  direction[1] * Mathf.Abs(move) * (move < 0 ? -1 : 1)
                 });
+            if(meetItem != null && meetItem.tag == "teleporter") {
+                return;
+            }
             haveMove = true;
         }
 
@@ -141,18 +144,17 @@ public class Player : MonoBehaviour {
 
         if (item.tag == "enemy" || item.tag == "spine") {
             GetComponent<Animator>().SetBool("isDead", true);
+            if (item.GetComponent<knifeEnemy>()) {
+                FindObjectOfType<SoundManager>().Play("dieKnife");
+            } else if (item.tag == "spine") {
+                FindObjectOfType<SoundManager>().Play("dieSpine");
+            }
             StartCoroutine(Restart());
-        }
-
-        if (item.GetComponent<knifeEnemy>()) {
-            FindObjectOfType<SoundManager>().Play("dieKnife");
-        }else if(item.tag == "spine") {
-            FindObjectOfType<SoundManager>().Play("dieSpine");
-        }
-
-        if (item.tag == "pickup") {
+        } else if (item.tag == "pickup") {
             GetComponent<Weapon>().PickGun(item.GetComponent<PickUp>().haveGun);
         }
+        
+
     }
 
     IEnumerator Restart() {

@@ -124,6 +124,10 @@ public class MapEditor : MonoBehaviour {
             Destroy(t.gameObject);
         }
 
+        string key = "map" + mapID.ToString();
+        string value = ReadFile(key);
+        string[] strs = value.Split(',');
+        mapSize = new Vector2(int.Parse(strs[0]), int.Parse(strs[1]));
 
         basicMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
         for (int i = 0; i < mapSize.x; i++) {
@@ -133,10 +137,6 @@ public class MapEditor : MonoBehaviour {
                 basicMap[i, j] = g;
             }
         }
-        string key = "map" + mapID.ToString();
-        string value = ReadFile(key);
-        string[] strs = value.Split(',');
-        mapSize = new Vector2(int.Parse(strs[0]), int.Parse(strs[1]));
         GameObject[,] groundMap = GetComponent<Map>().groundMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
         GameObject[,] itemMap = GetComponent<Map>().itemMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
 

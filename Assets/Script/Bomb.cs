@@ -19,9 +19,6 @@ public class Bomb : MonoBehaviour {
             Die();
         }
 
-        GridItem player = FindObjectOfType<Player>().GetComponent<GridItem>();
-        GridItem self = GetComponent<GridItem>();
-
         int[] player_pos = map.GetPlayerPos();
         int[] self_pos = map.FindGameObject(map.itemMap, gameObject);
 
