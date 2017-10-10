@@ -910,6 +910,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 626d1f4a429885d48b700a5681d66a83, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &493323765
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4434184787170220, guid: ff612a33f19ca634e90591c31fe716d4, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.165726
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434184787170220, guid: ff612a33f19ca634e90591c31fe716d4, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.6496078
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434184787170220, guid: ff612a33f19ca634e90591c31fe716d4, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.31633735
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434184787170220, guid: ff612a33f19ca634e90591c31fe716d4, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434184787170220, guid: ff612a33f19ca634e90591c31fe716d4, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434184787170220, guid: ff612a33f19ca634e90591c31fe716d4, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434184787170220, guid: ff612a33f19ca634e90591c31fe716d4, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434184787170220, guid: ff612a33f19ca634e90591c31fe716d4, type: 2}
+      propertyPath: m_RootOrder
+      value: 29
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ff612a33f19ca634e90591c31fe716d4, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &539056768
 Prefab:
   m_ObjectHideFlags: 0
@@ -1470,6 +1512,7 @@ MonoBehaviour:
   blueGun: {r: 0, g: 0, b: 0, a: 0}
   greenGun: {r: 0, g: 0, b: 0, a: 0}
   pointPrefab: {fileID: 0}
+  isDead: 0
 --- !u!114 &1250171140
 MonoBehaviour:
   m_ObjectHideFlags: 0
