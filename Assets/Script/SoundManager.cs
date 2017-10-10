@@ -32,6 +32,15 @@ public class SoundManager : MonoBehaviour {
     }
 
     public void Play(string soundName) {
-        dict[soundName].Play();
+        if(soundName == "move") {
+            AudioSource source = gameObject.AddComponent<AudioSource>();
+            source.clip = dict["move"].clip;
+            source.volume = dict["move"].volume;
+            source.pitch = dict["move"].pitch;
+            source.Play();
+            Destroy(source, source.clip.length);
+        } else {
+            dict[soundName].Play();
+        }
     }
 }
