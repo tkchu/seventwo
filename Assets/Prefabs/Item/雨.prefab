@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4646229855204000}
   - component: {fileID: 198565871711916486}
   - component: {fileID: 199312156474643668}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: "\u96E8"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1339821334276484}
   m_LocalRotation: {x: 0.06617283, y: -0.70975834, z: 0.6979383, w: -0.068894155}
-  m_LocalPosition: {x: -1.02, y: 7.97, z: 0.28}
+  m_LocalPosition: {x: -1.02, y: 7.97, z: 4.83}
   m_LocalScale: {x: 1.1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,7 +100,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 500582241
+  randomSeed: -884555585
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3336,9 +3336,9 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 200
   m_RenderMode: 0
-  m_SortMode: 0
+  m_SortMode: 1
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.01
   m_CameraVelocityScale: 0
