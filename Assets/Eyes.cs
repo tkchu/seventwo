@@ -24,7 +24,6 @@ public class Eyes : MonoBehaviour {
                 ani.SetBool("bool", true);
             }
         }
-
-        Debug.Log(a.ToString()+" "+b.ToString());
+        
     }
 }

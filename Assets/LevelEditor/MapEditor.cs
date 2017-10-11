@@ -24,6 +24,7 @@ public class MapEditor : MonoBehaviour {
     public GameObject[,] basicMap;
 
     void Start() {
+        //Debug.Log(Application.persistentDataPath);
         if (ExistFile("map" + mapID.ToString())) {
             Load();
         } else {
@@ -193,6 +194,7 @@ public class MapEditor : MonoBehaviour {
     string ReadFile(string fileName) {
         string path = Application.persistentDataPath + fileName;
         return File.ReadAllText(path);
+        
     }
 
 

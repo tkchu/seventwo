@@ -84,7 +84,7 @@ public class Map : MonoBehaviour {
                     } else {
                         itemMap[i, j].GetComponent<SpriteRenderer>().sortingOrder = 100 + (itemMap.GetLength(1) - j) * 10 ;
                     }
-                    if (itemMap[i,j].name == "KnifeEnemy") {
+                    if (itemMap[i,j].tag == "enemy") {
                         Transform t = itemMap[i, j].transform.Find("KnifeEnemyKnife");
                         if (t) {
                             t.GetComponent<SpriteRenderer>().sortingOrder = 101 + (itemMap.GetLength(1) - j) * 10;
