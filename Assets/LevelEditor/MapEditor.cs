@@ -222,6 +222,7 @@ public class MapEditor : MonoBehaviour {
             }
         }
         GetComponent<Map>().UpdateSortOrder();
+        FindObjectOfType<CameraCenter>().Trigger();
     }
 
     public bool release = false;

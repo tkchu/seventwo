@@ -43,7 +43,7 @@ public class PressWaiting : MonoBehaviour {
                 FindObjectOfType<Camera>().orthographicSize = 3.6f;
                 Logo.SetActive(false);
             }).AppendCallback(()=> {
-                SceneManager.LoadScene("mainLevel");
+                SceneManager.LoadScene("levelEditor");
             }).Append(
             UIcoverSR.DOFade(0, 1f)
 
