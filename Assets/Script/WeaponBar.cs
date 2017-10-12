@@ -20,6 +20,8 @@ public class WeaponBar : MonoBehaviour {
             GetComponent<Image>().sprite = weaponBar[2];
         }
         Color oldColor = GetComponent<Image>().color;
+        GetComponent<Image>().color = new Color(oldColor.r, oldColor.g, oldColor.b, alpha);
+        yield return new WaitForSeconds(1f);
         while (alpha >= 0f) {
             GetComponent<Image>().color = new Color(oldColor.r, oldColor.g, oldColor.b, alpha);
             yield return new WaitForSeconds(0.1f);
