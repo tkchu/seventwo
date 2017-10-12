@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212342522690798004}
   m_Layer: 0
   m_Name: "\u6728\u5934\u7BB1\u5B50"
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
