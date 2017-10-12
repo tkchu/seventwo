@@ -204,6 +204,8 @@ public class MapEditor : MonoBehaviour {
         {
             for (int j = 0; j < decorateMap.GetLength(1); j++)
             {
+                if (istr >= strs.Length)
+                    continue;
                 for (int pi = 0; pi < decoratePrefabs.Length; pi++)
                 {
                     if (decoratePrefabs[pi].name == strs[istr])
