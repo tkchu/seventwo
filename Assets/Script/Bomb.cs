@@ -36,6 +36,13 @@ public class Bomb : MonoBehaviour {
 
     }
 
+    int[] pos;
+    public void Update() {
+        int[] temp = map.FindGameObject(map.itemMap, gameObject);
+        if (temp != null)
+            pos = temp;
+    }
+
     public void Die() {
         //保证不会多次标记死亡
         if (!noDie) {
@@ -46,7 +53,6 @@ public class Bomb : MonoBehaviour {
 
         FindObjectOfType<SoundManager>().Play("boom");
 
-        int[] pos = map.FindGameObject(map.itemMap, gameObject);
         GameObject[] around = new GameObject[] {
             map.GetGameObjectAt(pos[0] - 1, pos[1]),
             map.GetGameObjectAt(pos[0] + 1, pos[1]),

@@ -10,6 +10,8 @@ public class Teleporter : MonoBehaviour {
 	}
 	
 	public void Trigger() {
+        SoundManager soundManager = FindObjectOfType<SoundManager>();
+        soundManager.Play("teleporter");
         mapEditor.mapID += 1;
         mapEditor.Load();
     }
