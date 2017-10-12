@@ -45,6 +45,8 @@ public class MapEditor : MonoBehaviour {
     
 
     void MouseDown(BasicTile bt) {
+        if (release)
+            return;
         int[] xy = GetComponent<Map>().FindGameObject(basicMap, bt.gameObject);
         GameObject[,] collectionTo;
         GameObject[] prefabs;
