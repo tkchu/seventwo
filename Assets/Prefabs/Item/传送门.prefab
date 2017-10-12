@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4603727194757564}
   - component: {fileID: 212008165840008170}
   - component: {fileID: 95697001756707256}
+  - component: {fileID: 114267112457096490}
   m_Layer: 0
   m_Name: "\u4F20\u9001\u95E8"
-  m_TagString: Untagged
+  m_TagString: teleporter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -58,6 +59,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114267112457096490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1502556529098118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df04b5fb04ffa664ba182d9f3e378102, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212008165840008170
 SpriteRenderer:
   m_ObjectHideFlags: 1
