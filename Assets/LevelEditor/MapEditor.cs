@@ -147,6 +147,10 @@ public class MapEditor : MonoBehaviour {
         }
 
 
+        string key = "map" + mapID.ToString();
+        string value = ReadFile(key);
+        string[] strs = value.Split(',');
+        mapSize = new Vector2(int.Parse(strs[0]), int.Parse(strs[1]));
         basicMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
         for (int i = 0; i < mapSize.x; i++) {
             for (int j = 0; j < mapSize.y; j++) {
@@ -155,10 +159,6 @@ public class MapEditor : MonoBehaviour {
                 basicMap[i, j] = g;
             }
         }
-        string key = "map" + mapID.ToString();
-        string value = ReadFile(key);
-        string[] strs = value.Split(',');
-        mapSize = new Vector2(int.Parse(strs[0]), int.Parse(strs[1]));
         GameObject[,] groundMap = GetComponent<Map>().groundMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
         GameObject[,] itemMap = GetComponent<Map>().itemMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
         GameObject[,] decorateMap = GetComponent<Map>().decorateMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
@@ -169,6 +169,8 @@ public class MapEditor : MonoBehaviour {
             for (int j = 0; j < groundMap.GetLength(1); j++) {
                 for (int pi = 0; pi < groundPrefabs.Length; pi++) {
                     if (groundPrefabs[pi].name == strs[istr]) {
+                        var temp = groundPrefabs[pi];
+                        var temp2 = basicMap[i, j];
                         GameObject newOne = Instantiate(groundPrefabs[pi], basicMap[i, j].transform.localPosition, Quaternion.identity, transform);
                         newOne.name = strs[istr];
                         groundMap[i, j] = newOne;
