@@ -7,6 +7,7 @@ public class Map : MonoBehaviour {
 
     public GameObject[,] groundMap = new GameObject[0, 0] { };
     public GameObject[,] itemMap = new GameObject[0, 0] { };
+    public GameObject[,] decorateMap = new GameObject[0, 0] { };
 
     GameObject player = null;
     int[] playerPos = { 0, 0};
@@ -84,7 +85,7 @@ public class Map : MonoBehaviour {
                     } else {
                         itemMap[i, j].GetComponent<SpriteRenderer>().sortingOrder = 100 + (itemMap.GetLength(1) - j) * 10 ;
                     }
-                    if (itemMap[i,j].tag == "enemy") {
+                    if (itemMap[i,j].name == "KnifeEnemy") {
                         Transform t = itemMap[i, j].transform.Find("KnifeEnemyKnife");
                         if (t) {
                             t.GetComponent<SpriteRenderer>().sortingOrder = 101 + (itemMap.GetLength(1) - j) * 10;

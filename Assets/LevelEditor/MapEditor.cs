@@ -20,6 +20,7 @@ public class MapEditor : MonoBehaviour {
     public GameObject[] groundPrefabs;
     public GameObject[] itemPrefabs;
     public GameObject[] movePrefabs;
+    public GameObject[] decoratePrefabs;
     [Space]
     public GameObject[,] basicMap;
 
@@ -38,6 +39,7 @@ public class MapEditor : MonoBehaviour {
             }
             GetComponent<Map>().groundMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
             GetComponent<Map>().itemMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
+            GetComponent<Map>().decorateMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
         }
     }
     
@@ -55,7 +57,14 @@ public class MapEditor : MonoBehaviour {
             //铺墙
             collectionTo = GetComponent<Map>().itemMap;
             prefabs = itemPrefabs;
-        } else {
+        } else if (Input.GetKey(KeyCode.Z))
+        {
+            //眼睛、影子
+            collectionTo = GetComponent<Map>().decorateMap;
+            prefabs = decoratePrefabs;
+        }
+
+        else {
             //铺怪
             collectionTo = GetComponent<Map>().itemMap;
             prefabs = movePrefabs;
@@ -101,6 +110,7 @@ public class MapEditor : MonoBehaviour {
     public void Save() {
         GameObject[,] groundMap = GetComponent<Map>().groundMap;
         GameObject[,] itemMap = GetComponent<Map>().itemMap;
+        GameObject[,] decorateMap = GetComponent<Map>().decorateMap;
         string key = "map"+mapID.ToString();
         string value = "";
         value += mapSize.x.ToString() + "," + mapSize.y.ToString() + ",";
@@ -115,6 +125,17 @@ public class MapEditor : MonoBehaviour {
             if (g != null) {
                 value += g.name + ",";
             } else {
+                value += "null" + ",";
+            }
+        }
+        foreach (GameObject g in decorateMap)
+        {
+            if (g != null)
+            {
+                value += g.name + ",";
+            }
+            else
+            {
                 value += "null" + ",";
             }
         }
@@ -140,6 +161,7 @@ public class MapEditor : MonoBehaviour {
         mapSize = new Vector2(int.Parse(strs[0]), int.Parse(strs[1]));
         GameObject[,] groundMap = GetComponent<Map>().groundMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
         GameObject[,] itemMap = GetComponent<Map>().itemMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
+        GameObject[,] decorateMap = GetComponent<Map>().decorateMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
 
         int istr = 2;
         //处理地板
@@ -178,7 +200,23 @@ public class MapEditor : MonoBehaviour {
                 istr += 1;
             }
         }
-
+        for (int i = 0; i < decorateMap.GetLength(0); i++)
+        {
+            for (int j = 0; j < decorateMap.GetLength(1); j++)
+            {
+                for (int pi = 0; pi < decoratePrefabs.Length; pi++)
+                {
+                    if (groundPrefabs[pi].name == strs[istr])
+                    {
+                        GameObject newOne = Instantiate(decoratePrefabs[pi], basicMap[i, j].transform.localPosition, Quaternion.identity, transform);
+                        newOne.name = strs[istr];
+                        decorateMap[i, j] = newOne;
+                        break;
+                    }
+                }
+                istr += 1;
+            }
+        }
         GetComponent<Map>().UpdateSortOrder();
     }
 
