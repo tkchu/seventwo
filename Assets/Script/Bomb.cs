@@ -61,6 +61,7 @@ public class Bomb : MonoBehaviour {
             }else if(item != null && item.tag == "Player") {
                 item.GetComponent<Player>().Meet(gameObject);
             }if(item!=null && item.tag == "boss") {
+                if(GameObject.FindWithTag("enemy")==null)
                 item.GetComponent<BossPart>().OneHit();
             }
         }

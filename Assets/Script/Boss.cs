@@ -5,45 +5,60 @@ using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour {
     public int hp = 5;
+    public bool tick;
+    public Map map;
+    public MapEditor mapEditor;
+    
+    public GameObject[] enemypoint;
+    public GameObject[] weaponpoint;
+    public GameObject[] bombpoint;
 
-    public GridWorld gw;
-    public int Ylength;
-    public int Xlength;
 
-    public GameObject bomb;
-    public GameObject spine;
-    public GameObject moveBomb;
-    public GameObject knfieEnemy;
 
     private void Start() {
-        gw = FindObjectOfType<GridWorld>();
-        Ylength = gw.allItems.Length;
-        Xlength = gw.allItems[0].Length;
+        map = FindObjectOfType<Map>();
+       
     }
-
-    public int count = 0;
-    public bool createA = true;
-    public void OneAction() {
-        count += 1;
-        if(count % 3 == 0) {
-            if (createA) {
-                GetComponent<Animator>().SetBool("left", true);
-                if(count % 10 == 0) {
-                    CreatePresetBomb();
-                }
-                for (int i = 0; i < 4; i++) {
-                    CreateRandomBomb();
-                }
-            } else {
-                GetComponent<Animator>().SetBool("right", true);
-                for (int i = 0; i < 4; i++) {
-                    CreateRandom1();
-                }
-            }
-            createA = !createA;
+    private void Update()
+    {
+        if (tick)
+        {
+            OneAction();
+            tick = false;
         }
     }
 
+
+    public void OneAction() {
+        if (GameObject.FindWithTag("enemy") == null)
+            CreateRandomBomb();
+    }
+    public void CreateRandomBomb()
+    {
+        GetComponent<Animator>().SetBool("left", true);
+        foreach (GameObject a in bombpoint){
+            a.SendMessage("Create");
+        };
+    }
+    public void CreateRandomEnemy()
+    {
+        GetComponent<Animator>().SetBool("right", true);
+        foreach (GameObject a in enemypoint)
+        {
+            a.SendMessage("Create");
+        };
+    }
+    public void CreateRandomWeapon()
+    {
+        foreach (GameObject a in weaponpoint)
+        {
+            a.SendMessage("Create");
+        };
+    }
+
+
+
+    /*
     public void CreatePresetBomb() {
         int[] bombXMayBe = new int[] { 6, 6, 6, 7, 8, 9, 9, 9 };
         int[] bombYMayBe = new int[] { 5, 4, 3, 3, 3, 3, 4, 5 };
@@ -80,16 +95,18 @@ public class Boss : MonoBehaviour {
         }
         CreatePrefabAt(moveBomb, x, y);
     }
-
+    */
     private void CreatePrefabAt(GameObject prefab, int x, int y) {
-        float pos_x = -4.2f + x * gw.gridSize;
-        float pos_y = -1.2f + y * gw.gridSize;
-        Instantiate(prefab, new Vector3(pos_x, pos_y, -20), Quaternion.identity, transform);
-        gw.Flush();
+        Vector3 pos = mapEditor.basicMap[x, y].transform.localPosition;
+        
+            pos += new Vector3(0,mapEditor.tileSize.y / 3, 0);
+        
+        Instantiate(prefab,pos, Quaternion.identity, transform);
+        
     }
 
     public GameObject flamePrefab;
-    public Transform[] parts;
+    public GameObject[] parts;
     public void OneHit() {
         Debug.Log("hp--");
         GetComponent<Animator>().SetBool("ishited", true);
@@ -101,10 +118,11 @@ public class Boss : MonoBehaviour {
     }
 
     IEnumerator Explode() {
+        parts=GameObject.FindGameObjectsWithTag("boss");
         int time = 10;
         while (time>0) {
             time -= 1;
-            Vector3 position = parts[Random.Range(0, parts.Length)].position;
+            Vector3 position = parts[Random.Range(0, parts.Length)].transform.position;
             Instantiate(flamePrefab, position + Vector3.back * 50, Quaternion.identity);
             yield return new WaitForSeconds(0.3f);
         }
