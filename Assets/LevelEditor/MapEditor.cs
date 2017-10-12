@@ -45,6 +45,8 @@ public class MapEditor : MonoBehaviour {
     
 
     void MouseDown(BasicTile bt) {
+        if (release)
+            return;
         int[] xy = GetComponent<Map>().FindGameObject(basicMap, bt.gameObject);
         GameObject[,] collectionTo;
         GameObject[] prefabs;
@@ -222,6 +224,7 @@ public class MapEditor : MonoBehaviour {
             }
         }
         GetComponent<Map>().UpdateSortOrder();
+        FindObjectOfType<CameraCenter>().Trigger();
     }
 
     public bool release = false;

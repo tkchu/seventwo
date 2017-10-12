@@ -45,20 +45,27 @@ public class Map : MonoBehaviour {
         return FindGameObject(itemMap, g);
     }
 
-    public bool MoveItem(GameObject g, int[] pos) {
+    public GameObject MoveItem(GameObject g, int[] pos) {
+        //返回碰到的东西
         int[] now = FindGameObject(itemMap, g);
+        GameObject itemMeet = null;
         if(now == null) {
-            return false;
+            return itemMeet;
         } else {
             if(itemMap[pos[0], pos[1]]) {
-                itemMap[pos[0], pos[1]].SendMessage("Meet", g);
-                g.SendMessage("Meet", itemMap[pos[0], pos[1]]);
+                itemMeet = itemMap[pos[0], pos[1]];
+                if (itemMeet.tag == "teleporter") {
+                    itemMeet.GetComponent<Teleporter>().Trigger();
+                    return itemMeet;
+                }
+                itemMeet.SendMessage("Meet", g);
+                g.SendMessage("Meet", itemMeet);
             }
             itemMap[pos[0], pos[1]] = g;
             MapEditor me = GetComponent<MapEditor>();
             g.transform.position = new Vector3(pos[0] * me.tileSize.x, pos[1] * me.tileSize.y, 0) + me.leftBottomPos + new Vector3(0, 0.6f / 3, 0);
             itemMap[now[0], now[1]] = null;
-            return true;
+            return itemMeet;
         }
     }
 

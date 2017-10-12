@@ -41,11 +41,13 @@ public class Player : MonoBehaviour {
         if (move == 0) {
             haveMove = false;
         } else {
-            map.MoveItem(gameObject,
+            GameObject itemMeet = map.MoveItem(gameObject,
                 new int[]{
                     pos[0] + direction[0] * Mathf.Abs(move) * (move < 0 ? -1 : 1),
                     pos[1] +  direction[1] * Mathf.Abs(move) * (move < 0 ? -1 : 1)
                 });
+            if (itemMeet != null && itemMeet.tag == "teleporter")
+                return;
             haveMove = true;
         }
 

@@ -14,6 +14,8 @@ public class SoundManager : MonoBehaviour {
     public AudioSource boom;
     public AudioSource dieSpine;
 
+    public AudioSource teleporter;
+
     // Use this for initialization
 
     Dictionary<string, AudioSource> dict;
@@ -28,6 +30,7 @@ public class SoundManager : MonoBehaviour {
             {"dieKnife", dieKnife},
             {"boom", boom},
             {"dieSpine", dieSpine },
+            {"teleporter", teleporter },
         };
     }
 

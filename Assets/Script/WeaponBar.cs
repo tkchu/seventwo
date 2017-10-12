@@ -5,26 +5,26 @@ using UnityEngine.UI;
 
 public class WeaponBar : MonoBehaviour {
     public Sprite[] weaponBar;
-    private void Update() {
-        Weapon weapon = FindObjectOfType<Weapon>();
+    public void PickGun(Weapon weapon) {
+        StartCoroutine(Show(weapon.gunNow));
 
-        if (weapon == null) {
-            GetComponent<Image>().enabled = false;
-        } else if (weapon.gunNow == Guns.pistol) {
-            GetComponent<Image>().enabled = true;
+    }
+
+    IEnumerator Show(Guns gun) {
+        float alpha = 1f;
+        if (gun == Guns.pistol) {
             GetComponent<Image>().sprite = weaponBar[0];
-        }
-        else if (weapon.gunNow == Guns.shotgun) {
-            GetComponent<Image>().enabled = true;
+        } else if (gun == Guns.shotgun) {
             GetComponent<Image>().sprite = weaponBar[1];
-
-        } else if (weapon.gunNow == Guns.jumpgun) {
-            GetComponent<Image>().enabled = true;
+        } else if (gun == Guns.jumpgun) {
             GetComponent<Image>().sprite = weaponBar[2];
-        } else {
-            GetComponent<Image>().enabled = false;
         }
-
+        Color oldColor = GetComponent<Image>().color;
+        while (alpha >= 0f) {
+            GetComponent<Image>().color = new Color(oldColor.r, oldColor.g, oldColor.b, alpha);
+            yield return new WaitForSeconds(0.1f);
+            alpha -= 0.1f;
+        }
     }
 
 }

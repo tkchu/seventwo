@@ -9,10 +9,10 @@ public class Teleporter : MonoBehaviour {
         mapEditor = FindObjectOfType<MapEditor>();
 	}
 	
-	public void Meet(GameObject g) {
-        if(g.tag == "Player") {
-            mapEditor.mapID += 1;
-            mapEditor.Load();
-        }
+	public void Trigger() {
+        SoundManager soundManager = FindObjectOfType<SoundManager>();
+        soundManager.Play("teleporter");
+        mapEditor.mapID += 1;
+        mapEditor.Load();
     }
 }

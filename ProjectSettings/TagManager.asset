@@ -10,7 +10,8 @@ TagManager:
   - enemy
   - spine
   - pickup
-  - boss
+  - teleporter  - boss
+
   layers:
   - Default
   - TransparentFX
