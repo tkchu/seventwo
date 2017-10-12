@@ -93,7 +93,7 @@ public class MapEditor : MonoBehaviour {
             collectionTo[xy[0], xy[1]] = newOne;
         }
         GetComponent<Map>().UpdateSortOrder();
-        Save();
+        //Save();
     }
 
     public void Update() {
@@ -206,7 +206,7 @@ public class MapEditor : MonoBehaviour {
             {
                 for (int pi = 0; pi < decoratePrefabs.Length; pi++)
                 {
-                    if (groundPrefabs[pi].name == strs[istr])
+                    if (decoratePrefabs[pi].name == strs[istr])
                     {
                         GameObject newOne = Instantiate(decoratePrefabs[pi], basicMap[i, j].transform.localPosition, Quaternion.identity, transform);
                         newOne.name = strs[istr];
