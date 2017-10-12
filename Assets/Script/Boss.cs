@@ -8,16 +8,26 @@ public class Boss : MonoBehaviour {
     public bool tick;
     public Map map;
     public MapEditor mapEditor;
-    
-    public GameObject[] enemypoint;
-    public GameObject[] weaponpoint;
-    public GameObject[] bombpoint;
 
-
+    public int[][][] enemypoint;
+    public int[][] weaponpoint;
+    public int[][] bombpoint;
+    public GameObject[] bomb;
+    public GameObject[] enemy;
+    public GameObject[] weapon;
 
     private void Start() {
         map = FindObjectOfType<Map>();
-       
+        mapEditor = FindObjectOfType<MapEditor>();
+        weaponpoint = new int[][] { new int[] { 9, 2 } ,new int[] { 2,4},new int[] { 17, 6 } };
+        bombpoint = new int[][] { new int[] { 5, 3 }, new int[] { 6, 6 }, new int[] { 12, 2 }, new int[]{15, 4}};
+        enemypoint[0] = new int[3][] { new int[2] { 1, 1 }, new int[2] { 1, 2 }, new int[2] { 1, 3 }};
+        enemypoint[1] = new int[4][] { new int[2] { 1, 7 }, new int[2] { 1, 8 }, new int[2] { 2, 7 },new int[2] { 2, 8 } };
+        enemypoint[2] = new int[2][] { new int[2] { 6, 1 }, new int[2] { 7, 1 } };
+        enemypoint[3] = new int[][] { new int[] { 18, 7 }, new int[] { 18, 8 }, new int[] { 19, 7 }, new int[] { 19, 8 } };
+        enemypoint[4] = new int[][] { new int[] { 18, 1 }, new int[] { 19, 1 } };
+
+
     }
     private void Update()
     {
@@ -28,31 +38,47 @@ public class Boss : MonoBehaviour {
         }
     }
 
+    void Create(int[] xy,GameObject[] prefab)
+    {
+        GameObject old = map.itemMap[xy[0], xy[1]];
+        Vector3 pos = mapEditor.basicMap[xy[0], xy[1]].transform.localPosition;
+        pos += new Vector3(0, mapEditor.tileSize.y / 3, 0);
+        if (old != null && old != gameObject && old.tag != "Player")
+            Destroy(old);
+        var pb = prefab[Random.Range(0, prefab.Length)];
+        map.itemMap[xy[0], xy[1]] = Instantiate(pb, pos,pb.transform.rotation);
+    }
 
     public void OneAction() {
+
         if (GameObject.FindWithTag("enemy") == null)
             CreateRandomBomb();
+        CreateRandomWeapon();
     }
     public void CreateRandomBomb()
     {
         GetComponent<Animator>().SetBool("left", true);
-        foreach (GameObject a in bombpoint){
-            a.SendMessage("Create");
+        foreach (int[] a in bombpoint)
+        {
+           Create(a,bomb);
         };
     }
-    public void CreateRandomEnemy()
+    
+    public void CreateRandomEnemy(int[][] en)
     {
         GetComponent<Animator>().SetBool("right", true);
-        foreach (GameObject a in enemypoint)
+        foreach (int[] a in en)
         {
-            a.SendMessage("Create");
+
+            Create(a,enemy);
         };
     }
     public void CreateRandomWeapon()
     {
-        foreach (GameObject a in weaponpoint)
+        foreach (int[] a in weaponpoint)
         {
-            a.SendMessage("Create");
+
+            Create(a,weapon);
         };
     }
 

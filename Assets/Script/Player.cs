@@ -77,10 +77,10 @@ public class Player : MonoBehaviour {
             foreach (Enemy item in items) {
                 item.OneAction();
             }
-
+            /*
             if (FindObjectOfType<Boss>()) {
                 FindObjectOfType<Boss>().OneAction();
-            }
+            }*/
         }
 
     }

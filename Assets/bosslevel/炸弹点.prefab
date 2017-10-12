@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114719064814178786}
   m_Layer: 0
   m_Name: "\u70B8\u5F39\u70B9"
-  m_TagString: Untagged
+  m_TagString: bombpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab:
-  - {fileID: 1246275728485396, guid: d124e189424571e42a65e8f1e5ebf927, type: 2}
+  - {fileID: 1001318645118222, guid: fcecd690bbf9f5741b78cc009e88b7b4, type: 2}
 --- !u!212 &212404664058183006
 SpriteRenderer:
   m_ObjectHideFlags: 1

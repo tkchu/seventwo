@@ -9350,14 +9350,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 5
+  tick: 0
   map: {fileID: 0}
   mapEditor: {fileID: 0}
-  enemypoint: []
-  weaponpoint: []
-  bombpoint: []
-  count: 0
-  createA: 1
-  flamePrefab: {fileID: 0}
+  bomb:
+  - {fileID: 1001318645118222, guid: fcecd690bbf9f5741b78cc009e88b7b4, type: 2}
+  enemy:
+  - {fileID: 1053295769156008, guid: 521b8dfecd5d72d4e9e03bc3ea8e07dd, type: 2}
+  - {fileID: 1457399003537810, guid: 1b9f77e91f3844444b6e66ebc4bed176, type: 2}
+  - {fileID: 1989655547282298, guid: 119e6f9601dfcc74da6ef2ac1c9b7698, type: 2}
+  - {fileID: 1692967325896940, guid: e112676938df35441a693ac58d45229a, type: 2}
+  weapon:
+  - {fileID: 1225580238610258, guid: 3eb528848edf47043934b42b5898ee08, type: 2}
+  - {fileID: 1148430734007104, guid: 7e23a916dae25bd4082452b2a553f2da, type: 2}
+  - {fileID: 1523644107297316, guid: fcc0b02e7904035409926faec81cf5c2, type: 2}
+  flamePrefab: {fileID: 1621616000263508, guid: 24e9ba155a7de1b4383d6ccb542c9031,
+    type: 2}
   parts: []
 --- !u!1 &827102588
 GameObject:
@@ -12616,6 +12624,7 @@ MonoBehaviour:
   dieKnife: {fileID: 178970928}
   boom: {fileID: 2090097282}
   dieSpine: {fileID: 1907704396}
+  teleporter: {fileID: 0}
 --- !u!4 &1060891860
 Transform:
   m_ObjectHideFlags: 0
