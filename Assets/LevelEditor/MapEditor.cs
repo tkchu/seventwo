@@ -222,19 +222,30 @@ public class MapEditor : MonoBehaviour {
         GetComponent<Map>().UpdateSortOrder();
     }
 
+    public bool release = false;
     bool ExistFile(string fileName) {
+        if (release) {
+            return true;
+        }
         string path = Application.persistentDataPath + fileName;
         return File.Exists(path);
     }
 
     void WriteFile(string fileName, string content) {
+        if (release)
+            return;
         string path = Application.persistentDataPath + fileName;
         File.WriteAllText(path, content);
     }
     string ReadFile(string fileName) {
+        if (release) {
+            string filePath = "Maps/" + fileName;
+            TextAsset ta = Resources.Load<TextAsset>(filePath);
+            return ta.text;
+        }
+
         string path = Application.persistentDataPath + fileName;
         return File.ReadAllText(path);
-        
     }
 
 
