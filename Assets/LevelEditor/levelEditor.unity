@@ -521,9 +521,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponBar:
-  - {fileID: 21300000, guid: 0d88c47a570ab094db435c1d023b7a96, type: 3}
-  - {fileID: 21300000, guid: 7e43564bd56f7b2439adf08daf1bf5c8, type: 3}
-  - {fileID: 21300000, guid: ec38fbc69cf063a47ae53e3bf3e6b27f, type: 3}
+  - {fileID: 21300000, guid: 61521c5a9458f0041894852d24cec7cb, type: 3}
+  - {fileID: 21300000, guid: 203c6b8fe3a8c154689682074d07aebb, type: 3}
+  - {fileID: 21300000, guid: b87f4ad04dc86284f9553c7f3c0753d1, type: 3}
 --- !u!1001 &1017079641
 Prefab:
   m_ObjectHideFlags: 0
