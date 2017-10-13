@@ -5769,7 +5769,7 @@ MonoBehaviour:
   - {fileID: 1778404236514374, guid: 03fc8864f27c54c4fbfef319225ffa5c, type: 2}
   - {fileID: 1311954427859694, guid: 61ff5aa57ec5be6488344d2fc686e727, type: 2}
   - {fileID: 1411233146398508, guid: ff612a33f19ca634e90591c31fe716d4, type: 2}
-  release: 0
+  release: 1
 --- !u!114 &560247126
 MonoBehaviour:
   m_ObjectHideFlags: 0
