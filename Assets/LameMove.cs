@@ -58,6 +58,7 @@ public class LameMove : MonoBehaviour {
         }
         if (nextPosI >= 0 && nextPosI < 4) {
             map.MoveItem(gameObject, nextPos[nextPosI]);
+            GetComponent<Animator>().SetBool("isMoving", true);
         }
     }
 }
