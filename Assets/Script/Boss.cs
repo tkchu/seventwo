@@ -71,7 +71,6 @@ public class Boss : MonoBehaviour {
     }
     public void CreateRandomBomb()
     {
-        GetComponent<Animator>().SetBool("left", true);
         foreach (int[] a in bombpoint)
         {
            Create(a,bomb);
@@ -80,7 +79,6 @@ public class Boss : MonoBehaviour {
     
     public void CreateRandomEnemy(int[][] en,GameObject[] pre)
     {
-        GetComponent<Animator>().SetBool("right", true);
         int num=Random.Range(1, 4);
         foreach (int[] a in en)
         {

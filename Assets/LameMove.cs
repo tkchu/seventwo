@@ -13,6 +13,8 @@ public class LameMove : MonoBehaviour {
 
     public void OneMove() {
         if(count > 0) {
+
+            GetComponent<Animator>().SetBool("isMoving", true);
             count -= 1;
             return;
         }
@@ -58,7 +60,9 @@ public class LameMove : MonoBehaviour {
         }
         if (nextPosI >= 0 && nextPosI < 4) {
             map.MoveItem(gameObject, nextPos[nextPosI]);
-            GetComponent<Animator>().SetBool("isMoving", true);
+            
+                GetComponent<Animator>().SetBool("isMoving", false);
+            
         }
     }
 }
