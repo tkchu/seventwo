@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Teleporter : MonoBehaviour {
     MapEditor mapEditor;
@@ -13,6 +14,10 @@ public class Teleporter : MonoBehaviour {
         SoundManager soundManager = FindObjectOfType<SoundManager>();
         soundManager.Play("teleporter");
         mapEditor.mapID += 1;
-        mapEditor.Load();
+        if (mapEditor.mapID == 20) {
+            SceneManager.LoadScene("boss");
+        }else{
+            mapEditor.Load();
+        }
     }
 }
