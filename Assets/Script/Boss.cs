@@ -50,14 +50,14 @@ public class Boss : MonoBehaviour {
     public void OneAction() {
         if (callenemy)
         {
-            callenemy = false;            
+            callenemy = false;
             GetComponent<Animator>().SetBool("left", true);
             for (int i = 0; i < enemypoint.Length; ++i)
                 CreateRandomEnemy(enemypoint[i],enemy);
             CreateRandomWeapon();
 
         }
-
+        
         else if(unbeatable)
         {
             if(GameObject.FindWithTag("enemy")!=null)
@@ -67,6 +67,13 @@ public class Boss : MonoBehaviour {
                 CreateRandomEnemy(enemypoint[i],movebomb);
              CreateRandomBomb();
             unbeatable = false;
+        }
+        else if(GameObject.FindWithTag("enemy") == null)
+        {
+            GetComponent<Animator>().SetBool("left", true);
+            for (int i = 0; i < enemypoint.Length; ++i)
+                CreateRandomEnemy(enemypoint[i], enemy);
+            CreateRandomWeapon();
         }
     }
     public void CreateRandomBomb()
