@@ -48,10 +48,11 @@ public class Boss : MonoBehaviour {
     }
 
     public void OneAction() {
-        if (GameObject.FindWithTag("enemy") != null)
-            return;
         if (!unbeatable)
         {
+
+            if (GameObject.FindWithTag("enemy") != null)
+                return;
             GetComponent<Animator>().SetBool("left", true);
             for (int i = 0; i < enemypoint.Length; ++i)
                 CreateRandomEnemy(enemypoint[i], movebomb);
@@ -111,7 +112,6 @@ public class Boss : MonoBehaviour {
     public GameObject flamePrefab;
     public GameObject[] parts;
     public void OneHit() {
-        if(GameObject.FindWithTag("enemy"))
             unbeatable = true;
         Debug.Log("hp--");
         GetComponent<Animator>().SetBool("ishited", true);
