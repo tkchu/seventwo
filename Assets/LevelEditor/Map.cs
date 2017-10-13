@@ -58,8 +58,14 @@ public class Map : MonoBehaviour {
                     itemMeet.GetComponent<Teleporter>().Trigger();
                     return itemMeet;
                 }
-                itemMeet.SendMessage("Meet", g);
-                g.SendMessage("Meet", itemMeet);
+                try
+                {
+                    itemMeet.SendMessage("Meet", g);
+                    g.SendMessage("Meet", itemMeet);
+                }
+                catch(System.Exception e) {
+                    throw e;
+                }
             }
             itemMap[pos[0], pos[1]] = g;
             MapEditor me = GetComponent<MapEditor>();

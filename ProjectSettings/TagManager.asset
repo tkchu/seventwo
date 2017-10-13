@@ -11,7 +11,11 @@ TagManager:
   - spine
   - pickup
   - teleporter  - boss
-
+  - teleporter
+  - boss
+  - enemypoint
+  - bombpoint
+  - weaponpoint
   layers:
   - Default
   - TransparentFX

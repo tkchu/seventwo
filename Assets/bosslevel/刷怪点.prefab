@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114685095847513504}
   m_Layer: 0
   m_Name: "\u5237\u602A\u70B9"
-  m_TagString: Untagged
+  m_TagString: enemypoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
