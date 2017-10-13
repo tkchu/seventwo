@@ -7,7 +7,7 @@ public class Boss : MonoBehaviour {
     public int hp = 5;
     public Map map;
     public MapEditor mapEditor;
-    public bool unbeatable = false;
+    public bool unbeatable = false,callenemy=false;
     public int[][][] enemypoint=new int[5][][];
     public int[][] weaponpoint;
     public int[][] bombpoint;
@@ -48,24 +48,24 @@ public class Boss : MonoBehaviour {
     }
 
     public void OneAction() {
-        if (!unbeatable)
+        if (callenemy)
         {
-
-            if (GameObject.FindWithTag("enemy") != null)
-                return;
+            callenemy = false;            
             GetComponent<Animator>().SetBool("left", true);
             for (int i = 0; i < enemypoint.Length; ++i)
-                CreateRandomEnemy(enemypoint[i], movebomb);
-            CreateRandomBomb();
+                CreateRandomEnemy(enemypoint[i],enemy);
+            CreateRandomWeapon();
 
         }
 
-        else
+        else if(unbeatable)
         {
+            if(GameObject.FindWithTag("enemy")!=null)
+                return;
             GetComponent<Animator>().SetBool("right", true);
             for (int i=0;i<enemypoint.Length;++i)
-                CreateRandomEnemy(enemypoint[i],enemy);
-            CreateRandomWeapon();
+                CreateRandomEnemy(enemypoint[i],movebomb);
+             CreateRandomBomb();
             unbeatable = false;
         }
     }
@@ -112,7 +112,8 @@ public class Boss : MonoBehaviour {
     public GameObject flamePrefab;
     public GameObject[] parts;
     public void OneHit() {
-            unbeatable = true;
+        unbeatable = true;
+        callenemy = true;
         Debug.Log("hp--");
         GetComponent<Animator>().SetBool("ishited", true);
         hp -= 1;

@@ -53,7 +53,7 @@ public class DiagonalMove : MonoBehaviour {
         }
         if (nextPosI >= 0 && nextPosI < 4) {
             map.MoveItem(gameObject, nextPos[nextPosI]);
-            if (nextPosI == 0 || nextPosI == 2) {
+            if (nextPosI == 0 || nextPosI == 1) {
                 GetComponent<Animator>().SetBool("right", true);
             }else{
                 GetComponent<Animator>().SetBool("left", true);
