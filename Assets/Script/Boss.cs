@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour {
     public int hp = 5;
-    public bool tick;
     public Map map;
     public MapEditor mapEditor;
-
-    public int[][][] enemypoint;
+    public bool unbeatable = false;
+    public int[][][] enemypoint=new int[5][][];
     public int[][] weaponpoint;
     public int[][] bombpoint;
+    public GameObject[] movebomb;
     public GameObject[] bomb;
     public GameObject[] enemy;
     public GameObject[] weapon;
@@ -21,26 +21,24 @@ public class Boss : MonoBehaviour {
         mapEditor = FindObjectOfType<MapEditor>();
         weaponpoint = new int[][] { new int[] { 9, 2 } ,new int[] { 2,4},new int[] { 17, 6 } };
         bombpoint = new int[][] { new int[] { 5, 3 }, new int[] { 6, 6 }, new int[] { 12, 2 }, new int[]{15, 4}};
-        enemypoint[0] = new int[3][] { new int[2] { 1, 1 }, new int[2] { 1, 2 }, new int[2] { 1, 3 }};
-        enemypoint[1] = new int[4][] { new int[2] { 1, 7 }, new int[2] { 1, 8 }, new int[2] { 2, 7 },new int[2] { 2, 8 } };
-        enemypoint[2] = new int[2][] { new int[2] { 6, 1 }, new int[2] { 7, 1 } };
-        enemypoint[3] = new int[][] { new int[] { 18, 7 }, new int[] { 18, 8 }, new int[] { 19, 7 }, new int[] { 19, 8 } };
+        
+        enemypoint[0] = new int[][] { new int[] { 1, 7 }, new int[] { 1, 8 }, new int[] { 2, 7 },new int[] { 2, 8 } };
+        enemypoint[1] = new int[][] { new int[] { 6, 1 }, new int[] { 7, 1 } };
+        enemypoint[2] = new int[][] { new int[] { 18, 7 }, new int[] { 18, 8 }, new int[] { 19, 7 }, new int[] { 19, 8 } };
+        enemypoint[3] = new int[][] { new int[] { 1, 1 }, new int[] { 1, 2 }, new int[] { 1, 3 } };
         enemypoint[4] = new int[][] { new int[] { 18, 1 }, new int[] { 19, 1 } };
-
+       
 
     }
     private void Update()
     {
-        if (tick)
-        {
-            OneAction();
-            tick = false;
-        }
     }
 
     void Create(int[] xy,GameObject[] prefab)
     {
         GameObject old = map.itemMap[xy[0], xy[1]];
+        if (old!=null&&old.tag == "Player")
+            return;
         Vector3 pos = mapEditor.basicMap[xy[0], xy[1]].transform.localPosition;
         pos += new Vector3(0, mapEditor.tileSize.y / 3, 0);
         if (old != null && old != gameObject && old.tag != "Player")
@@ -50,10 +48,23 @@ public class Boss : MonoBehaviour {
     }
 
     public void OneAction() {
-
-        if (GameObject.FindWithTag("enemy") == null)
+        if (GameObject.FindWithTag("enemy") != null)
+            return;
+        if (!unbeatable)
+        {
+            for (int i = 0; i < enemypoint.Length; ++i)
+                CreateRandomEnemy(enemypoint[i], movebomb);
             CreateRandomBomb();
-        CreateRandomWeapon();
+
+        }
+
+        else
+        {
+            for(int i=0;i<enemypoint.Length;++i)
+                CreateRandomEnemy(enemypoint[i],enemy);
+            CreateRandomWeapon();
+            unbeatable = false;
+        }
     }
     public void CreateRandomBomb()
     {
@@ -64,13 +75,15 @@ public class Boss : MonoBehaviour {
         };
     }
     
-    public void CreateRandomEnemy(int[][] en)
+    public void CreateRandomEnemy(int[][] en,GameObject[] pre)
     {
         GetComponent<Animator>().SetBool("right", true);
+        int num=Random.Range(1, 4);
         foreach (int[] a in en)
         {
-
-            Create(a,enemy);
+            if (num == 0) return;
+            Create(a,pre);
+            num--;
         };
     }
     public void CreateRandomWeapon()
@@ -83,45 +96,7 @@ public class Boss : MonoBehaviour {
     }
 
 
-
-    /*
-    public void CreatePresetBomb() {
-        int[] bombXMayBe = new int[] { 6, 6, 6, 7, 8, 9, 9, 9 };
-        int[] bombYMayBe = new int[] { 5, 4, 3, 3, 3, 3, 4, 5 };
-        int indexStartIndex = Random.Range(0, bombXMayBe.Length);
-        for (int i = 0; i < bombXMayBe.Length; i++) {
-            int temp = (indexStartIndex + i) % bombXMayBe.Length;
-            GridItem item_temp = gw.GridItemAt(bombXMayBe[temp], bombYMayBe[temp]);
-            if (item_temp == null) {
-                CreatePrefabAt(bomb, bombXMayBe[temp], bombYMayBe[temp]);
-                break;
-            }
-        }
-    }
-    public void CreateRandomBomb() {
-        int x = Random.Range(1, Xlength);
-        int y = Random.Range(1, Ylength - 1);
-        GridItem item = gw.GridItemAt(x, y);
-        while (item != null) {
-            x = Random.Range(1, Xlength);
-            y = Random.Range(1, Ylength);
-            item = gw.GridItemAt(x, y);
-        }
-        CreatePrefabAt(bomb, x, y);
-    }
-
-    public void CreateRandom1() {
-        int x = Random.Range(1, Xlength);
-        int y = 5;//Random.Range(1, Ylength - 1);
-        GridItem item = gw.GridItemAt(x, y);
-        while (item != null) {
-            x = Random.Range(1, Xlength);
-            y = 5;//Random.Range(1, Ylength);
-            item = gw.GridItemAt(x, y);
-        }
-        CreatePrefabAt(moveBomb, x, y);
-    }
-    */
+    
     private void CreatePrefabAt(GameObject prefab, int x, int y) {
         Vector3 pos = mapEditor.basicMap[x, y].transform.localPosition;
         
@@ -134,6 +109,8 @@ public class Boss : MonoBehaviour {
     public GameObject flamePrefab;
     public GameObject[] parts;
     public void OneHit() {
+        if(GameObject.FindWithTag("enemy"))
+            unbeatable = true;
         Debug.Log("hp--");
         GetComponent<Animator>().SetBool("ishited", true);
         hp -= 1;

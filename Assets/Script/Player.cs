@@ -165,11 +165,13 @@ public class Player : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
         isDead = false;
 
-        if (SceneManager.GetActiveScene().name == "BossLevel") {
-            SceneManager.LoadScene("BossLevel");
+        if (SceneManager.GetActiveScene().name == "boss") {
+            SceneManager.LoadScene("boss");
         }else {
             //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
             map.GetComponent<MapEditor>().Load();
+            
         }
     }
 
