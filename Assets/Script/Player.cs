@@ -141,10 +141,11 @@ public class Player : MonoBehaviour {
         }else if(item.tag == "spine") {
             FindObjectOfType<SoundManager>().Play("dieSpine");
         }
-
+        /*
         if (item.tag == "pickup") {
             GetComponent<Weapon>().PickGun(item.GetComponent<PickUp>().haveGun);
         }
+        */
     }
 
     public bool isDead = false;

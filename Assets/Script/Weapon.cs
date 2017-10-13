@@ -93,9 +93,10 @@ public class Weapon : MonoBehaviour {
     }
 
     IEnumerator NoWeapon() {
-        yield return new WaitForEndOfFrame();
         gunNow = Guns.empty;
         GetComponent<Animator>().SetInteger("stat", (int)gunNow);
         loadCount = gunInfo[gunNow][2];
+        yield return new WaitForEndOfFrame();
+
     }
 }
