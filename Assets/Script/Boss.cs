@@ -110,6 +110,9 @@ public class Boss : MonoBehaviour {
     public GameObject flamePrefab;
     public GameObject[] parts;
     public void OneHit() {
+
+        if (unbeatable)
+            return;
         unbeatable = true;
         callenemy = true;
         Debug.Log("hp--");
