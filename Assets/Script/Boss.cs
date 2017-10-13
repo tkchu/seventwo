@@ -52,6 +52,7 @@ public class Boss : MonoBehaviour {
             return;
         if (!unbeatable)
         {
+            GetComponent<Animator>().SetBool("left", true);
             for (int i = 0; i < enemypoint.Length; ++i)
                 CreateRandomEnemy(enemypoint[i], movebomb);
             CreateRandomBomb();
@@ -60,7 +61,8 @@ public class Boss : MonoBehaviour {
 
         else
         {
-            for(int i=0;i<enemypoint.Length;++i)
+            GetComponent<Animator>().SetBool("right", true);
+            for (int i=0;i<enemypoint.Length;++i)
                 CreateRandomEnemy(enemypoint[i],enemy);
             CreateRandomWeapon();
             unbeatable = false;
