@@ -18,10 +18,7 @@ public class Bomb : MonoBehaviour {
         if (isReady) {
             Die();
         }
-
-        GridItem player = FindObjectOfType<Player>().GetComponent<GridItem>();
-        GridItem self = GetComponent<GridItem>();
-
+        
         int[] player_pos = map.GetPlayerPos();
         int[] self_pos = map.FindGameObject(map.itemMap, gameObject);
         if (player_pos == null || self_pos == null)
@@ -47,10 +44,14 @@ public class Bomb : MonoBehaviour {
         //保证不会多次标记死亡
         if (!noDie) {
             return;
-        }else {
+        } else {
             noDie = false;
         }
-
+        StartCoroutine(dieC());
+    }
+    IEnumerator dieC()
+    {
+        yield return new WaitForFixedUpdate();
         FindObjectOfType<SoundManager>().Play("boom");
 
         GameObject[] around = new GameObject[] {

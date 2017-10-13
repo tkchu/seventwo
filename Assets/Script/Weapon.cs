@@ -57,9 +57,7 @@ public class Weapon : MonoBehaviour {
             if (item != null &&
                 (item.tag == "enemy" || item.tag == "boss")) { 
                 shot = true;
-                if (item.GetComponent<knifeEnemy>()) {
-                    item.GetComponent<knifeEnemy>().noDie = false;
-                }
+                item.GetComponent<Enemy>().OneShot();
             }
         }
 

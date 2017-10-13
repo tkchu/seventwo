@@ -129,21 +129,26 @@ public class Map : MonoBehaviour {
     }
 
     // Update is called once per frame
+    float lastHit = 0.05f;
+
     void Update() {
+        lastHit -= Time.deltaTime;
         var temp = FindObjectOfType<Player>();
-        if (temp != null && !temp.isDead) {
+        if (temp != null && !temp.isDead && lastHit <=0) {
             player = temp.gameObject;
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
                 player.GetComponent<Player>().Go(new int[] { 0, 1 });
+                lastHit = 0.05f;
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) {
+            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) {
                 player.GetComponent<Player>().Go(new int[] { 0, -1 });
-            }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
+                lastHit = 0.05f;
+            } else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
                 player.GetComponent<Player>().Go(new int[] { -1, 0 });
-            }
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
+                lastHit = 0.05f;
+            } else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
                 player.GetComponent<Player>().Go(new int[] { 1, 0 });
+                lastHit = 0.05f;
             }
         }
 

@@ -147,13 +147,15 @@ public class MapEditor : MonoBehaviour {
         foreach(Transform t in transform) {
             Destroy(t.gameObject);
         }
-
-
+        
         string key = "map" + mapID.ToString();
         string value = ReadFile(key);
         string[] strs = value.Split(',');
         mapSize = new Vector2(int.Parse(strs[0]), int.Parse(strs[1]));
         basicMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
+        if (release) {
+            basicTilePRefab.GetComponent<SpriteRenderer>().color = Color.clear;
+        }
         for (int i = 0; i < mapSize.x; i++) {
             for (int j = 0; j < mapSize.y; j++) {
                 Vector3 pos = new Vector3(i * tileSize.x, j * tileSize.y, 0) + leftBottomPos;

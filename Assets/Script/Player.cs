@@ -51,18 +51,6 @@ public class Player : MonoBehaviour {
             haveMove = true;
         }
 
-        //触发敌人死亡
-        if (shot == 1) {
-            GameObject[] face = map.FindGridItemInRange(pos, direction, GetComponent<Weapon>().range);
-
-            foreach (GameObject item in face) {
-                if (item != null &&
-                    (item.tag == "enemy" || item.tag == "boss")) {
-                    item.GetComponent<Enemy>().OneShot();
-                }
-            }
-            //GetComponent<Animator>().SetBool("isShoot", true);
-        }
 
         if(shot == 0 && haveMove) {
             FindObjectOfType<SoundManager>().Play("move");
