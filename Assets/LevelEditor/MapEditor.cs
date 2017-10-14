@@ -246,8 +246,7 @@ public class MapEditor : MonoBehaviour {
     }
     string ReadFile(string fileName) {
         if (release) {
-            string filePath = "Maps/" + fileName;
-            Debug.Log(filePath);
+            string filePath = "Maps/" + fileName;Debug.Log(filePath);
             TextAsset ta = Resources.Load<TextAsset>(filePath);
             return ta.text;
         }
