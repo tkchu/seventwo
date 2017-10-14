@@ -49,6 +49,7 @@ public class Boss : MonoBehaviour {
     }
 
     public void OneAction() {
+        if (hp <= 0) return;
         if (callenemy)
         {
             FindObjectOfType<SoundManager>().Play("bossattack");
@@ -133,30 +134,33 @@ public class Boss : MonoBehaviour {
 
         if (unbeatable)
             return;
+        hp -= 1;
+        Debug.Log("hp--");
+        GetComponent<Animator>().SetBool("ishited", true);
+        if (hp <= 0)
+        {
+            StartCoroutine(Explode());
+            Debug.Log("Winner!");
+            return;
+        }
         unbeatable = true;
         shield.SetBool("unbeatable", true);
         callenemy = true;
-        Debug.Log("hp--");
-        GetComponent<Animator>().SetBool("ishited", true);
-        hp -= 1;
-        if (hp <= 0) {
-            StartCoroutine(Explode());
-            Debug.Log("Winner!");
-        }
+        
     }
 
     IEnumerator Explode() {
         GameObject.Find("GameBGM").SetActive(false);
         FindObjectOfType<SoundManager>().Play("bossfail");
         parts =GameObject.FindGameObjectsWithTag("boss");
-        int time = 10;
+        int time = 12;
         while (time>0) {
             time -= 1;
             Vector3 position = parts[Random.Range(0, parts.Length)].transform.position;
             Instantiate(flamePrefab, position, Quaternion.identity);
             yield return new WaitForSeconds(0.3f);
         }
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene("Ending");
     }
 }
