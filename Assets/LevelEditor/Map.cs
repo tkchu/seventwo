@@ -96,7 +96,14 @@ public class Map : MonoBehaviour {
                     if (itemMap[i, j].GetComponent<Player>()) {
                         itemMap[i, j].GetComponent<SpriteRenderer>().sortingOrder = 100 + (itemMap.GetLength(1) - j) * 10 -1;
                     } else {
-                        itemMap[i, j].GetComponent<SpriteRenderer>().sortingOrder = 100 + (itemMap.GetLength(1) - j) * 10 ;
+                        if(itemMap[i, j].GetComponent<SpriteRenderer>()!=null)
+                            itemMap[i, j].GetComponent<SpriteRenderer>().sortingOrder = 100 + (itemMap.GetLength(1) - j) * 10 ;
+                        else
+                        {
+
+                            itemMap[i, j].transform.Find("武器_影子_大").GetComponent<SpriteRenderer>().sortingOrder = 100 + (itemMap.GetLength(1) - j) * 10;
+                            itemMap[i, j].transform.Find("漂浮").GetComponent<SpriteRenderer>().sortingOrder = 100 + (itemMap.GetLength(1) - j) * 10;
+                        }
                     }
                     if (itemMap[i,j].name == "KnifeEnemy") {
                         Transform t = itemMap[i, j].transform.Find("KnifeEnemyKnife");
