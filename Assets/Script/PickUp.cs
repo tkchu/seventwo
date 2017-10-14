@@ -6,8 +6,13 @@ public class PickUp : MonoBehaviour {
     public Guns haveGun;
 
     public void Meet(GameObject item) {
-        item.GetComponent<Weapon>().PickGun(haveGun);
+        StartCoroutine(PickWeapon());
+    }
+    IEnumerator PickWeapon() {
+        yield return new WaitWhile(() => FindObjectOfType<Player>().GetComponent<Animator>().GetBool("isShoot"));
+        FindObjectOfType<Weapon>().PickGun(haveGun);
         FindObjectOfType<SoundManager>().Play("pickup");
         Destroy(gameObject);
+        yield return new WaitForEndOfFrame();
     }
 }
