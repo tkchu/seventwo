@@ -7052,7 +7052,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -7083,7 +7083,6 @@ GameObject:
   m_Component:
   - component: {fileID: 655156487}
   - component: {fileID: 655156486}
-  - component: {fileID: 655156488}
   m_Layer: 0
   m_Name: BossFail
   m_TagString: Untagged
@@ -7184,17 +7183,6 @@ Transform:
   m_Father: {fileID: 1060891860}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &655156488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 655156485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f85f851fd520a244484e322eb8ab1c1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &658788357
 GameObject:
   m_ObjectHideFlags: 0
@@ -9700,6 +9688,7 @@ MonoBehaviour:
   - {fileID: 1148430734007104, guid: 7e23a916dae25bd4082452b2a553f2da, type: 2}
   - {fileID: 1523644107297316, guid: fcc0b02e7904035409926faec81cf5c2, type: 2}
   shield: {fileID: 0}
+  step: 0
   flamePrefab: {fileID: 1347196553965674, guid: 2bdb86f55386691459636b697d8fc98f,
     type: 2}
   parts: []

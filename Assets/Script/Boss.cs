@@ -16,6 +16,7 @@ public class Boss : MonoBehaviour {
     public GameObject[] enemy;
     public GameObject[] weapon;
     public Animator shield;
+    public int step = 0;
     private void Start() {
         shield = transform.Find("shield").GetComponent<Animator>();
         map = FindObjectOfType<Map>();
@@ -50,30 +51,53 @@ public class Boss : MonoBehaviour {
 
     public void OneAction() {
         if (hp <= 0) return;
-        if (callenemy)
-        {
-            FindObjectOfType<SoundManager>().Play("bossattack");
-            callenemy = false;
-            GetComponent<Animator>().SetBool("left", true);
-            for (int i = 0; i < enemypoint.Length; ++i)
-                CreateRandomEnemy(enemypoint[i]);
-            CreateRandomWeapon();
 
-        }
-        
-        else if(GameObject.FindWithTag("enemy") == null)
+        step += 1;
+        if (step == 4) step = 0;
+
+        if (hp >= 3&&step==0)
         {
 
             FindObjectOfType<SoundManager>().Play("bossattack");
-            if (GameObject.FindWithTag("enemy") != null)
-                return;
+            
             GetComponent<Animator>().SetBool("right", true);
             for (int i = 0; i < enemypoint.Length; ++i)
                 CreateRandomMoveBomb(enemypoint[i]);
             CreateRandomBomb();
-            unbeatable = false;
+        }
 
-            shield.SetBool("unbeatable", false);
+        if (hp <= 2)
+        {
+
+            if (callenemy)
+            {
+                FindObjectOfType<SoundManager>().Play("bossattack");
+                callenemy = false;
+                GetComponent<Animator>().SetBool("left", true);
+                for (int i = 0; i < enemypoint.Length; ++i)
+                    CreateRandomEnemy(enemypoint[i]);
+                CreateRandomWeapon();
+
+            }
+
+            else if (GameObject.FindWithTag("enemy") == null)
+            {
+
+                FindObjectOfType<SoundManager>().Play("bossattack");
+                if (GameObject.FindWithTag("enemy") != null)
+                    return;
+                GetComponent<Animator>().SetBool("right", true);
+                for (int i = 0; i < enemypoint.Length; ++i)
+                    CreateRandomMoveBomb(enemypoint[i]);
+                CreateRandomBomb();
+                unbeatable = false;
+
+                shield.SetBool("unbeatable", false);
+            }
+            else
+            {
+
+            }
         }
     }
     public void CreateRandomBomb()
@@ -143,9 +167,13 @@ public class Boss : MonoBehaviour {
             Debug.Log("Winner!");
             return;
         }
+        if (hp <= 2)
+        {
+
         unbeatable = true;
         shield.SetBool("unbeatable", true);
         callenemy = true;
+        }
         
     }
 
