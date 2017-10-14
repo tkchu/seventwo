@@ -15,6 +15,10 @@ public class SoundManager : MonoBehaviour {
     public AudioSource dieSpine;
 
     public AudioSource teleporter;
+    public AudioSource bossfail;
+    public AudioSource bossattack;
+    public AudioSource missshotgun;
+    public AudioSource misslonggun;
 
     // Use this for initialization
 
@@ -31,6 +35,10 @@ public class SoundManager : MonoBehaviour {
             {"boom", boom},
             {"dieSpine", dieSpine },
             {"teleporter", teleporter },
+            {"bossfail",bossfail },
+            {"bossattack",bossattack },
+            {"missshotgun",missshotgun },
+            {"misslonggun",misslonggun }
         };
     }
 

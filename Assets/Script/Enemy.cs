@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
     Map map;
+    Animator heroani;
     private void Start() {
         map = FindObjectOfType<Map>();
+        heroani = GameObject.FindWithTag("Player").GetComponent<Animator>();
     }
 
     public void OneAction() {
@@ -48,6 +50,10 @@ public class Enemy : MonoBehaviour {
         if (GetComponent<BossPart>() == null) {
             //gw.Destroy(GetComponent<GridItem>());
         } else {
+            if (heroani.GetInteger("stat")==1)
+                FindObjectOfType<SoundManager>().Play("missshotgun");
+            if (heroani.GetInteger("stat")==2)
+                FindObjectOfType<SoundManager>().Play("misslonggun");
             Debug.Log("Boss 挨了一枪，但毫发无损！");
         }
 

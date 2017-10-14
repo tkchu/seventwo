@@ -15,8 +15,9 @@ public class Boss : MonoBehaviour {
     public GameObject[] bomb;
     public GameObject[] enemy;
     public GameObject[] weapon;
-
+    public Animator shield;
     private void Start() {
+        shield = transform.Find("shield").GetComponent<Animator>();
         map = FindObjectOfType<Map>();
         mapEditor = FindObjectOfType<MapEditor>();
         weaponpoint = new int[][] { new int[] { 9, 2 } ,new int[] { 2,4},new int[] { 17, 6 } };
@@ -50,6 +51,7 @@ public class Boss : MonoBehaviour {
     public void OneAction() {
         if (callenemy)
         {
+            FindObjectOfType<SoundManager>().Play("bossattack");
             callenemy = false;
             GetComponent<Animator>().SetBool("left", true);
             for (int i = 0; i < enemypoint.Length; ++i)
@@ -58,22 +60,19 @@ public class Boss : MonoBehaviour {
 
         }
         
-        else if(unbeatable)
-        {
-            if(GameObject.FindWithTag("enemy")!=null)
-                return;
-            GetComponent<Animator>().SetBool("right", true);
-            for (int i=0;i<enemypoint.Length;++i)
-                CreateRandomEnemy(enemypoint[i],movebomb);
-             CreateRandomBomb();
-            unbeatable = false;
-        }
         else if(GameObject.FindWithTag("enemy") == null)
         {
-            GetComponent<Animator>().SetBool("left", true);
+
+            FindObjectOfType<SoundManager>().Play("bossattack");
+            if (GameObject.FindWithTag("enemy") != null)
+                return;
+            GetComponent<Animator>().SetBool("right", true);
             for (int i = 0; i < enemypoint.Length; ++i)
-                CreateRandomEnemy(enemypoint[i], enemy);
-            CreateRandomWeapon();
+                CreateRandomEnemy(enemypoint[i], movebomb);
+            CreateRandomBomb();
+            unbeatable = false;
+
+            shield.SetBool("unbeatable", false);
         }
     }
     public void CreateRandomBomb()
@@ -121,6 +120,7 @@ public class Boss : MonoBehaviour {
         if (unbeatable)
             return;
         unbeatable = true;
+        shield.SetBool("unbeatable", true);
         callenemy = true;
         Debug.Log("hp--");
         GetComponent<Animator>().SetBool("ishited", true);
@@ -132,14 +132,17 @@ public class Boss : MonoBehaviour {
     }
 
     IEnumerator Explode() {
-        parts=GameObject.FindGameObjectsWithTag("boss");
+        GameObject.Find("GameBGM").SetActive(false);
+        FindObjectOfType<SoundManager>().Play("bossfail");
+        parts =GameObject.FindGameObjectsWithTag("boss");
         int time = 10;
         while (time>0) {
             time -= 1;
             Vector3 position = parts[Random.Range(0, parts.Length)].transform.position;
-            Instantiate(flamePrefab, position + Vector3.back * 50, Quaternion.identity);
+            Instantiate(flamePrefab, position, Quaternion.identity);
             yield return new WaitForSeconds(0.3f);
         }
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("Ending");
     }
 }

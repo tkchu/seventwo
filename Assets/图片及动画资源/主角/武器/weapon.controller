@@ -13,13 +13,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isShoot
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -57,6 +57,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: isShoot
+--- !u!114 &114383532449506164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1689a3973bb1c46b3e11eaef37b116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  param: isShoot
 --- !u!114 &114720046389131286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -610,7 +622,8 @@ AnimatorState:
   - {fileID: 1101331965963819818}
   - {fileID: 1101299502568453390}
   - {fileID: 1101284584458511194}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114383532449506164}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
