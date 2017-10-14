@@ -55,7 +55,7 @@ public class Boss : MonoBehaviour {
             callenemy = false;
             GetComponent<Animator>().SetBool("left", true);
             for (int i = 0; i < enemypoint.Length; ++i)
-                CreateRandomEnemy(enemypoint[i],enemy);
+                CreateRandomEnemy(enemypoint[i]);
             CreateRandomWeapon();
 
         }
@@ -68,7 +68,7 @@ public class Boss : MonoBehaviour {
                 return;
             GetComponent<Animator>().SetBool("right", true);
             for (int i = 0; i < enemypoint.Length; ++i)
-                CreateRandomEnemy(enemypoint[i], movebomb);
+                CreateRandomMoveBomb(enemypoint[i]);
             CreateRandomBomb();
             unbeatable = false;
 
@@ -83,15 +83,29 @@ public class Boss : MonoBehaviour {
         };
     }
     
-    public void CreateRandomEnemy(int[][] en,GameObject[] pre)
+    public void CreateRandomEnemy(int[][] en)
     {
-        int num=Random.Range(1, 4);
-        foreach (int[] a in en)
+        int num=Random.Range(1, 3);
+        int[][] tem=en;
+        int len = tem.Length;
+        for(; len>num;len--)
         {
-            if (num == 0) return;
-            Create(a,pre);
-            num--;
-        };
+            tem[Random.Range(0, len)] = tem[len-1];
+        }
+        for (int i = 0; i < len; ++i)
+            Create(tem[i], enemy);
+    }
+    public void CreateRandomMoveBomb(int[][] en)
+    {
+        int num = Random.Range(1, 4);
+        int[][] tem = en;
+        int len = tem.Length;
+        for (; len > num; len--)
+        {
+            tem[Random.Range(0, len)] = tem[len-1];
+        }
+        for (int i = 0; i < len; ++i)
+            Create(tem[i], movebomb);
     }
     public void CreateRandomWeapon()
     {
