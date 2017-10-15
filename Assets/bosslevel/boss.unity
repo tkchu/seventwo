@@ -9654,7 +9654,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 1.2, y: 1.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -9670,7 +9670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a479baf0dc4d540a3b71ec8713bbae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
+  hp: 1
   map: {fileID: 0}
   mapEditor: {fileID: 0}
   unbeatable: 0

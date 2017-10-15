@@ -182,14 +182,16 @@ public class Boss : MonoBehaviour {
         GameObject.Find("GameBGM").SetActive(false);
         FindObjectOfType<SoundManager>().Play("bossfail");
         parts =GameObject.FindGameObjectsWithTag("boss");
-        int time = 12;
+        int time = 9;
+        GetComponent<Animator>().SetBool("isdead", true);
         while (time>0) {
             time -= 1;
             Vector3 position = parts[Random.Range(0, parts.Length)].transform.position;
             Instantiate(flamePrefab, position, Quaternion.identity);
             yield return new WaitForSeconds(0.3f);
         }
-        yield return new WaitForSeconds(1.5f);
+        
+        yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene("Ending");
     }
 }
