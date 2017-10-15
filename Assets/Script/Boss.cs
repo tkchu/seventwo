@@ -53,7 +53,7 @@ public class Boss : MonoBehaviour {
         if (hp <= 0) return;
 
         step += 1;
-        if (step == 4) step = 0;
+        if (step == 5) step = 0;
 
         if (hp >= 3&&step==0)
         {
@@ -71,6 +71,7 @@ public class Boss : MonoBehaviour {
 
             if (callenemy)
             {
+                FindObjectOfType<SoundManager>().Play("bossmiss");
                 FindObjectOfType<SoundManager>().Play("bossattack");
                 callenemy = false;
                 GetComponent<Animator>().SetBool("left", true);

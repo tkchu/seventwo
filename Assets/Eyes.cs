@@ -9,7 +9,7 @@ public class Eyes : MonoBehaviour {
     // Use this for initialization
     void Start () {
         ani = this.GetComponent<Animator>();
-        b = Random.Range(5, 12);
+        b = Random.Range(3, 7);
 	}
 	
 	// Update is called once per frame

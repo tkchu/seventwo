@@ -6,5 +6,6 @@ public class ExitTrigger : MonoBehaviour {
 
     private void OnEnable() {
         Application.Quit();
+       
     }
 }

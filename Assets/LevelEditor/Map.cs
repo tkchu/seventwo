@@ -139,6 +139,10 @@ public class Map : MonoBehaviour {
     float lastHit = 0.05f;
 
     void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Screen.fullScreen = false;
+        }
         lastHit -= Time.deltaTime;
         var temp = FindObjectOfType<Player>();
         if (temp != null && !temp.isDead && lastHit <=0) {

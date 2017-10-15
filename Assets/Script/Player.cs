@@ -54,6 +54,7 @@ public class Player : MonoBehaviour {
 
         if(shot == 0 && haveMove) {
             FindObjectOfType<SoundManager>().Play("move");
+            GetComponent<Animator>().SetBool("isMoving", true);
         }
 
         if (haveMove || shot == 1) {
