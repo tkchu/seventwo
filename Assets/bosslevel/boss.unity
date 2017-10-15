@@ -9670,7 +9670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a479baf0dc4d540a3b71ec8713bbae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  hp: 5
   map: {fileID: 0}
   mapEditor: {fileID: 0}
   unbeatable: 0
