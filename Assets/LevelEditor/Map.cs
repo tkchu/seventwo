@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 
 public class Map : MonoBehaviour {
 
@@ -69,7 +69,8 @@ public class Map : MonoBehaviour {
             }
             itemMap[pos[0], pos[1]] = g;
             MapEditor me = GetComponent<MapEditor>();
-            g.transform.position = new Vector3(pos[0] * me.tileSize.x, pos[1] * me.tileSize.y, 0) + me.leftBottomPos + new Vector3(0, 0.6f / 3, 0);
+            g.transform.DOMove(new Vector3(pos[0] * me.tileSize.x, pos[1] * me.tileSize.y, 0) + me.leftBottomPos + new Vector3(0, 0.6f / 3, 0), 0.2f);
+            //g.transform.position = new Vector3(pos[0] * me.tileSize.x, pos[1] * me.tileSize.y, 0) + me.leftBottomPos + new Vector3(0, 0.6f / 3, 0);
             itemMap[now[0], now[1]] = null;
             return itemMeet;
         }

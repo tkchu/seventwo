@@ -8,7 +8,9 @@ public class Enemy : MonoBehaviour {
     private void Start() {
         map = FindObjectOfType<Map>();
         heroani = GameObject.FindWithTag("Player").GetComponent<Animator>();
-        bossshieldani = GameObject.Find("shield").GetComponent<Animator>();
+        if(GameObject.Find("shield")!=null)
+            bossshieldani = GameObject.Find("shield").GetComponent<Animator>();
+        
     }
 
     public void OneAction() {
