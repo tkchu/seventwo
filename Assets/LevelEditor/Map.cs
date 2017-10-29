@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 
 public class Map : MonoBehaviour {
-
+    public GameObject wallPrefab;
     public GameObject[,] groundMap = new GameObject[0, 0] { };
     public GameObject[,] itemMap = new GameObject[0, 0] { };
     public GameObject[,] decorateMap = new GameObject[0, 0] { };
@@ -35,7 +35,7 @@ public class Map : MonoBehaviour {
 
     public GameObject GetGameObjectAt(int x, int y) {
         if(x<0 || x>=itemMap.GetLength(0) || y<0 || y >= itemMap.GetLength(1)) {
-            return null;
+            return wallPrefab;
         } else {
             return itemMap[x, y];
         }
