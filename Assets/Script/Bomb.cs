@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour {
     public GameObject flamePrefab;
-
+    public float waitTime = 1f;
     Map map;
 
     bool noDie = true;
@@ -15,10 +15,6 @@ public class Bomb : MonoBehaviour {
     }
 
     public void OneAction() {
-        if (isReady) {
-            Die();
-        }
-        
         int[] player_pos = map.GetPlayerPos();
         int[] self_pos = map.FindGameObject(map.itemMap, gameObject);
         if (player_pos == null || self_pos == null)
@@ -27,10 +23,8 @@ public class Bomb : MonoBehaviour {
         if (Mathf.Abs(player_pos[0] - self_pos[0]) + Mathf.Abs(player_pos[1] - self_pos[1]) <= 2) {
             GetComponent<Animator>().SetBool("isReady", true);
             isReady = true;
-        } else {
-            GetComponent<Animator>().SetBool("isReady", false);
+            StartCoroutine(waitDieC());
         }
-
     }
 
     int[] pos;
@@ -40,17 +34,20 @@ public class Bomb : MonoBehaviour {
             pos = temp;
     }
 
-    public void Die() {
-        //保证不会多次标记死亡
-        if (!noDie) {
-            return;
-        } else {
-            noDie = false;
+    IEnumerator waitDieC() {
+        yield return new WaitForSeconds(waitTime);
+        if (noDie) {
+            StartCoroutine(dieC());
         }
+    }
+
+    public void InstantDie() {
         StartCoroutine(dieC());
     }
+
     IEnumerator dieC()
     {
+        noDie = false;
         yield return new WaitForFixedUpdate();
         FindObjectOfType<SoundManager>().Play("boom");
 

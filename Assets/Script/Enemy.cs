@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour {
             GetComponent<knifeEnemy>().Die();
         }
         if (GetComponent<Bomb>()) {
-            GetComponent<Bomb>().Die();
+            GetComponent<Bomb>().InstantDie();
         }
 
         if (GetComponent<Lame>()) {
@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour {
         if (GetComponent<BossPart>() == null) {
             //gw.Destroy(GetComponent<GridItem>());
         } else {
-            Debug.Log("Boss 挨了一 枪，但毫发无损！");
+            Debug.Log("Boss 挨了一枪，但毫发无损！");
             if (FindObjectOfType<Boss>().unbeatable)
                 return;
             if (heroani.GetInteger("stat")==1)
