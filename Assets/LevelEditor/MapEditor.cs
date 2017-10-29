@@ -27,6 +27,7 @@ public class MapEditor : MonoBehaviour {
     void Start() {
         //Debug.Log(Application.persistentDataPath);
         if (ExistFile("map" + mapID.ToString())) {
+            SetMapIDAsLastPlayed();
             Load();
         } else {
             basicMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
@@ -143,11 +144,19 @@ public class MapEditor : MonoBehaviour {
         }
         WriteFile(key, value);
     }
+    private void SetMapIDAsLastPlayed() {
+        int lastPlayedLevel = PlayerPrefs.GetInt("lastPlayedLevel", -1);
+        if (lastPlayedLevel != -1) {
+            mapID = lastPlayedLevel;
+        }
+    }
     public void Load() {
         foreach(Transform t in transform) {
             Destroy(t.gameObject);
         }
-        
+
+        PlayerPrefs.SetInt("lastPlayedLevel", mapID);
+
         string key = "map" + mapID.ToString();
         string value = ReadFile(key);
         string[] strs = value.Split(',');
@@ -228,6 +237,7 @@ public class MapEditor : MonoBehaviour {
         GetComponent<Map>().UpdateSortOrder();
         FindObjectOfType<CameraCenter>().Trigger();
     }
+
 
     public bool release = false;
     bool ExistFile(string fileName) {
