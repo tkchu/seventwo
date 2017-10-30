@@ -236,6 +236,7 @@ public class MapEditor : MonoBehaviour {
         }
         GetComponent<Map>().UpdateSortOrder();
         FindObjectOfType<CameraCenter>().Trigger();
+        FindObjectOfType<EnemyTriggerManager>().Load();
     }
 
 

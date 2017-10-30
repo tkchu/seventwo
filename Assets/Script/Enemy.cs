@@ -17,11 +17,11 @@ public class Enemy : MonoBehaviour {
         if (GetComponent<Bomb>() && GetComponent<Bomb>().isReady) {
             ;
         }else {
-            if (GetComponent<NormalMove>()) {
+            if (GetComponent<NormalMove>() && GetComponent<NormalMove>().enabled) {
                 GetComponent<NormalMove>().OneMove();
-            }else if (GetComponent<LameMove>()) {
+            }else if (GetComponent<LameMove>() && GetComponent<LameMove>().enabled) {
                 GetComponent<LameMove>().OneMove();
-            }else if (GetComponent<DiagonalMove>()) {
+            }else if (GetComponent<DiagonalMove>() && GetComponent<DiagonalMove>().enabled) {
                 GetComponent<DiagonalMove>().OneMove();
             }
         }
