@@ -55,7 +55,7 @@ public class Weapon : MonoBehaviour {
 
         foreach (GameObject item in face) {
             if (item != null &&
-                (item.tag == "enemy" || item.tag == "boss")) { 
+                (item.tag == "enemy" || item.tag == "boss"|| item.tag == "bomb")) { 
                 shot = true;
                 item.GetComponent<Enemy>().OneShot();
             }

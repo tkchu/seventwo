@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114590746864700228}
   m_Layer: 0
   m_Name: moveBomber
-  m_TagString: enemy
+  m_TagString: bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flamePrefab: {fileID: 1347196553965674, guid: 2bdb86f55386691459636b697d8fc98f,
     type: 2}
+  waitTime: 1
   isReady: 0
 --- !u!114 &114914489311980136
 MonoBehaviour:

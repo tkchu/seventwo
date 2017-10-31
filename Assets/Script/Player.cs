@@ -132,7 +132,7 @@ public class Player : MonoBehaviour {
             return;
         }
 
-        if (item.tag == "enemy" || item.tag == "spine") {
+        if (item.tag == "enemy" || item.tag == "spine"|| item.tag == "bomb") {
             GetComponent<Animator>().SetBool("isDead", true);
             
             StartCoroutine(Restart());

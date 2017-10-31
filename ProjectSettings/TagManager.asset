@@ -16,6 +16,7 @@ TagManager:
   - enemypoint
   - bombpoint
   - weaponpoint
+  - bomb
   layers:
   - Default
   - TransparentFX

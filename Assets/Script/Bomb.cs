@@ -60,7 +60,7 @@ public class Bomb : MonoBehaviour {
         };
 
         foreach (GameObject item in around) {
-            if(item!=null && item.tag == "enemy") {
+            if(item!=null && (item.tag == "enemy"|| item.tag == "bomb")) {
                 item.GetComponent<Enemy>().OneShot();
             }else if(item != null && item.tag == "Player") {
                 item.GetComponent<Player>().Meet(gameObject);
