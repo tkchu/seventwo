@@ -18,6 +18,7 @@ public class Boss : MonoBehaviour {
     public Animator shield;
     public int step = 0;
     private void Start() {
+        Destroy(GameObject.Find("gbgm"));
         shield = transform.Find("shield").GetComponent<Animator>();
         map = FindObjectOfType<Map>();
         mapEditor = FindObjectOfType<MapEditor>();

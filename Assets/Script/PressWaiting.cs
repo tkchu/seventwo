@@ -7,7 +7,6 @@ public class PressWaiting : MonoBehaviour {
     public bool waiting;
     public bool restart=false;
     public bool over;
-    private float time=0;
     SpriteRenderer WaitingSR, UIcoverSR,EndSR,UIheroSR;
     public GameObject Logo;
     public GameObject Waiting;
@@ -30,7 +29,7 @@ public class PressWaiting : MonoBehaviour {
     {
         Event e = Event.current;
         if (e.isKey &&e.keyCode==KeyCode.S) waiting = false;
-        if (e.isKey && e.keyCode == KeyCode.Escape) FindObjectOfType<ExitTrigger>().GetComponent<ExitTrigger>().enabled = true;
+        
     }
     void Begin()
     {
@@ -41,17 +40,19 @@ public class PressWaiting : MonoBehaviour {
             WaitingSR.DOFade(0, 1f)
             ).Append(
             Logo.transform.DOMoveY(5f, 1.5f)
-            ).AppendCallback(() => {
-               // FindObjectOfType<Camera>().orthographicSize = 3.6f;
+            ).AppendCallback(() =>
+            {
+                // FindObjectOfType<Camera>().orthographicSize = 3.6f;
                 Logo.SetActive(false);
-            }).AppendCallback(() => {
-                story.SetActive(true);
-                
             });
         DOTween.Sequence().AppendInterval(1f).AppendCallback(
             () => {
                 UIheroSR.DOFade(0, 0.5f);
-            });
+            }).AppendCallback(() => {
+                story.SetActive(true);
+                
+
+            }); 
     }
 
 

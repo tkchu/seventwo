@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour {
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             FindObjectOfType<ExitTrigger>().GetComponent<ExitTrigger>().enabled = true;
+            Debug.Log(FindObjectOfType<ExitTrigger>().name);
         }
         if (Input.GetKeyDown(KeyCode.F)) {
             FindObjectOfType<FullscreenTrigger>().GetComponent<FullscreenTrigger>().enabled = true;

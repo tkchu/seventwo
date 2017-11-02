@@ -176,12 +176,7 @@ public class Map : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            FindObjectOfType<ExitTrigger>().GetComponent<ExitTrigger>().enabled = true;
-        }
-        if (Input.GetKeyDown(KeyCode.F)) {
-            FindObjectOfType<FullscreenTrigger>().GetComponent<FullscreenTrigger>().enabled = true;
-        }
+        
 
         UpdateSortOrder();
 
