@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class Storytell : MonoBehaviour {
     public bool tell=false;
-    public GameObject s1, s2, s3, s4, s5,t1,t2,t4,t5,bt,bb,gbgm,sbgm,ui;
+    public GameObject s1, s2, s3, s4, s5,t1,t2,t4,t5,bt,bb,gbgm,sbgm;
     Vector3 ts1, ts2, ts4, ts5;
 	// Use this for initialization
 	void Start () {
@@ -15,9 +16,19 @@ public class Storytell : MonoBehaviour {
         ts5 = t5.transform.position;
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+    private void OnGUI()
+    {
+        Event e = Event.current;
+        if (e.isKey && e.keyCode == KeyCode.Escape)
+        {
+            sbgm.GetComponent<AudioSource>().Stop();
+            gbgm.SetActive(true);
+            SceneManager.LoadScene("levelEditor");
+        }
+        
+    }
+    // Update is called once per frame
+    void Update () {
         if (tell)
         {
             tell = false;
@@ -43,11 +54,8 @@ public class Storytell : MonoBehaviour {
                     sbgm.GetComponent<AudioSource>().Stop();
                     gbgm.SetActive(true);
                 })
-                .AppendCallback(() =>
-                {
-                    ui.SetActive(true);
-                })
-                .Append(bt.GetComponent<SpriteRenderer>().DOFade(0, 2f));
+                .Append(bt.GetComponent<SpriteRenderer>().DOFade(0, 1f))
+                .AppendCallback(()=> { SceneManager.LoadScene("levelEditor"); });
                 
         }
     }

@@ -2,7 +2,6 @@
 using DG.Tweening;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class PressWaiting : MonoBehaviour {
     public bool waiting;
@@ -13,10 +12,12 @@ public class PressWaiting : MonoBehaviour {
     public GameObject Logo;
     public GameObject Waiting;
     public GameObject UIcover;
+    public GameObject story;
     Vector3 vlogo;
     public GameObject UIhero;
     // Use this for initialization
     void Start () {
+        
         waiting = true;
         WaitingSR = Waiting.GetComponent<SpriteRenderer>();
         UIcoverSR=UIcover.GetComponent<SpriteRenderer>();
@@ -29,6 +30,7 @@ public class PressWaiting : MonoBehaviour {
     {
         Event e = Event.current;
         if (e.isKey&&e.keyCode==KeyCode.S) waiting = false;
+        if (e.isKey && e.keyCode == KeyCode.Escape) FindObjectOfType<ExitTrigger>().GetComponent<ExitTrigger>().enabled = true;
     }
     void Begin()
     {
@@ -39,15 +41,13 @@ public class PressWaiting : MonoBehaviour {
             WaitingSR.DOFade(0, 1f)
             ).Append(
             Logo.transform.DOMoveY(5f, 1.5f)
-            ).AppendCallback(()=> {
-                FindObjectOfType<Camera>().orthographicSize = 3.6f;
+            ).AppendCallback(() => {
+               // FindObjectOfType<Camera>().orthographicSize = 3.6f;
                 Logo.SetActive(false);
-            }).AppendCallback(()=> {
-                SceneManager.LoadScene("levelEditor");
-            }).Append(
-            UIcoverSR.DOFade(0, 1f)
-
-            );
+            }).AppendCallback(() => {
+                story.SetActive(true);
+                
+            });
         DOTween.Sequence().AppendInterval(1f).AppendCallback(
             () => {
                 UIheroSR.DOFade(0, 0.5f);
