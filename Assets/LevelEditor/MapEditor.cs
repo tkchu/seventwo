@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 
 public class MapEditor : MonoBehaviour {
@@ -156,7 +157,9 @@ public class MapEditor : MonoBehaviour {
         }
 
         PlayerPrefs.SetInt("lastPlayedLevel", mapID);
-
+        if (mapID == 20 && SceneManager.GetActiveScene().name != "boss") {
+            SceneManager.LoadScene("boss");
+        }
         string key = "map" + mapID.ToString();
         string value = ReadFile(key);
         string[] strs = value.Split(',');
@@ -236,7 +239,9 @@ public class MapEditor : MonoBehaviour {
         }
         GetComponent<Map>().UpdateSortOrder();
         FindObjectOfType<CameraCenter>().Trigger();
-        FindObjectOfType<EnemyTriggerManager>().Load();
+        if (FindObjectOfType<EnemyTriggerManager>()) {
+            FindObjectOfType<EnemyTriggerManager>().Load();
+        }
     }
 
 

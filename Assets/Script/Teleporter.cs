@@ -14,10 +14,6 @@ public class Teleporter : MonoBehaviour {
         SoundManager soundManager = FindObjectOfType<SoundManager>();
         soundManager.Play("teleporter");
         mapEditor.mapID += 1;
-        if (mapEditor.mapID == 20) {
-            SceneManager.LoadScene("boss");
-        }else{
-            mapEditor.Load();
-        }
+        mapEditor.Load();
     }
 }
