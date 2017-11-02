@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class EnemyMoveTrigger : MonoBehaviour {
     public int mapID;
@@ -18,12 +20,16 @@ public class EnemyMoveTrigger : MonoBehaviour {
     public bool save = false;
 
     private void Update() {
-        if (save) {
+#if UNITY_EDITOR
+
+        if (save)
+        {
             save = false;
             Save();
         }
+#endif
     }
-
+#if UNITY_EDITOR
     public void Save() {
         mapID = FindObjectOfType<MapEditor>().mapID;
         List<int> willMoveList = new List<int>();
@@ -37,7 +43,7 @@ public class EnemyMoveTrigger : MonoBehaviour {
         GameObject manager = transform.parent.gameObject;
         PrefabUtility.ReplacePrefab(manager, PrefabUtility.GetPrefabParent(manager), ReplacePrefabOptions.ConnectToPrefab);
     }
-
+#endif
     public void Load() {
         StartCoroutine(LoadC());
     }

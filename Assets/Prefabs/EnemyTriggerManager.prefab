@@ -21,11 +21,11 @@ GameObject:
   - component: {fileID: 4227528229094360}
   - component: {fileID: 114378622971324362}
   m_Layer: 0
-  m_Name: TriggerManager
+  m_Name: EnemyTriggerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4227528229094360
 Transform:

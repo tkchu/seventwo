@@ -29,7 +29,7 @@ public class PressWaiting : MonoBehaviour {
     private void OnGUI()
     {
         Event e = Event.current;
-        if (e.isKey&&e.keyCode==KeyCode.S) waiting = false;
+        if (e.isKey &&e.keyCode==KeyCode.S) waiting = false;
         if (e.isKey && e.keyCode == KeyCode.Escape) FindObjectOfType<ExitTrigger>().GetComponent<ExitTrigger>().enabled = true;
     }
     void Begin()
