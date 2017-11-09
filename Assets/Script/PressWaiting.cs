@@ -6,6 +6,7 @@ using System.Collections;
 public class PressWaiting : MonoBehaviour {
     public bool waiting;
     public bool restart=false;
+    public GameObject titlebgm;
     public bool over;
     SpriteRenderer WaitingSR, UIcoverSR,EndSR,UIheroSR;
     public GameObject Logo;
@@ -23,6 +24,7 @@ public class PressWaiting : MonoBehaviour {
        // EndSR = End.GetComponent<SpriteRenderer>();
         UIheroSR = UIhero.GetComponent<SpriteRenderer>();
         vlogo = Logo.transform.position;
+        
     }
 
     private void OnGUI()
@@ -45,14 +47,20 @@ public class PressWaiting : MonoBehaviour {
                 // FindObjectOfType<Camera>().orthographicSize = 3.6f;
                 Logo.SetActive(false);
             });
-        DOTween.Sequence().AppendInterval(1f).AppendCallback(
+        DOTween.Sequence().Append(
+                titlebgm.GetComponent<AudioSource>().DOFade(0, 2.5f)
+                )
+            .AppendCallback(
             () => {
                 UIheroSR.DOFade(0, 0.5f);
             }).AppendCallback(() => {
+                titlebgm.SetActive(false);
                 story.SetActive(true);
                 
 
-            }); 
+            });
+        
+        
     }
 
 
