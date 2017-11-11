@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212055885999364094}
   - component: {fileID: 95789045387931372}
   - component: {fileID: 114301175990559366}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4224597830458466}
   - component: {fileID: 114830014780941670}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ammo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4527443711074314}
   - component: {fileID: 212778647491300390}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: clip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 212237999721877144}
   - component: {fileID: 95378160174471312}
   - component: {fileID: 114828810666927288}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 212410484193109692}
   - component: {fileID: 95131054917600814}
   - component: {fileID: 114382200498702148}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FireUpDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4895167438435080}
   - component: {fileID: 212393279598549424}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: "\u89D2\u8272\u5F71\u5B50"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 331942712656537460}
   - component: {fileID: 61083208107883106}
   - component: {fileID: 50516718668975472}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4814329035069462}
   - component: {fileID: 212825350881145790}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: filled
   m_TagString: Untagged
   m_Icon: {fileID: 0}
