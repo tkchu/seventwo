@@ -119,6 +119,7 @@ public class Player : MonoBehaviour {
 
     private void Update() {
         CreateAimPoint();
+        
     }
 
     public void Meet(GameObject item) {
@@ -153,7 +154,7 @@ public class Player : MonoBehaviour {
     public bool isDead = false;
     IEnumerator Restart() {
         isDead = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2.5f);
         isDead = false;
 
         if (SceneManager.GetActiveScene().name == "boss") {

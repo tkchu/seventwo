@@ -7,7 +7,6 @@ public class Shrinkshow : MonoBehaviour {
     public bool trigger;
 	// Use this for initialization
 	void Start () {
-        trigger = false;
 	}
 	
 	// Update is called once per frame

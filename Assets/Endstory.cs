@@ -9,16 +9,14 @@ public class Endstory : MonoBehaviour {
 	void Start () {
 
         DOTween.Sequence()
-            .AppendInterval(4f).AppendCallback(() => { p1.transform.Find("mask").GetComponent<Shrinkshow>().trigger = true; })
+            .AppendInterval(1f).AppendCallback(() => { p1.transform.Find("mask").GetComponent<Shrinkshow>().trigger = true; })
             .AppendInterval(1f).AppendCallback(() => { p2.transform.Find("mask").GetComponent<Shrinkshow>().trigger = true; })
             .AppendInterval(2f).AppendCallback(() => { p3.transform.Find("mask").GetComponent<Shrinkshow>().trigger = true; })
             .AppendInterval(1f).AppendCallback(() => { p4.transform.Find("mask").GetComponent<Shrinkshow>().trigger = true; })
             .AppendInterval(2f).AppendCallback(() => { p5.transform.Find("mask").GetComponent<Shrinkshow>().trigger = true; })
-            .AppendInterval(1f).AppendCallback(() => {
-                p6.SetActive(true);
-                p6.transform.Find("mask").GetComponent<Shrinkshow>().trigger = true; })
+            .AppendInterval(1f).AppendCallback(() => { p6.transform.DOScaleY(0.43f, 0.5f); })
             .AppendInterval(2f).AppendCallback(() => { p7.transform.Find("mask").GetComponent<Shrinkshow>().trigger = true; })
-            .AppendInterval(2f).Append(front.GetComponent<SpriteRenderer>().DOFade(1,2f))
+            .AppendInterval(5f).Append(front.GetComponent<SpriteRenderer>().DOFade(1,2f))
             ;
 
 
