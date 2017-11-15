@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114708986664960648}
   - component: {fileID: 114329993042036480}
   - component: {fileID: 114646023665162706}
+  - component: {fileID: 95784851535261846}
   m_Layer: 0
   m_Name: KnifeEnemy
   m_TagString: enemy
@@ -40,6 +41,7 @@ GameObject:
   - component: {fileID: 4862918319011178}
   - component: {fileID: 212882065842730604}
   - component: {fileID: 95920624829944422}
+  - component: {fileID: 114032883690013380}
   m_Layer: 0
   m_Name: KnifeEnemyKnife
   m_TagString: Untagged
@@ -74,6 +76,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &95784851535261846
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1053295769156008}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a830d2196f86dbd478d4801f3e2231b6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &95920624829944422
 Animator:
   serializedVersion: 3
@@ -91,6 +110,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114032883690013380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625067785788940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47454eaa154bba34e87eea89b768a9c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114329993042036480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,8 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec4cc641a1ed8f4f8237dd0fca98fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prepareAnimator: {fileID: 95920624829944422}
-  range: 2
+  prepareAnimator: {fileID: 95784851535261846}
   dieSprite: {fileID: 21300000, guid: 4c07e7e5fbb2c63428d009aa20bbefc9, type: 3}
   knife: {fileID: 1625067785788940}
   noDie: 1

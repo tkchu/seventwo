@@ -5,8 +5,6 @@ using UnityEngine;
 public class knifeEnemy : MonoBehaviour {
     public Animator prepareAnimator;
     public int range = 2;
-
-    public Sprite dieSprite;
     public GameObject knife;
     public bool noDie = true;
 
@@ -32,9 +30,9 @@ public class knifeEnemy : MonoBehaviour {
                 prepareAnimator.SetBool("isReady", false);
             }
             if (Mathf.Abs(player_pos[0] - self_pos[0]) + Mathf.Abs(player_pos[1] - self_pos[1]) <= 0.3) {
-                prepareAnimator.SetBool("isAttack", true);
+                prepareAnimator.SetBool("isAttacking", true);
             } else {
-                prepareAnimator.SetBool("isAttack", false);
+                prepareAnimator.SetBool("isAttacking", false);
             }
         }
         
@@ -49,8 +47,8 @@ public class knifeEnemy : MonoBehaviour {
         noDie = false;
         transform.position = new Vector3(transform.position.x, transform.position.y, 1);
         Destroy(knife);
+        prepareAnimator.SetBool("isDead",true);
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        sr.sprite = dieSprite;
         int time = 6;
         while(time > 0) {
             time -= 1;
