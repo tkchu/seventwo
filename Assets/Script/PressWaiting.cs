@@ -6,31 +6,24 @@ using System.Collections;
 public class PressWaiting : MonoBehaviour {
     public bool waiting;
     public bool restart=false;
-    public GameObject titlebgm;
     public bool over;
-    SpriteRenderer WaitingSR, UIcoverSR,EndSR,UIheroSR;
-    public GameObject Logo;
+    SpriteRenderer WaitingSR, UIcoverSR,EndSR;
     public GameObject Waiting;
-    public GameObject UIcover;
-    public GameObject story;
-    Vector3 vlogo;
-    public GameObject UIhero;
+    public GameObject UIhero, SelectList;
+    public SpriteRenderer Cover;
     // Use this for initialization
     void Start () {
         
         waiting = true;
         WaitingSR = Waiting.GetComponent<SpriteRenderer>();
-        UIcoverSR=UIcover.GetComponent<SpriteRenderer>();
        // EndSR = End.GetComponent<SpriteRenderer>();
-        UIheroSR = UIhero.GetComponent<SpriteRenderer>();
-        vlogo = Logo.transform.position;
         
     }
 
     private void OnGUI()
     {
         Event e = Event.current;
-        if (e.isKey &&e.keyCode==KeyCode.S) waiting = false;
+        if (e.isKey &&e.keyCode==KeyCode.S&&waiting) waiting = false;
         
     }
     void Begin()
@@ -38,32 +31,15 @@ public class PressWaiting : MonoBehaviour {
 
         //WaitingSR.enabled = false;
         Sequence start = DOTween.Sequence();
-        start.Append(
-            WaitingSR.DOFade(0, 1f)
-            ).Append(
-            Logo.transform.DOMoveY(5f, 1.5f)
-            ).AppendCallback(() =>
-            {
-                // FindObjectOfType<Camera>().orthographicSize = 3.6f;
-                Logo.SetActive(false);
-            });
-        DOTween.Sequence().Append(
-                titlebgm.GetComponent<AudioSource>().DOFade(0, 2.5f)
-                )
-            .AppendCallback(
-            () => {
-                UIheroSR.DOFade(0, 0.5f);
-            }).AppendCallback(() => {
-                titlebgm.SetActive(false);
-                story.SetActive(true);
-                
-
-            });
+        start.Append(WaitingSR.DOFade(0, 1f))
+            .Append(UIhero.transform.DOMoveX(-5,2f))
+            .AppendCallback(()=> { SelectList.SetActive(true); })
+            .Append(Cover.DOFade(0,1f));
         
         
     }
 
-
+    /*
     void Over()
     {
         //snow.SetActive(true);
@@ -103,6 +79,7 @@ public class PressWaiting : MonoBehaviour {
            WaitingSR.DOFade(1, 1f)
          );
     }
+    */
     // Update is called once per frame
     void Update()
     {
@@ -113,6 +90,7 @@ public class PressWaiting : MonoBehaviour {
 
             Begin();
         }
+        /*
         if(over)
         {
             over = false;
@@ -125,6 +103,6 @@ public class PressWaiting : MonoBehaviour {
             Restart();
 
         }
-        
+        */
     }
 }
