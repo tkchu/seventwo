@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-    Map map;
     Animator heroani, bossshieldani;
     private void Start() {
-        map = FindObjectOfType<Map>();
         heroani = GameObject.FindWithTag("Player").GetComponent<Animator>();
         if(GameObject.Find("shield")!=null)
             bossshieldani = GameObject.Find("shield").GetComponent<Animator>();
@@ -62,10 +60,10 @@ public class Enemy : MonoBehaviour {
                 FindObjectOfType<SoundManager>().Play("misslonggun");
             bossshieldani.SetBool("hited", true);            
         }
-
+        /*
         if (GetComponent<MoveEnemy>() != null) {
             GetComponent<MoveEnemy>().willAction = false;
-        }
+        }*/
     }
     public void Meet(GameObject g) {
         Debug.Log(gameObject.name + " meet " + g.name);

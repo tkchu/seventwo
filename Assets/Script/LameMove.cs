@@ -10,7 +10,7 @@ public class LameMove : MonoBehaviour {
     }
 
     int count = 1;
-
+    
     public void OneMove() {
         if(count > 0) {
 

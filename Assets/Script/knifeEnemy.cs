@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class knifeEnemy : MonoBehaviour {
-    public Animator prepareAnimator;
+    Animator prepareAnimator;
     public int range = 2;
     public GameObject knife;
     public bool noDie = true;
@@ -12,6 +12,7 @@ public class knifeEnemy : MonoBehaviour {
 
     void Start() {
         map = FindObjectOfType<Map>();
+        prepareAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame

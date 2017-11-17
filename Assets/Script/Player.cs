@@ -133,9 +133,10 @@ public class Player : MonoBehaviour {
             return;
         }
 
-        if (item.tag == "enemy" || item.tag == "spine"|| item.tag == "bomb") {
+        if (item.tag == "enemy" || item.tag == "spine"|| item.tag == "bomb")
+        {
             GetComponent<Animator>().SetBool("isDead", true);
-            
+            //item.GetComponent<Animator>().SetBool("isAttacking", true);
             StartCoroutine(Restart());
         }
 
@@ -153,8 +154,10 @@ public class Player : MonoBehaviour {
 
     public bool isDead = false;
     IEnumerator Restart() {
+        yield return new WaitForSeconds(2f);
+
         isDead = true;
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(0.5f);
         isDead = false;
 
         if (SceneManager.GetActiveScene().name == "boss") {
