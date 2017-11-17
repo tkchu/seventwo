@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1625067785788940}
   m_LocalRotation: {x: -0.07860178, y: -0.0085259015, z: -0.5467607, w: -0.8335478}
-  m_LocalPosition: {x: 0.147, y: 0.153, z: 0}
+  m_LocalPosition: {x: 0.147, y: 0.12935093, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4950053273036532}
@@ -132,8 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec4cc641a1ed8f4f8237dd0fca98fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prepareAnimator: {fileID: 95784851535261846}
-  dieSprite: {fileID: 21300000, guid: 4c07e7e5fbb2c63428d009aa20bbefc9, type: 3}
+  range: 2
   knife: {fileID: 1625067785788940}
   noDie: 1
 --- !u!114 &114646023665162706
@@ -233,7 +232,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: e2510bc371215764cb6a101419c99b2f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.83823526, g: 0.83823526, b: 0.83823526, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
