@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
     Map map;
-    void Start() {
+    IEnumerator Start() {
         map = FindObjectOfType<Map>();
+        yield return new WaitForSeconds(0.3f);
+        transform.Find("传送动画").gameObject.SetActive(true);
     }
 
     public void Go(int[] direction) {

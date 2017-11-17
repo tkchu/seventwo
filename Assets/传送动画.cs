@@ -7,7 +7,7 @@ public class 传送动画 : MonoBehaviour {
     Player playerjs;
 	// Use this for initialization
 	void Start () {
-        sp= GetComponent<SpriteRenderer>();
+        sp = GetComponent<SpriteRenderer>();
         playersp = transform.parent.gameObject.GetComponent<SpriteRenderer>();
         playerjs = transform.parent.gameObject.GetComponent<Player>();
 	}
@@ -22,5 +22,6 @@ public class 传送动画 : MonoBehaviour {
 
         yield return new WaitForSeconds(2f);
         GetComponent<Animator>().SetBool("teleport1", true);
+        
     }
 }

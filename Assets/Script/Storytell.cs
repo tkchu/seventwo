@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Storytell : MonoBehaviour {
     public bool tell=false;
-    public GameObject s1, s2, s3, s4, s5,t1,t2,t4,t5,bt,bb,gbgm,sbgm;
+    public GameObject s1, s2, s3, s4, s5,t1,t2,t4,t5,bt,bb,sbgm;
     Vector3 ts1, ts2, ts4, ts5;
 	// Use this for initialization
 	void Start () {
@@ -22,7 +22,6 @@ public class Storytell : MonoBehaviour {
         if (e.isKey && e.keyCode == KeyCode.Escape)
         {
             sbgm.GetComponent<AudioSource>().Stop();
-            gbgm.SetActive(true);
             SceneManager.LoadScene("levelEditor");
         }
         
@@ -52,10 +51,12 @@ public class Storytell : MonoBehaviour {
                 .AppendCallback(() =>
                 {
                     sbgm.GetComponent<AudioSource>().Stop();
-                    gbgm.SetActive(true);
                 })
                 .Append(bt.GetComponent<SpriteRenderer>().DOFade(0, 1f))
-                .AppendCallback(()=> { SceneManager.LoadScene("levelEditor"); });
+                .AppendCallback(()=> {
+                    PlayerPrefs.SetInt("lastPlayedLevel", 1);
+                    SceneManager.LoadScene("levelEditor"); }
+                );
                 
         }
     }

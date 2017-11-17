@@ -981,6 +981,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 198565871711916486, guid: 498cd479322035e4abe98e820312ecc5,
+        type: 2}
+      propertyPath: prewarm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198565871711916486, guid: 498cd479322035e4abe98e820312ecc5,
+        type: 2}
+      propertyPath: randomSeed
+      value: -884555585
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 498cd479322035e4abe98e820312ecc5, type: 2}
   m_IsPrefabParent: 0

@@ -6,16 +6,24 @@ using DG.Tweening;
 
 public class SelectList : MonoBehaviour {
     public int a=0,b=0,c=0;
-    public Transform arrow;
+    public Transform arrow, logo;
+    public SpriteRenderer cover;
+    public GameObject story;
     public Animator a1, a2, a3;
     void Begin()
     {
         switch (a){
             case 0:
-                PlayerPrefs.SetInt("lastPlayedLevel", 1);
-                SceneManager.LoadScene("levelEditor");
+                DOTween.Sequence().Append(logo.DOMoveY(3,1f))
+                    .Append(cover.DOFade(1,1f))
+                    .AppendCallback(() => { story.SetActive(true); });
+                
                 break ;
-            case 1:SceneManager.LoadScene("levelEditor"); break;
+            case 1:
+                DOTween.Sequence().Append(logo.DOMoveY(3, 1f))
+                    .Append(cover.DOFade(1, 1f))
+                    .AppendCallback(() => { SceneManager.LoadScene("levelEditor"); });
+                break;
             case 2:Application.Quit();break;
 
         }
