@@ -15,6 +15,12 @@ public class 传送动画 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         sp.sortingOrder = playersp.sortingOrder+1;
-        if (playerjs.isDead) GetComponent<Animator>().SetBool("teleport1", true);
+        if (playerjs.isDead) StartCoroutine(Dead());
 	}
+    IEnumerator Dead()
+    {
+
+        yield return new WaitForSeconds(2f);
+        GetComponent<Animator>().SetBool("teleport1", true);
+    }
 }

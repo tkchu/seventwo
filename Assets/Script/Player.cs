@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
     }
 
     public void Go(int[] direction) {
+        if (isDead) return;
         int[] moveMult = GetComponent<Weapon>().Shoot(direction);
         int shot = moveMult[0];//是否打中了
         int backForce = moveMult[1];
@@ -153,10 +154,11 @@ public class Player : MonoBehaviour {
     }
 
     public bool isDead = false;
-    IEnumerator Restart() {
+    IEnumerator Restart()
+    {
+        isDead = true;
         yield return new WaitForSeconds(2f);
 
-        isDead = true;
         yield return new WaitForSeconds(0.5f);
         isDead = false;
 
