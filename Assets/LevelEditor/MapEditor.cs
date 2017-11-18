@@ -242,8 +242,8 @@ public class MapEditor : MonoBehaviour {
         if (FindObjectOfType<EnemyTriggerManager>()) {
             FindObjectOfType<EnemyTriggerManager>().Load();
         }
+        GetComponent<Map>().lastHit = 0.5f;
     }
-
 
     public bool release = false;
     bool ExistFile(string fileName) {

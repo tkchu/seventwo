@@ -137,7 +137,8 @@ public class Map : MonoBehaviour {
     }
 
     // Update is called once per frame
-    float lastHit = 0.05f;
+
+    public float lastHit = 0.05f;
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape))
