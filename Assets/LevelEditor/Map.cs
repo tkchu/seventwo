@@ -46,6 +46,15 @@ public class Map : MonoBehaviour {
     }
 
     public GameObject MoveItem(GameObject g, int[] pos) {
+        if (g.GetComponent<SpriteRenderer>()) {
+            int[] xyBefore = GetItemPos(g);
+            if (xyBefore[0] > pos[0]) {
+                g.GetComponent<SpriteRenderer>().flipX = true;
+            }else if(xyBefore[0] < pos[0]) {
+                g.GetComponent<SpriteRenderer>().flipX = false;
+            }
+        }
+
         //返回碰到的东西
         int[] now = FindGameObject(itemMap, g);
         GameObject itemMeet = null;
