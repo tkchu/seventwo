@@ -7,7 +7,7 @@ public class DieImage : MonoBehaviour {
     public Image playerImage;
     public Text text;
     public Image enemyImage;
-    private float secondsBefore = 1;
+    private float secondsBefore = 2.5f;
     private float secondsContinue = 1;
 
     public void Show(Sprite enemySprite) {

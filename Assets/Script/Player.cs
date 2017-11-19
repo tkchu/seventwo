@@ -165,6 +165,7 @@ public class Player : MonoBehaviour {
         yield return new WaitForSeconds(1.5f);
         isDead = false;
 
+        yield return new WaitForSeconds(1f);
         if (SceneManager.GetActiveScene().name == "boss") {
             SceneManager.LoadScene("boss");
         }else {
