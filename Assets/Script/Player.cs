@@ -125,6 +125,7 @@ public class Player : MonoBehaviour {
         
     }
 
+    public Sprite[] introSprites;
     public void Meet(GameObject item) {
         if(item.GetComponent<knifeEnemy>() && !item.GetComponent<knifeEnemy>().noDie) {
             return;
@@ -140,7 +141,20 @@ public class Player : MonoBehaviour {
         {
             GetComponent<Animator>().SetBool("isDead", true);
             //item.GetComponent<Animator>().SetBool("isAttacking", true);
-            FindObjectOfType<DieImage>().Show(item.GetComponent<SpriteRenderer>().sprite);
+            Sprite enemySprite = item.GetComponent<SpriteRenderer>().sprite;
+            Sprite introSprite = null;
+            if (item.GetComponent<Bomb>()) {
+                introSprite = introSprites[0];
+            }else if (item.GetComponent<Lame>()) {
+                introSprite = introSprites[1];
+            } else if (item.GetComponent<Diagonal>()) {
+                introSprite = introSprites[2];
+            } else if(item.GetComponent<knifeEnemy>()) {
+                introSprite = introSprites[3];
+            } else if(item.tag == "spine") {
+                introSprite = introSprites[4];
+            }
+            FindObjectOfType<DieImage>().Show(item.GetComponent<SpriteRenderer>().sprite, introSprite);
             StartCoroutine(Restart());
         }
 
