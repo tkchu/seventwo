@@ -49,7 +49,7 @@ public class EnemyMoveTrigger : MonoBehaviour {
     }
 
     IEnumerator LoadC() {
-        yield return new WaitUntil(()=>map.itemMap.Length > 0);
+        yield return new WaitForSeconds(0.25f);
         List<GameObject> temp = new List<GameObject>();
         for(int i =0;i<willMoveEnemyXY.Length;i+=2) {
             GameObject g = map.GetGameObjectAt(willMoveEnemyXY[i], willMoveEnemyXY[i + 1]);
