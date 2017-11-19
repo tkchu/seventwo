@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
 public class Shrinkshow : MonoBehaviour {
     public bool trigger;
 	// Use this for initialization

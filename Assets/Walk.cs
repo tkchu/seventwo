@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Walk : MonoBehaviour {
-    public  bool flag = true;
+    public  bool flag = true,flag1=true;
     double time=0,lasttime;
     Vector3 pos;
     // Use this for initialization
@@ -20,8 +20,12 @@ public class Walk : MonoBehaviour {
         else transform.localPosition += new Vector3(1.5f * Time.fixedDeltaTime, 0, 0);
         if (time >= 2&&flag)
         {
-            time = 0;
-            transform.localPosition = pos;
+            if (flag1)
+            {
+
+                time = 0;
+                transform.localPosition = pos;
+            }
         }
         if (time >= 4)
         {

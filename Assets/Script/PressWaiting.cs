@@ -7,10 +7,10 @@ public class PressWaiting : MonoBehaviour {
     public bool waiting;
     public bool restart=false;
     public bool over;
-    SpriteRenderer WaitingSR, UIcoverSR,EndSR;
+    SpriteRenderer WaitingSR;
     public GameObject Waiting;
     public GameObject UIhero, SelectList;
-    public SpriteRenderer Cover;
+    public Cartoon cartoon;
     // Use this for initialization
     void Start () {
         
@@ -32,9 +32,7 @@ public class PressWaiting : MonoBehaviour {
         //WaitingSR.enabled = false;
         Sequence start = DOTween.Sequence();
         start.Append(WaitingSR.DOFade(0, 1f))
-            .Append(UIhero.transform.DOMoveX(-5,2f))
-            .AppendCallback(()=> { SelectList.SetActive(true); })
-            .Append(Cover.DOFade(0,1f));
+            .AppendCallback(() => { cartoon.enable = true;Destroy(gameObject); });
         
         
     }

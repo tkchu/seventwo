@@ -15,6 +15,8 @@ public class Storytell : MonoBehaviour {
         ts4 = t4.transform.position;
         ts5 = t5.transform.position;
 
+        PlayerPrefs.SetInt("lastPlayedLevel", 0);
+
     }
     private void OnGUI()
     {
@@ -54,7 +56,6 @@ public class Storytell : MonoBehaviour {
                 })
                 .Append(bt.GetComponent<SpriteRenderer>().DOFade(0, 1f))
                 .AppendCallback(()=> {
-                    PlayerPrefs.SetInt("lastPlayedLevel", 1);
                     SceneManager.LoadScene("levelEditor"); }
                 );
                 
