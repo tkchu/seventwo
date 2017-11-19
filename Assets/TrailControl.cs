@@ -12,23 +12,27 @@ public class TrailControl : MonoBehaviour {
         playeranimator = transform.parent.gameObject.GetComponent<Animator>();
         playersprite = transform.parent.gameObject.GetComponent<SpriteRenderer>();
     }
-	
+
+    public Color orangeGun;
+    public Color redGun;
+    public Color blueGun;
+    public Color greenGun;
 	// Update is called once per frame
 	void Update () {
         trail.sortingOrder = playersprite.sortingOrder;
         var a=playeranimator.GetInteger("stat");
         switch (a)
         {
-            case 0: trail.startColor = trail.endColor = Color.black;
+            case 0: trail.startColor = trail.endColor = orangeGun;
                 break;
             case 1:
-                trail.startColor = trail.endColor = Color.red;
+                trail.startColor = trail.endColor = redGun;
                 break;
             case 2:
-                trail.startColor = trail.endColor = Color.blue;
+                trail.startColor = trail.endColor = blueGun;
                 break;
             case 3:
-                trail.startColor = trail.endColor = Color.green;
+                trail.startColor = trail.endColor = greenGun;
                 break;
         }
 
