@@ -20,6 +20,7 @@ public class SoundManager : MonoBehaviour {
     public AudioSource missshotgun;
     public AudioSource misslonggun;
 
+    public AudioSource BeAttacked0, BeAttacked1;
     // Use this for initialization
 
     Dictionary<string, AudioSource> dict;
@@ -39,7 +40,9 @@ public class SoundManager : MonoBehaviour {
             {"bossattack",bossattack },
             {"missshotgun",missshotgun },
             {"misslonggun",misslonggun },
-            {"bossmiss",bossmiss }
+            {"bossmiss",bossmiss },
+            {"beattacked0",BeAttacked0 },
+            {"beattacked1", BeAttacked1}
         };
     }
 

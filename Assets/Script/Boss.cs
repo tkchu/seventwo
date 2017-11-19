@@ -8,7 +8,7 @@ public class Boss : MonoBehaviour {
     public Map map;
     public MapEditor mapEditor;
     public bool unbeatable = false,callenemy=false;
-    public int[][][] enemypoint=new int[5][][];
+    public int[][][] enemypoint=new int[4][][];
     public int[][] weaponpoint;
     public int[][] bombpoint;
     public GameObject[] movebomb;
@@ -29,7 +29,6 @@ public class Boss : MonoBehaviour {
         enemypoint[1] = new int[][] { new int[] { 6, 1 }, new int[] { 7, 1 } };
         enemypoint[2] = new int[][] { new int[] { 18, 7 }, new int[] { 18, 8 }, new int[] { 19, 7 }, new int[] { 19, 8 } };
         enemypoint[3] = new int[][] { new int[] { 1, 1 }, new int[] { 1, 2 }, new int[] { 1, 3 } };
-        enemypoint[4] = new int[][] { new int[] { 18, 1 }, new int[] { 19, 1 } };
        
 
     }

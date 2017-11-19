@@ -19,10 +19,10 @@ public class SelectList : MonoBehaviour {
         switch (a){
             case 0:
                 DOTween.Sequence().Append(logo.DOMoveY(3,1f))
-                    .Append(titlebgm.DOFade(0,2f)).AppendCallback(()=> { titlebgm.gameObject.SetActive(false); })
-                    .Insert(1f,a1.DOFade(0,2f))
-                    .Insert(1f, a2.DOFade(0, 2f)).Insert(1f, a3.DOFade(0, 2f))
-                    .Insert(1f, arrow.gameObject.GetComponent<SpriteRenderer>().DOFade(0, 2f))
+                    .Append(titlebgm.DOFade(0,1.5f)).AppendCallback(()=> { titlebgm.gameObject.SetActive(false); })
+                    .Insert(1f,a1.DOFade(0,1f))
+                    .Insert(1f, a2.DOFade(0, 1f)).Insert(1f, a3.DOFade(0, 1f))
+                    .Insert(1f, arrow.gameObject.GetComponent<SpriteRenderer>().DOFade(0, 1f))
                     .AppendCallback(() => {
                         gameObject.SetActive(false); story.SetActive(true); });
                 break ;
@@ -39,9 +39,6 @@ public class SelectList : MonoBehaviour {
 
         }
 
-    }
-    private void OnGUI()
-    {
     }
     // Use this for initialization
     void Start () {

@@ -139,6 +139,10 @@ public class Player : MonoBehaviour {
 
         if (item.tag == "enemy" || item.tag == "spine"|| item.tag == "bomb")
         {
+            if(Random.Range(0,2)==1) 
+                FindObjectOfType<SoundManager>().Play("beattacked0");
+            else
+                FindObjectOfType<SoundManager>().Play("beattacked1");
             GetComponent<Animator>().SetBool("isDead", true);
             //item.GetComponent<Animator>().SetBool("isAttacking", true);
             Sprite enemySprite = item.GetComponent<SpriteRenderer>().sprite;

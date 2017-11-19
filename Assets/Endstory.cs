@@ -16,7 +16,7 @@ public class Endstory : MonoBehaviour {
             .AppendInterval(3f).AppendCallback(() => { p5.transform.Find("mask").GetComponent<Shrinkshow>().trigger = true; })
             .AppendInterval(1f).AppendCallback(() => { p6.transform.DOScaleY(0.43f, 0.5f); })
             .AppendInterval(2f).AppendCallback(() => { p7.transform.Find("mask").GetComponent<Shrinkshow>().trigger = true; })
-            .AppendInterval(1.5f).Append(front.GetComponent<SpriteRenderer>().DOFade(1,2f))
+            .AppendInterval(1.5f).Append(front.GetComponent<SpriteRenderer>().DOFade(1,1f))
             ;
 
 
