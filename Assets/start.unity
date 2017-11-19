@@ -554,6 +554,7 @@ MonoBehaviour:
   c: 0
   arrow: {fileID: 40111205}
   logo: {fileID: 389530231}
+  titlebgm: {fileID: 1953786201}
   cover: {fileID: 1174436446}
   story: {fileID: 1840774594}
   a1: {fileID: 1880715324}

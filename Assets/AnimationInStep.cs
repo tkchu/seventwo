@@ -7,7 +7,7 @@ public class AnimationInStep : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         ani = GetComponent<Animator>();
-       parentani= transform.parent.GetComponent<Animator>();
+       parentani= transform.parent.parent.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame

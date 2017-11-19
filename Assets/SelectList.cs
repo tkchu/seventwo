@@ -7,6 +7,7 @@ using DG.Tweening;
 public class SelectList : MonoBehaviour {
     public int a=0,b=0,c=0;
     public Transform arrow, logo;
+    public AudioSource titlebgm;
     public SpriteRenderer cover;
     public GameObject story;
     public Animator a1, a2, a3;
@@ -15,6 +16,7 @@ public class SelectList : MonoBehaviour {
         switch (a){
             case 0:
                 DOTween.Sequence().Append(logo.DOMoveY(3,1f))
+                    .Append(titlebgm.DOFade(0,1f))
                     .Append(cover.DOFade(1,1f))
                     .AppendCallback(() => { story.SetActive(true); });
                 
