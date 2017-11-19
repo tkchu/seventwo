@@ -5944,6 +5944,9 @@ MonoBehaviour:
   - {fileID: 1196953105349194, guid: 6db5be08101244140b7deab546fe922f, type: 2}
   - {fileID: 1434472227176742, guid: fcc8e075af844bb4dbfc563a97d4bb49, type: 2}
   - {fileID: 1754348109708094, guid: 652e3a26fa0953d43b20cff760ea73f6, type: 2}
+  - {fileID: 1087734138686722, guid: 1c4089a5a11654043b83913f4404430c, type: 2}
+  - {fileID: 1690985840445606, guid: 35e9c8ec5173a374c9ea142bdc569989, type: 2}
+  - {fileID: 1554911317371680, guid: 35e78b158a3cf5042995a318004be562, type: 2}
   itemPrefabs:
   - {fileID: 1545116150718606, guid: 3d2decb2ad3466f49a81f1d2c8fd89cc, type: 2}
   - {fileID: 1991772986892242, guid: 1b4948660a01cee4ea75378bd4c0ca34, type: 2}
@@ -5958,6 +5961,8 @@ MonoBehaviour:
   - {fileID: 1941870496640432, guid: d120aff99e66b3744920fb4317a7de16, type: 2}
   - {fileID: 1186814411395144, guid: 235bcbc40d6400d47868a33d951c848d, type: 2}
   - {fileID: 1436527171517032, guid: e0efba4517cac9f41b8a08661faa5aeb, type: 2}
+  - {fileID: 1502556529098118, guid: 576d3ac4b78b03f44a510ad76f9e9a80, type: 2}
+  - {fileID: 1613305272104416, guid: 8fdcc970924fc49498e8e632d5916168, type: 2}
   movePrefabs:
   - {fileID: 1001318645118222, guid: fcecd690bbf9f5741b78cc009e88b7b4, type: 2}
   - {fileID: 1053295769156008, guid: 521b8dfecd5d72d4e9e03bc3ea8e07dd, type: 2}
@@ -5990,6 +5995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wallPrefab: {fileID: 0}
   lastHit: 0.05
+  acceptInput: 1
 --- !u!4 &560247127
 Transform:
   m_ObjectHideFlags: 0

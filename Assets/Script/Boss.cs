@@ -165,6 +165,7 @@ public class Boss : MonoBehaviour {
         GetComponent<Animator>().SetBool("ishited", true);
         if (hp <= 0)
         {
+            FindObjectOfType<Map>().GetComponent<Map>().enabled = false;
             StartCoroutine(Explode());
             Debug.Log("Winner!");
             return;
