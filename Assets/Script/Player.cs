@@ -173,6 +173,7 @@ public class Player : MonoBehaviour {
     public bool isDead = false;
     IEnumerator Restart()
     {
+        map.acceptInput = false;
         isDead = true;
         yield return new WaitForSeconds(1f);
 
@@ -188,6 +189,7 @@ public class Player : MonoBehaviour {
             map.GetComponent<MapEditor>().Load();
             
         }
+        map.acceptInput = true;
     }
 
 

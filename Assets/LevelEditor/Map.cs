@@ -148,7 +148,7 @@ public class Map : MonoBehaviour {
     // Update is called once per frame
 
     public float lastHit = 0.05f;
-
+    public bool acceptInput = true;
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -156,7 +156,7 @@ public class Map : MonoBehaviour {
         }
         lastHit -= Time.deltaTime;
         var temp = FindObjectOfType<Player>();
-        if (temp != null && !temp.isDead && lastHit <=0) {
+        if (temp != null && !temp.isDead && lastHit <=0 && acceptInput) {
             player = temp.gameObject;
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
                 player.GetComponent<Player>().Go(new int[] { 0, 1 });
