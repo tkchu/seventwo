@@ -17,11 +17,12 @@ public class Bomb : MonoBehaviour {
     }
 
     public void OneAction() {
+        /*
         if (isReady)
         {
             InstantDie();
             return;
-        }
+        }*/
         int[] player_pos = map.GetPlayerPos();
         int[] self_pos = map.FindGameObject(map.itemMap, gameObject);
         if (player_pos == null || self_pos == null)
