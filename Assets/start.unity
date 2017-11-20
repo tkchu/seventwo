@@ -235,6 +235,7 @@ MonoBehaviour:
   a1: {fileID: 716145263}
   a2: {fileID: 1481606885}
   a3: {fileID: 1886015716}
+  cl: {r: 1, g: 0.44444442, b: 0.31578946, a: 1}
 --- !u!1 &40111204
 GameObject:
   m_ObjectHideFlags: 0

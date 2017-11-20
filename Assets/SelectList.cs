@@ -42,12 +42,16 @@ public class SelectList : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        a1.color = statB;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if (Input.GetKeyDown(KeyCode.W) && Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.D))
+        {
+            flag = false;
+            SceneManager.LoadScene("boss");
+        }
         if (flag)
         {
 

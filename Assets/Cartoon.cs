@@ -9,6 +9,7 @@ public class Cartoon : MonoBehaviour {
     public GameObject enemy, teleporter, road, player,symbol,selectList;
     public SpriteRenderer arrow;
     public Text a1, a2, a3;
+    public Color cl;
 	// Use this for initialization
 	void Start () {
 	}
@@ -32,12 +33,13 @@ public class Cartoon : MonoBehaviour {
             .Insert(1.3f, teleporter.transform.DOMoveX(-3.91f, 1f))
             .Append(player.transform.DOMoveX(-4.5f, 2f))
             .AppendCallback(() => { Destroy(player); })
-            .Append(teleporter.transform.DOScaleY(0, 0.5f))
-            .Insert(4.8f,teleporter.transform.DOMoveY(-0.82f, 0.5f))
+            .Append(teleporter.transform.DOScaleY(0, 0.15f))
+            .Insert(4.8f,teleporter.transform.DOMoveY(-0.82f, 0.15f))
             .AppendCallback(()=>{ Destroy(teleporter); })
             .AppendCallback(() => { selectList.SetActive(true); })
-            .Append(a1.DOFade(1, 1f))
-            .Insert(3f, a2.DOFade(1, 1f)).Insert(3f, a3.DOFade(1, 1f)).Insert(3f, arrow.DOFade(1, 1f));
+            .Insert(2.7f,a1.DOFade(1, 1f))
+            .Append(a1.DOColor(cl,0.5f))
+            .Insert(2.7f, a2.DOFade(1, 1f)).Insert(2.7f, a3.DOFade(1, 1f)).Insert(2.7f, arrow.DOFade(1, 1f));
         ;
     }
     private void OnDisable()

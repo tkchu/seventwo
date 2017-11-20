@@ -12,6 +12,7 @@ public class Bomb : MonoBehaviour {
 
     void Start() {
         map = FindObjectOfType<Map>();
+        OneAction();
     }
 
     public void OneAction() {

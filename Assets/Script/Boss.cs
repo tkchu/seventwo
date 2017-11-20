@@ -34,7 +34,12 @@ public class Boss : MonoBehaviour {
     }
     private void Update()
     {
+        if (test)
+        {
+            test = false;
+            CreateRandomBomb();
 
+        }
     }
 
     void Create(int[] xy,GameObject[] prefab)
