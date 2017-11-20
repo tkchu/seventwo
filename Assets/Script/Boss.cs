@@ -17,23 +17,24 @@ public class Boss : MonoBehaviour {
     public GameObject[] weapon;
     public Animator shield;
     public int step = 0;
+    public bool test = false;
     private void Start() {
         Destroy(GameObject.Find("gbgm"));
         shield = transform.Find("shield").GetComponent<Animator>();
         map = FindObjectOfType<Map>();
         mapEditor = FindObjectOfType<MapEditor>();
-        weaponpoint = new int[][] { new int[] { 9, 2 } ,new int[] { 2,4},new int[] { 17, 6 } };
-        bombpoint = new int[][] { new int[] { 5, 3 }, new int[] { 6, 6 }, new int[] { 12, 2 }, new int[]{15, 4}};
+        weaponpoint = new int[][] { new int[] { 10, 1 } ,new int[] { 6,4},new int[] { 14, 6 } };
+        bombpoint = new int[][] { new int[] { 6, 5 }, new int[] { 13, 2 }, new int[] { 13, 5 }};
         
-        enemypoint[0] = new int[][] { new int[] { 1, 7 }, new int[] { 1, 8 }, new int[] { 2, 7 },new int[] { 2, 8 } };
-        enemypoint[1] = new int[][] { new int[] { 6, 1 }, new int[] { 7, 1 } };
-        enemypoint[2] = new int[][] { new int[] { 18, 7 }, new int[] { 18, 8 }, new int[] { 19, 7 }, new int[] { 19, 8 } };
-        enemypoint[3] = new int[][] { new int[] { 1, 1 }, new int[] { 1, 2 }, new int[] { 1, 3 } };
-       
+        enemypoint[0] = new int[][] { new int[] { 1, 2 } };
+        enemypoint[1] = new int[][] { new int[] { 1, 8 }, new int[] { 2, 8 } };
+        enemypoint[2] = new int[][] { new int[] { 18, 1 }, new int[] { 19, 1 } };
+        enemypoint[3] = new int[][] { new int[] { 19, 8 }};
 
     }
     private void Update()
     {
+
     }
 
     void Create(int[] xy,GameObject[] prefab)
