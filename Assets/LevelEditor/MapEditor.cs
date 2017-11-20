@@ -160,6 +160,10 @@ public class MapEditor : MonoBehaviour {
         if (mapID == 20 && SceneManager.GetActiveScene().name != "boss") {
             SceneManager.LoadScene("boss");
         }
+        else if (mapID != 20 && SceneManager.GetActiveScene().name == "boss")
+        {
+            SceneManager.LoadScene("levelEditor");
+        }
         string key = "map" + mapID.ToString();
         string value = ReadFile(key);
         string[] strs = value.Split(',');

@@ -10,16 +10,17 @@ public class Map : MonoBehaviour {
     public GameObject[,] decorateMap = new GameObject[0, 0] { };
 
     GameObject player = null;
-    int[] playerPos = { 0, 0};
+    //int[] playerPos = { 0, 0};
 
     public int[] GetPlayerPos() {
-        if (player != null) {
+        if (player != null)
+        {
             int[] find = FindGameObject(itemMap, player);
-            if (find != null) {
-                playerPos = find;
-            }
+            
+
+            return find;
         }
-        return playerPos;
+        else return null;
     }
 
     public void RemoveGameObject(GameObject g) {

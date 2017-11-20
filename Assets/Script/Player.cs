@@ -148,6 +148,7 @@ public class Player : MonoBehaviour {
             Sprite enemySprite = item.GetComponent<SpriteRenderer>().sprite;
             Sprite introSprite = null;
             if (item.GetComponent<Bomb>()) {
+                item.GetComponent<Bomb>().InstantDie();
                 introSprite = introSprites[0];
             }else if (item.GetComponent<Lame>()) {
                 introSprite = introSprites[1];
@@ -159,6 +160,9 @@ public class Player : MonoBehaviour {
                 introSprite = introSprites[4];
             }
             FindObjectOfType<DieImage>().Show(item.GetComponent<SpriteRenderer>().sprite, introSprite);
+            transform.Find("Fire").gameObject.SetActive(false);
+            transform.Find("FireUpDown").gameObject.SetActive(false);
+            transform.Find("weapon").gameObject.SetActive(false);
             StartCoroutine(Restart());
         }
 
