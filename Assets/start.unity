@@ -235,7 +235,7 @@ MonoBehaviour:
   a1: {fileID: 716145263}
   a2: {fileID: 1481606885}
   a3: {fileID: 1886015716}
-  cl: {r: 1, g: 0.44444442, b: 0.31578946, a: 1}
+  cl: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &40111204
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,7 +316,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 96
   m_Sprite: {fileID: 21300000, guid: 81cbd5fa8d109c148bff8a5261ccf500, type: 3}
-  m_Color: {r: 0.67058825, g: 0.29803923, b: 0.21176472, a: 0}
+  m_Color: {r: 0.83823526, g: 0.83823526, b: 0.83823526, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -719,10 +719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afda79c9e99a60f4ba3ebecdb36d160c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: 0
-  b: 0
-  statA: {r: 0.67058825, g: 0.29803923, b: 0.21176472, a: 1}
-  statB: {r: 1, g: 0.44444442, b: 0.31578946, a: 1}
+  statA: {r: 0.6838235, g: 0.6838235, b: 0.6838235, a: 1}
+  statB: {r: 1, g: 1, b: 1, a: 1}
   arrow: {fileID: 40111205}
   logo: {fileID: 389530231}
   titlebgm: {fileID: 1953786201}
@@ -1283,7 +1281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6691177, g: 0.2967598, b: 0.21155927, a: 0}
+  m_Color: {r: 0.6838235, g: 0.6838235, b: 0.6838235, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2116,7 +2114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6691177, g: 0.2967598, b: 0.21155927, a: 0}
+  m_Color: {r: 0.6838235, g: 0.6838235, b: 0.6838235, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2832,7 +2830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6691177, g: 0.2967598, b: 0.21155927, a: 0}
+  m_Color: {r: 0.6838235, g: 0.6838235, b: 0.6838235, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

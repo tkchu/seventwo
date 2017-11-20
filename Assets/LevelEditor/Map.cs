@@ -8,19 +8,26 @@ public class Map : MonoBehaviour {
     public GameObject[,] groundMap = new GameObject[0, 0] { };
     public GameObject[,] itemMap = new GameObject[0, 0] { };
     public GameObject[,] decorateMap = new GameObject[0, 0] { };
-
+    
     GameObject player = null;
-    //int[] playerPos = { 0, 0};
+    public int[] playerPos = { 0, 0 };
 
-    public int[] GetPlayerPos() {
+    public int[] GetPlayerPos()
+    {
         if (player != null)
         {
             int[] find = FindGameObject(itemMap, player);
-            
+            if (find != null)
+            {
+                playerPos = find;
+            }
 
-            return find;
+            return playerPos;
         }
-        else return null;
+        else {
+            playerPos =new int[] { 0,0};
+            return null;
+        }
     }
 
     public void RemoveGameObject(GameObject g) {

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class SelectList : MonoBehaviour {
-    public int a=0,b=0;
+    int a=0,b=0;
     public Color statA, statB;
     public Transform arrow, logo;
     public AudioSource titlebgm;
@@ -33,7 +33,8 @@ public class SelectList : MonoBehaviour {
                     .Insert(1f, a2.DOFade(0, 2f)).Insert(1f, a3.DOFade(0, 2f))
                     .Insert(1f, arrow.gameObject.GetComponent<SpriteRenderer>().DOFade(0, 2f))
                     .AppendCallback(() => {
-                        gameObject.SetActive(false); SceneManager.LoadScene("levelEditor"); });
+                        gameObject.SetActive(false); SceneManager.LoadScene("levelEditor"); Debug.Log("Continue Game;");
+                    });
                 break;
             case 2:Application.Quit();break;
 

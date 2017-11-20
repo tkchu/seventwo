@@ -152,6 +152,8 @@ public class MapEditor : MonoBehaviour {
         }
     }
     public void Load() {
+
+        FindObjectOfType<Map>().playerPos = new int[] { -4, -4 };
         foreach(Transform t in transform) {
             Destroy(t.gameObject);
         }
