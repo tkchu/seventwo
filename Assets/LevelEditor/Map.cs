@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class Map : MonoBehaviour {
     public GameObject wallPrefab;
@@ -152,7 +153,6 @@ public class Map : MonoBehaviour {
         }
         return result.ToArray();
     }
-
     // Update is called once per frame
 
     public float lastHit = 0.05f;
@@ -160,7 +160,10 @@ public class Map : MonoBehaviour {
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Screen.fullScreen = false;
+            Cartoon.fastforward = true;
+            SceneManager.LoadScene("start");
+            //Debug.Log("hello" + SceneManager.GetActiveScene().name.ToString());
+           
         }
         lastHit -= Time.deltaTime;
         var temp = FindObjectOfType<Player>();
@@ -182,6 +185,7 @@ public class Map : MonoBehaviour {
             }
         }
 
+        /*
         if (Input.GetKeyDown(KeyCode.Space)) {
             foreach (LameMove lm in FindObjectsOfType<LameMove>()) {
                 lm.OneMove();
@@ -192,7 +196,7 @@ public class Map : MonoBehaviour {
             foreach(DiagonalMove dm in FindObjectsOfType<DiagonalMove>()) {
                 dm.OneMove();
             }
-        }
+        }*/
 
         
 

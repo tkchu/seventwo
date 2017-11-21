@@ -17,12 +17,12 @@ public class Bomb : MonoBehaviour {
     }
 
     public void OneAction() {
-        /*
+        
         if (isReady)
         {
             InstantDie();
             return;
-        }*/
+        }
         int[] player_pos = map.GetPlayerPos();
         int[] self_pos = map.FindGameObject(map.itemMap, gameObject);
         if (player_pos == null || self_pos == null)
@@ -31,7 +31,7 @@ public class Bomb : MonoBehaviour {
         if (Mathf.Abs(player_pos[0] - self_pos[0]) + Mathf.Abs(player_pos[1] - self_pos[1]) <= 2) {
             GetComponent<Animator>().SetBool("isReady", true);
             isReady = true;
-            Debug.Log("Ready"+player_pos[0].ToString()+','+player_pos[1].ToString()+';'+self_pos[0].ToString()+','+self_pos[1].ToString());
+            //Debug.Log("Ready"+player_pos[0].ToString()+','+player_pos[1].ToString()+';'+self_pos[0].ToString()+','+self_pos[1].ToString());
             StartCoroutine(waitDieC());
         }
     }

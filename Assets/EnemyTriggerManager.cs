@@ -11,6 +11,7 @@ public class EnemyTriggerManager : MonoBehaviour {
 	}
 	
     public void Load() {
+        if(transform.childCount>0)
         foreach (Transform t in transform) {
             if (t.GetComponent<EnemyMoveTrigger>().mapID != me.mapID) {
                 t.gameObject.SetActive(false);

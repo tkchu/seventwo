@@ -8,8 +8,10 @@ public class Storytell : MonoBehaviour {
     public bool tell=false;
     public GameObject s1, s2, s3, s4, s5,t1,t2,t4,t5,bt,bb,sbgm;
     Vector3 ts1, ts2, ts4, ts5;
-	// Use this for initialization
-	void Start () {
+    Sequence sq ;
+    // Use this for initialization
+    void Start () {
+        //sq = DOTween.Sequence();
         ts1 = t1.transform.position;
         ts2 = t2.transform.position;
         ts4 = t4.transform.position;
@@ -23,6 +25,7 @@ public class Storytell : MonoBehaviour {
         Event e = Event.current;
         if (e.isKey && e.keyCode == KeyCode.Escape)
         {
+            sq.Kill();
             sbgm.GetComponent<AudioSource>().Stop();
             SceneManager.LoadScene("levelEditor");
         }
@@ -34,7 +37,7 @@ public class Storytell : MonoBehaviour {
         {
             tell = false;
             sbgm.SetActive(true);
-            DOTween.Sequence().Append(s1.transform.DOMove(ts1, 4f))
+            sq=DOTween.Sequence().Append(s1.transform.DOMove(ts1, 4f))
                 .Append(s2.transform.DOMove(ts2, 4f))
                 .Append(s3.GetComponent<SpriteRenderer>().DOFade(1, 9f))
                 .Append(s4.transform.DOMove(ts4, 4f))

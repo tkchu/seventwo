@@ -6,8 +6,9 @@ public class zhanli : StateMachineBehaviour {
     public string state = " ";
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
-
-        animator.SetBool(state, false);
+        if (state != "")
+            animator.SetBool(state, false);
+        else Debug.Log(animator.gameObject.name.ToString());
     }
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
