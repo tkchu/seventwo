@@ -69,13 +69,20 @@ public class Bomb : MonoBehaviour {
         };
 
         foreach (GameObject item in around) {
-            if(item!=null && (item.tag == "enemy"|| item.tag == "bomb")) {
-                item.GetComponent<Enemy>().OneShot();
-            }else if(item != null && item.tag == "Player") {
-                item.GetComponent<Player>().Meet(gameObject);
-            }if(item!=null && item.tag == "boss") {
+            if (item != null && item.tag == "boss")
+            {
                 item.GetComponent<BossPart>().OneHit();
-                Debug.Log("boss hited "+item.name);
+                Debug.Log("boss hited " + item.name);
+            }
+            if (item!=null && (item.tag == "enemy"|| item.tag == "bomb")) {
+                item.GetComponent<Enemy>().OneShot();
+            }
+        }
+        foreach (GameObject item in around)
+        {
+            if (item != null && item.tag == "Player")
+            {
+                item.GetComponent<Player>().Meet(gameObject);
             }
         }
 

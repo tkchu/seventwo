@@ -127,6 +127,10 @@ public class Player : MonoBehaviour {
 
     public Sprite[] introSprites;
     public void Meet(GameObject item) {
+        Boss boss = FindObjectOfType<Boss>();
+       if (FindObjectOfType<Boss>())
+            if (FindObjectOfType<Boss>().hp == 0)
+                return;
         if(item.GetComponent<knifeEnemy>() && !item.GetComponent<knifeEnemy>().noDie) {
             return;
         }

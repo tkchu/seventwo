@@ -87,7 +87,7 @@ public class Boss : MonoBehaviour {
 
             }
 
-            else if (GameObject.FindWithTag("enemy") == null)
+            else if (GameObject.FindWithTag("enemy") == null && step == 0)
             {
 
                 FindObjectOfType<SoundManager>().Play("bossattack");
@@ -186,6 +186,7 @@ public class Boss : MonoBehaviour {
     }
 
     IEnumerator Explode() {
+        //FindObjectOfType<Map>().GetComponent<Map>().enabled = false;    
         GameObject.Find("GameBGM").SetActive(false);
         FindObjectOfType<SoundManager>().Play("bossfail");
         parts =GameObject.FindGameObjectsWithTag("boss");
