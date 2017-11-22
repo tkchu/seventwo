@@ -127,6 +127,7 @@ public class Player : MonoBehaviour {
 
     public Sprite[] introSprites;
     public void Meet(GameObject item) {
+        if (isDead) return;
         Boss boss = FindObjectOfType<Boss>();
        if (FindObjectOfType<Boss>())
             if (FindObjectOfType<Boss>().hp == 0)
