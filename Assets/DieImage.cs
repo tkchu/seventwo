@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DieImage : MonoBehaviour {
     public Image introImage;
     public Image enemyImage;
-    private float secondsBefore = 1.5f;
+    private float secondsBefore = 0.85f;
     private float secondsContinue = 1f;
 
     public void Show(Sprite enemySprite, Sprite introSprite) {

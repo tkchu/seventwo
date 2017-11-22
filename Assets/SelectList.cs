@@ -13,6 +13,43 @@ public class SelectList : MonoBehaviour {
     public GameObject story;
     public Text a1, a2, a3;
     bool flag = true;
+    int[] ky = { 1, 1, 2, 2, 3, 3, 4, 4 };
+    public int p = 0;
+    void Jump()
+    {
+        if (p >= ky.Length)
+        {
+            Destroy(titlebgm);
+            SceneManager.LoadScene("boss");
+        }
+        var s=-1;
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            s = 1;
+            if (s == ky[p]) p += 1;
+            else p = 1;
+        }
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            s = 2;
+            if (s == ky[p]) p += 1;
+            else p = 0;
+        }
+        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            s = 3;
+            if (s == ky[p]) p += 1;
+            else p = 0;
+        }
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            s = 4;
+            if (s == ky[p]) p += 1;
+            else p = 0;
+        }
+        
+
+    }
     void Begin()
     {
         flag = false;
@@ -48,11 +85,9 @@ public class SelectList : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.W) && Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.D))
-        {
-            flag = false;
-            SceneManager.LoadScene("boss");
-        }
+        Jump();
+
+
         if (flag)
         {
 

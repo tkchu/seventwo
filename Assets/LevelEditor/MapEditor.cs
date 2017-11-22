@@ -25,10 +25,11 @@ public class MapEditor : MonoBehaviour {
     [Space]
     public GameObject[,] basicMap;
 
-    void Start() {
+    IEnumerator Start() {
         //Debug.Log(Application.persistentDataPath);
         if (ExistFile("map" + mapID.ToString())) {
             SetMapIDAsLastPlayed();
+            yield return new WaitForSeconds(0.4f);
             Load();
         } else {
             basicMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
@@ -166,6 +167,7 @@ public class MapEditor : MonoBehaviour {
         {
             SceneManager.LoadScene("levelEditor");
         }
+        //Player.revivelife = 0f;
         string key = "map" + mapID.ToString();
         string value = ReadFile(key);
         string[] strs = value.Split(',');

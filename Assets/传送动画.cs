@@ -20,7 +20,7 @@ public class 传送动画 : MonoBehaviour {
     IEnumerator Dead()
     {
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         GetComponent<Animator>().SetBool("teleport1", true);
         
     }

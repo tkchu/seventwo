@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
     Map map;
-    IEnumerator Start() {
+    
+    //public static float revivelife = 0.4f;
+    void Start() {
         map = FindObjectOfType<Map>();
-        yield return new WaitForSeconds(0.3f);
+        //yield return new WaitForSeconds(revivelife);
         transform.Find("传送动画").gameObject.SetActive(true);
+        //revivelife = 0f;
     }
 
     public void Go(int[] direction) {
@@ -188,12 +191,12 @@ public class Player : MonoBehaviour {
     {
         map.acceptInput = false;
         isDead = true;
-        yield return new WaitForSeconds(1f);
+        //yield return new WaitForSeconds(1f);
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
         isDead = false;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.65f);
         if (SceneManager.GetActiveScene().name == "boss") {
             SceneManager.LoadScene("boss");
         }else {
