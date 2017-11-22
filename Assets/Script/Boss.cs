@@ -45,7 +45,7 @@ public class Boss : MonoBehaviour {
     void Create(int[] xy,GameObject[] prefab)
     {
         GameObject old = map.itemMap[xy[0], xy[1]];
-        if (old!=null&&old.tag == "Player")
+        if (old!=null)
             return;
         Vector3 pos = mapEditor.basicMap[xy[0], xy[1]].transform.localPosition;
         pos += new Vector3(0, mapEditor.tileSize.y / 3, 0);
