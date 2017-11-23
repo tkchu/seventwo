@@ -29,7 +29,7 @@ public class MapEditor : MonoBehaviour {
         //Debug.Log(Application.persistentDataPath);
         if (ExistFile("map" + mapID.ToString())) {
             SetMapIDAsLastPlayed();
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0f);
             Load();
         } else {
             basicMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
@@ -160,10 +160,10 @@ public class MapEditor : MonoBehaviour {
         }
 
         PlayerPrefs.SetInt("lastPlayedLevel", mapID);
-        if (mapID == 20 && SceneManager.GetActiveScene().name != "boss") {
+        if (mapID == 19 && SceneManager.GetActiveScene().name != "boss") {
             SceneManager.LoadScene("boss");
         }
-        else if (mapID != 20 && SceneManager.GetActiveScene().name == "boss")
+        else if (mapID != 19 && SceneManager.GetActiveScene().name == "boss")
         {
             SceneManager.LoadScene("levelEditor");
         }
