@@ -170,18 +170,22 @@ public class Map : MonoBehaviour {
         if (temp != null && !temp.isDead && lastHit <=0 && acceptInput) {
             player = temp.gameObject;
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
+                lastHit = 0.05f;
                 player.GetComponent<Player>().Go(new int[] { 0, 1 });
-                lastHit = 0.05f;
+                
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) {
+            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            {
+                lastHit = 0.05f;
                 player.GetComponent<Player>().Go(new int[] { 0, -1 });
+            } else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            {
                 lastHit = 0.05f;
-            } else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
                 player.GetComponent<Player>().Go(new int[] { -1, 0 });
+            } else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            {
                 lastHit = 0.05f;
-            } else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
                 player.GetComponent<Player>().Go(new int[] { 1, 0 });
-                lastHit = 0.05f;
             }
         }
 

@@ -40,6 +40,8 @@ public class WeaponShowUpDown : MonoBehaviour
         animator.SetInteger("stat", heroAnimator.GetInteger("stat"));
         if (heroAnimator.GetBool("isShoot"))
             animator.SetBool("isShoot", true);
+        else
+            animator.SetBool("isShoot", false);
         if (!herosr.flipX)
         {
             ts.position = herots.position + offset1;

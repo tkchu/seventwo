@@ -58,18 +58,16 @@ public class Player : MonoBehaviour {
         }
 
 
-        if(shot == 0 && haveMove) {
-            FindObjectOfType<SoundManager>().Play("move");
-            GetComponent<Animator>().SetBool("isMoving", true);
-        }
-
-        if (haveMove || shot == 1) {
-            if (Mathf.Abs(direction[0]) >0f) {
+        if (haveMove || shot == 1)
+        {
+            if (Mathf.Abs(direction[0]) > 0f)
+            {
                 GetComponent<SpriteRenderer>().flipX = direction[0] > 0;
             }
 
             Enemy[] items = FindObjectsOfType<Enemy>();
-            foreach (Enemy item in items) {
+            foreach (Enemy item in items)
+            {
                 item.OneAction();
             }
             /*
@@ -77,6 +75,12 @@ public class Player : MonoBehaviour {
                 FindObjectOfType<Boss>().OneAction();
             }*/
         }
+
+        if (shot == 0 && haveMove) {
+            FindObjectOfType<SoundManager>().Play("move");
+            GetComponent<Animator>().SetBool("isMoving", true);
+        }
+
 
     }
 

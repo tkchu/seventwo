@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
     Animator heroani, bossshieldani;
-    private void Start() {
-        heroani = GameObject.FindWithTag("Player").GetComponent<Animator>();
-        if(GameObject.Find("shield")!=null)
+    private void Start()
+    {
+        if (GameObject.Find("shield") != null)
             bossshieldani = GameObject.Find("shield").GetComponent<Animator>();
-        
     }
+    void Update()
+        {if(heroani==null&& GameObject.FindWithTag("Player"))
+            heroani = GameObject.FindWithTag("Player").GetComponent<Animator>();
+        }
 
     public void OneAction() {
         if (GetComponent<Bomb>() && GetComponent<Bomb>().isReady) {

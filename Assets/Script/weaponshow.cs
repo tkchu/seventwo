@@ -36,7 +36,8 @@ public class weaponshow : MonoBehaviour {
             animator.SetBool("isShoot", true);
             //Debug.Log(this.name);
         }
-	    if (!herosr.flipX)
+        else animator.SetBool("isShoot", false);
+        if (!herosr.flipX)
 	    {
 	        ts.position = herots.position + offset1;
             sr.flipX = false;
