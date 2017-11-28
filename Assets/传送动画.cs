@@ -15,7 +15,7 @@ public class 传送动画 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         sp.sortingOrder = playersp.sortingOrder+1;
-        if (playerjs.isDead) StartCoroutine(Dead());
+        if (playerjs!=null&&playerjs.isDead) StartCoroutine(Dead());
 	}
     IEnumerator Dead()
     {

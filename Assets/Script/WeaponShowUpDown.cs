@@ -39,8 +39,12 @@ public class WeaponShowUpDown : MonoBehaviour
         }
         animator.SetInteger("stat", heroAnimator.GetInteger("stat"));
         if (heroAnimator.GetBool("isShoot"))
+        {
+
             animator.SetBool("isShoot", true);
-        else
+
+           // Debug.Log("heroShoot!");
+        }else
             animator.SetBool("isShoot", false);
         if (!herosr.flipX)
         {

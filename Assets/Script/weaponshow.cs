@@ -34,6 +34,8 @@ public class weaponshow : MonoBehaviour {
         if (heroAnimator.GetBool("isShoot"))
         {
             animator.SetBool("isShoot", true);
+
+            //Debug.Log("heroShoot!");
             //Debug.Log(this.name);
         }
         else animator.SetBool("isShoot", false);

@@ -76,7 +76,8 @@ public class AnimatorControl : MonoBehaviour {
 
         }
         heroani.SetBool("isShoot", true);
-        //Debug.Log("Shoot!");
+
+        //Debug.Log("heroShoot!");
     }
     public void HeroChange(int num)
     {

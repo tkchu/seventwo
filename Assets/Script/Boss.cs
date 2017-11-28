@@ -15,6 +15,8 @@ public class Boss : MonoBehaviour {
     public GameObject[] bomb;
     public GameObject[] enemy;
     public GameObject[] weapon;
+    public GameObject tele;
+    public Color[] cl;
     public Animator shield;
     public int step = 0;
     public bool test = false;
@@ -42,17 +44,25 @@ public class Boss : MonoBehaviour {
         }
     }
 
-    void Create(int[] xy,GameObject[] prefab)
+    IEnumerator Create(int[] xy,GameObject[] prefab)
     {
         GameObject old = map.itemMap[xy[0], xy[1]];
         if (old!=null)
-            return;
+            yield break;
         Vector3 pos = mapEditor.basicMap[xy[0], xy[1]].transform.localPosition;
         pos += new Vector3(0, mapEditor.tileSize.y / 3, 0);
         if (old != null && old != gameObject && old.tag != "Player")
             Destroy(old);
         var pb = prefab[Random.Range(0, prefab.Length)];
-        map.itemMap[xy[0], xy[1]] = Instantiate(pb, pos,pb.transform.rotation);
+        GameObject a= Instantiate(tele, pos-new Vector3(0, 0.25f * mapEditor.tileSize.y,0), Quaternion.identity);
+        if(prefab==enemy)a.GetComponent<SpriteRenderer>().color = cl[0];
+        if(pb == weapon[0])a.GetComponent<SpriteRenderer>().color = cl[1];
+        if (pb == weapon[1]) a.GetComponent<SpriteRenderer>().color = cl[2];
+        if (pb == weapon[2]) a.GetComponent<SpriteRenderer>().color = cl[3];
+        yield return new WaitForSeconds(0.4f);
+        map.itemMap[xy[0], xy[1]] = Instantiate(pb, pos, pb.transform.rotation);
+        //Debug.Log(xy[0].ToString() + ' ' + xy[1].ToString() + ' ' + pb.name);
+
     }
 
     public void OneAction() {
@@ -111,40 +121,51 @@ public class Boss : MonoBehaviour {
     {
         foreach (int[] a in bombpoint)
         {
-           Create(a,bomb);
+           StartCoroutine( Create(a,bomb));
         };
     }
     
     public void CreateRandomEnemy(int[][] en)
     {
         int num=Random.Range(1, 3);
-        int[][] tem=en;
+        int[][] tem = new int[en.Length][];
+        en.CopyTo(tem, 0);
         int len = tem.Length;
         for(; len>num;len--)
         {
             tem[Random.Range(0, len)] = tem[len-1];
         }
+        //Debug.Log(len);
         for (int i = 0; i < len; ++i)
-            Create(tem[i], enemy);
+            StartCoroutine( Create(tem[i], enemy));
     }
     public void CreateRandomMoveBomb(int[][] en)
     {
-        int num = Random.Range(1, 4);
-        int[][] tem = en;
+        int num = Random.Range(1, 3);
+        int[][] tem = new int[en.Length][];
+        en.CopyTo(tem, 0);
         int len = tem.Length;
+        
         for (; len > num; len--)
         {
             tem[Random.Range(0, len)] = tem[len-1];
         }
+
+        //Debug.Log("lenth is"+len);
         for (int i = 0; i < len; ++i)
-            Create(tem[i], movebomb);
+        {
+            //Debug.Log(tem[i][0].ToString() + ' ' + tem[i][1].ToString());
+            StartCoroutine(Create(tem[i], movebomb));
+
+        }
+ 
     }
     public void CreateRandomWeapon()
     {
         foreach (int[] a in weaponpoint)
         {
 
-            Create(a,weapon);
+            StartCoroutine(Create(a, weapon));
         };
     }
 
