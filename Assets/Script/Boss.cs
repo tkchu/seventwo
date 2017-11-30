@@ -47,19 +47,21 @@ public class Boss : MonoBehaviour {
     IEnumerator Create(int[] xy,GameObject[] prefab)
     {
         GameObject old = map.itemMap[xy[0], xy[1]];
-        if (old!=null)
-            yield break;
+        
         Vector3 pos = mapEditor.basicMap[xy[0], xy[1]].transform.localPosition;
         pos += new Vector3(0, mapEditor.tileSize.y / 3, 0);
-        if (old != null && old != gameObject && old.tag != "Player")
-            Destroy(old);
+        if (old != null && old != gameObject )
+            yield break;
         var pb = prefab[Random.Range(0, prefab.Length)];
         GameObject a= Instantiate(tele, pos-new Vector3(0, 0.25f * mapEditor.tileSize.y,0), Quaternion.identity);
-        if(prefab==enemy)a.GetComponent<SpriteRenderer>().color = cl[0];
+        map.itemMap[xy[0], xy[1]] = a;
+        if (prefab==enemy)a.GetComponent<SpriteRenderer>().color = cl[0];
         if(pb == weapon[0])a.GetComponent<SpriteRenderer>().color = cl[1];
         if (pb == weapon[1]) a.GetComponent<SpriteRenderer>().color = cl[2];
         if (pb == weapon[2]) a.GetComponent<SpriteRenderer>().color = cl[3];
         yield return new WaitForSeconds(0.4f);
+        if (old != null && old.tag != "wall")
+            yield break;
         map.itemMap[xy[0], xy[1]] = Instantiate(pb, pos, pb.transform.rotation);
         //Debug.Log(xy[0].ToString() + ' ' + xy[1].ToString() + ' ' + pb.name);
 

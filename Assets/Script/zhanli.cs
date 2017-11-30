@@ -6,7 +6,7 @@ public class zhanli : StateMachineBehaviour {
     public string state = " ";
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
-        if (state != "")
+        if (state !=null)
             animator.SetBool(state, false);
         else Debug.Log(animator.gameObject.name.ToString());
     }
