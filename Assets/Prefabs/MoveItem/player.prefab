@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4381052994208574}
   - component: {fileID: 212055885999364094}
   - component: {fileID: 95789045387931372}
-  - component: {fileID: 114301175990559366}
+  - component: {fileID: 114568810832661666}
   m_Layer: 2
   m_Name: weapon
   m_TagString: Untagged
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4750834755470770}
   - component: {fileID: 212410484193109692}
   - component: {fileID: 95131054917600814}
-  - component: {fileID: 114382200498702148}
+  - component: {fileID: 114842612731020474}
   m_Layer: 2
   m_Name: FireUpDown
   m_TagString: Untagged
@@ -541,7 +541,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
---- !u!114 &114301175990559366
+--- !u!114 &114568810832661666
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -549,18 +549,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1004075247626906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a65b901add4efec4586d5c48f1dc716a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114382200498702148
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1360162927947698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a90c3cbc3f6e194aa0b5c717e878e7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 91020df4985632f48adeac71ec4edd51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114615242427316056
@@ -629,6 +618,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 13b5966f4db539341a5819646a838745, type: 3}
   - {fileID: 21300000, guid: 7b452b9dbd617d847a01babdd9574725, type: 3}
   - {fileID: 21300000, guid: c0f08497ed7730042b4f1648c2e0a745, type: 3}
+--- !u!114 &114842612731020474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1360162927947698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a65b901add4efec4586d5c48f1dc716a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114861145501609134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -641,6 +641,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 0}
+  fire: {fileID: 1269440441529778}
+  fireupdown: {fileID: 1360162927947698}
 --- !u!114 &114918366934028860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -868,7 +870,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 30
+  m_SortingOrder: 999
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

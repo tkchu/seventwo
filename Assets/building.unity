@@ -498,6 +498,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 1245934568}
+  fire: {fileID: 0}
+  fireupdown: {fileID: 0}
 --- !u!1 &188389084
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,6 +1116,26 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1233561319681096, guid: 3a3635168da9f5e4b9b68a049fc31e3f, type: 2}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212410484193109692, guid: 3a3635168da9f5e4b9b68a049fc31e3f,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212410484193109692, guid: 3a3635168da9f5e4b9b68a049fc31e3f,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212410484193109692, guid: 3a3635168da9f5e4b9b68a049fc31e3f,
+        type: 2}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212410484193109692, guid: 3a3635168da9f5e4b9b68a049fc31e3f,
+        type: 2}
+      propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
