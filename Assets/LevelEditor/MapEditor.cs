@@ -160,10 +160,10 @@ public class MapEditor : MonoBehaviour {
         }
 
         PlayerPrefs.SetInt("lastPlayedLevel", mapID);
-        if (mapID == 19 && SceneManager.GetActiveScene().name != "boss") {
+        if (mapID == 22 && SceneManager.GetActiveScene().name != "boss") {
             SceneManager.LoadScene("boss");
         }
-        else if (mapID != 19 && SceneManager.GetActiveScene().name == "boss")
+        else if (mapID != 22 && SceneManager.GetActiveScene().name == "boss")
         {
             SceneManager.LoadScene("levelEditor");
         }

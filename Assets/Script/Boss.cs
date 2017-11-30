@@ -90,7 +90,7 @@ public class Boss : MonoBehaviour {
             if (callenemy)
             {
                 FindObjectOfType<SoundManager>().Play("bossmiss");
-                FindObjectOfType<SoundManager>().Play("bossattack");
+                //FindObjectOfType<SoundManager>().Play("bossattack");
                 callenemy = false;
                 GetComponent<Animator>().SetBool("left", true);
                 for (int i = 0; i < enemypoint.Length; ++i)
