@@ -20,7 +20,7 @@ public class Restart : MonoBehaviour {
     }
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape))
             SceneManager.LoadScene("start");
 
     }
