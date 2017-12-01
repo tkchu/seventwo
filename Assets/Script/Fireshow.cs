@@ -36,7 +36,10 @@ public class Fireshow : MonoBehaviour {
         }
 	    else
 	    {
-	        ts.position = herots.position - offset2;
+            if (name=="Fire(Clone)")
+	            ts.position = herots.position - offset2;
+            else
+                ts.position = herots.position + new Vector3(0,0.5f,0);
             sr.flipX = true;
         }
     }

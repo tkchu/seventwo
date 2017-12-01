@@ -25,6 +25,7 @@ public class Boss : MonoBehaviour {
         shield = transform.Find("shield").GetComponent<Animator>();
         map = FindObjectOfType<Map>();
         mapEditor = FindObjectOfType<MapEditor>();
+        mapEditor.mapID = 22;
         weaponpoint = new int[][] { new int[] { 10, 1 } ,new int[] { 6,4},new int[] { 14, 6 } };
         bombpoint = new int[][] { new int[] { 6, 5 }, new int[] { 13, 2 }, new int[] { 13, 5 }};
         
@@ -47,11 +48,14 @@ public class Boss : MonoBehaviour {
     IEnumerator Create(int[] xy,GameObject[] prefab)
     {
         GameObject old = map.itemMap[xy[0], xy[1]];
-        
+        if (old != null && old != gameObject)
+        {
+            Debug.Log("1");
+            yield break;
+        }
         Vector3 pos = mapEditor.basicMap[xy[0], xy[1]].transform.localPosition;
         pos += new Vector3(0, mapEditor.tileSize.y / 3, 0);
-        if (old != null && old != gameObject )
-            yield break;
+        
         var pb = prefab[Random.Range(0, prefab.Length)];
         GameObject a= Instantiate(tele, pos-new Vector3(0, 0.25f * mapEditor.tileSize.y,0), Quaternion.identity);
         map.itemMap[xy[0], xy[1]] = a;
@@ -59,9 +63,13 @@ public class Boss : MonoBehaviour {
         if(pb == weapon[0])a.GetComponent<SpriteRenderer>().color = cl[1];
         if (pb == weapon[1]) a.GetComponent<SpriteRenderer>().color = cl[2];
         if (pb == weapon[2]) a.GetComponent<SpriteRenderer>().color = cl[3];
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.35f);
+        old = map.itemMap[xy[0], xy[1]];
         if (old != null && old.tag != "wall")
+        {
+            Debug.Log("2");
             yield break;
+        }
         map.itemMap[xy[0], xy[1]] = Instantiate(pb, pos, pb.transform.rotation);
         //Debug.Log(xy[0].ToString() + ' ' + xy[1].ToString() + ' ' + pb.name);
 
