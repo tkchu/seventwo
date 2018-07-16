@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
     Map map;
-    
+    MapMist mapMist;
     //public static float revivelife = 0.4f;
     void Start() {
         map = FindObjectOfType<Map>();
+        mapMist = FindObjectOfType<MapMist>();
         //yield return new WaitForSeconds(revivelife);
         transform.Find("传送动画").gameObject.SetActive(true);
+        
         //revivelife = 0f;
     }
 
@@ -46,7 +48,8 @@ public class Player : MonoBehaviour {
         //移动
         if (move == 0) {
             haveMove = false;
-        } else {
+        }
+        else {
             GameObject itemMeet = map.MoveItem(gameObject,
                 new int[]{
                     pos[0] + direction[0] * Mathf.Abs(move) * (move < 0 ? -1 : 1),
@@ -80,7 +83,8 @@ public class Player : MonoBehaviour {
             FindObjectOfType<SoundManager>().Play("move");
             GetComponent<Animator>().SetBool("isMoving", true);
         }
-
+        //mapMist.UpdateMist();
+        FindObjectOfType<Radar>().Step();
 
     }
 

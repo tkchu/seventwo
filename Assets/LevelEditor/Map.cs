@@ -13,6 +13,8 @@ public class Map : MonoBehaviour {
     GameObject player = null;
     public int[] playerPos = { 0, 0 };
 
+    public int[] playerface = { 0, -1 };
+
     public int[] GetPlayerPos()
     {
         if (player != null)
@@ -23,6 +25,12 @@ public class Map : MonoBehaviour {
                 playerPos = find;
             }
 
+            return playerPos;
+        }
+        else if (FindObjectOfType<Player>() != null)
+        {
+            player = FindObjectOfType<Player>().gameObject;
+            playerPos = FindGameObject(itemMap, player);
             return playerPos;
         }
         else {
@@ -173,20 +181,26 @@ public class Map : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
                 lastHit = hitlimit;
                 player.GetComponent<Player>().Go(new int[] { 0, 1 });
+                playerface =new int[]{ 0,1};
                 
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
             {
                 lastHit = hitlimit;
                 player.GetComponent<Player>().Go(new int[] { 0, -1 });
-            } else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+                playerface = new int[] { 0, -1 };
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
                 lastHit = hitlimit;
                 player.GetComponent<Player>().Go(new int[] { -1, 0 });
-            } else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+                playerface = new int[] { -1,0 };
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
                 lastHit = hitlimit;
                 player.GetComponent<Player>().Go(new int[] { 1, 0 });
+                playerface = new int[] { 1,0 };
             }
         }
 

@@ -186,6 +186,7 @@ public class MapEditor : MonoBehaviour {
         GameObject[,] groundMap = GetComponent<Map>().groundMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
         GameObject[,] itemMap = GetComponent<Map>().itemMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
         GameObject[,] decorateMap = GetComponent<Map>().decorateMap = new GameObject[(int)(mapSize.x), (int)(mapSize.y)];
+        //FindObjectOfType<MapMist>().Init();
 
         int istr = 2;
         //处理地板
@@ -251,6 +252,7 @@ public class MapEditor : MonoBehaviour {
             FindObjectOfType<EnemyTriggerManager>().Load();
         }
         GetComponent<Map>().lastHit = 0.5f;
+        FindObjectOfType<Radar>().Initial();
     }
 
     public bool release = false;

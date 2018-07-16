@@ -200,7 +200,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
 --- !u!212 &212335356996699072
 SpriteRenderer:
   m_ObjectHideFlags: 1
